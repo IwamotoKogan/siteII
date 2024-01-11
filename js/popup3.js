@@ -24,7 +24,7 @@ if (savedItems.length > 0) {
                 <h2 class="h5 text-black">Ime elementa</h2>
             </td>
             <td class="product-name ">
-                <h2 class="h5 text-black">Visina: ${item.height}cm x širina: ${item.width}cm x dubina: ${item.depth}cm</h2>
+                <h2 class="h5 text-black">Visina: ${item.height}cm širina: ${item.width}cm dubina: ${item.depth}cm</h2>
             </td>
             <td class=" ">Izabrani dezen:<strong>${item.dezen}</strong></td>
             <td class=" ">
