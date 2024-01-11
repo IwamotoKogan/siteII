@@ -1,0 +1,35 @@
+ .product-colors span {
+     width: 26px;
+     height: 26px;
+     top: 7px;
+     margin-right: 12px;
+     left: 10px;
+     border-radius: 50%;
+     position: relative;
+     cursor: pointer;
+     display: inline-block;
+ }
+
+ .product-colors .active:after {
+     content: "";
+     width: 36px;
+     height: 36px;
+     border: 2px solid #000;
+     position: absolute;
+     border-radius: 50%;
+     box-sizing: border-box;
+     left: -5px;
+     top: -5px;
+ }
+
+ .black {
+     background: #000;
+ }
+
+ .red {
+     background: #979696;
+ }
+
+ .orange {
+     background: #ffffff;
+ }

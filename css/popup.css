@@ -1,0 +1,12 @@
+.custom-delete-button {
+    background-color: #dc3545; /* Bootstrap 'danger' boja */
+    color: black; /* Crni tekst */
+    border-color: black; /* Crna granica */
+}
+
+.custom-delete-button:hover {
+    background-color: #c82333; /* Tamnija nijansa crvene na hover */
+    color: white; /* Beli tekst na hover */
+}
+
+
