@@ -210,13 +210,13 @@
           <form action="https://formsubmit.co/filip.jovetic753@gmail.com" method="POST">
             <!-- Dinamički generisana polja za svaki element -->
             ${savedItems.map((item, index) => `
-              <input type="hidden" name="height_${index + 1}" value="${item.height}">
-              <input type="hidden" name="width_${index + 1}" value="${item.width}">
-              <input type="hidden" name="depth_${index + 1}" value="${item.depth}">
-              <input type="hidden" name="price_${index + 1}" value="${item.price}">
-              <input type="hidden" name="message_${index + 1}" value="${item.message}">
+              <input type="hidden" name="visina_${index + 1}" value="${item.height}">
+              <input type="hidden" name="širina_${index + 1}" value="${item.width}">
+              <input type="hidden" name="dubina_${index + 1}" value="${item.depth}">
+              <input type="hidden" name="cena_${index + 1}" value="${item.price}">
+              <input type="hidden" name="dimenzije_fronta_${index + 1}" value="${item.message}">
               <input type="hidden" name="dezen_${index + 1}" value="${item.dezen}">
-              <input type="hidden" name="hinges_${index + 1}" value="${item.hinges}">
+              <input type="hidden" name="šarke_${index + 1}" value="${item.hinges}">
               <input type="hidden" name="nogice_${index + 1}" value="${item.answer}">
 			  <input type="hidden" name="_next" value="https://iwamotokogan.github.io/siteII/thankyou.html">
             `).join('')}
