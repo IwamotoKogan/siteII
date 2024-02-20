@@ -45,4 +45,4 @@ savedItems.forEach(item => {
     totalCost += item.price;
 });
 const totalCostElement = document.getElementById('ukupna-cena');
-totalCostElement.textContent = `Ukupna cena: <strong>${totalCost}</strong> evra`;
+totalCostElement.textContent = `Ukupna cena: ${totalCost} evra`;
