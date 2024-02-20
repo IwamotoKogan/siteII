@@ -200,7 +200,15 @@ function calculate() {
 
    const totalPrice = calculatePrice(height, width, depth) + selectedDezenPrice;
 
-    document.getElementById('price').innerText = `Cena: ${totalPrice} evra`;
+    document.getElementById('price').innerHTML = `
+    <div class="row mb-5">
+		        <div class="col-md-12">
+		          <div class="border p-4 rounded text-black" role="alert">
+		           <span>Dimenzije fronta za kreirani element: </span><strong>${message}</strong>
+		          </div>
+		        </div>
+		      </div>
+    `;
 
     // Izračunajte preporučene dimenzije fronta
     const recommendedFrontDimensions = calculateRecommendedFrontDimensions(height, width, depth);
