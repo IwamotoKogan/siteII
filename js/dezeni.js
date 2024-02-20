@@ -370,6 +370,8 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
     // Automatsko označavanje obe strane šarki
     leftHingesButton.classList.add('selected');
     rightHingesButton.classList.add('selected');
+
+    kuhinjaData.hinges = 'Leva i desna str';
 }
 
 
