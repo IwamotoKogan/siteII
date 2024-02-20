@@ -204,7 +204,7 @@ function calculate() {
     <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded text-black" role="alert">
-		           <span>Dimenzije fronta za kreirani element: </span><strong>${message}</strong>
+		           <span>Cena elementa:</span><strong>${totalPrice}</strong>
 		          </div>
 		        </div>
 		      </div>
