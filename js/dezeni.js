@@ -207,7 +207,7 @@ function calculate() {
 
     // Prikaz preporučenog fronta ispod cene
     const recommendedFront = document.getElementById('recommended-front');
-    recommendedFront.innerHTML = <div class="row mb-5">
+    recommendedFront.innerHTML = `<div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded" role="alert">
 		            Dimenzije fronta za kreirani element: ${message}
