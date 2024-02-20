@@ -356,17 +356,22 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    let recommendedHeight, recommendedWidth;
 
     if (width <= 149) {
-        // Ako je širina manja ili jednaka 150cm
-        recommendedHeight = height - 0.4; // Smanjite visinu za 4mm
-        recommendedWidth = width - 0.4; // Smanjite širinu za 4mm
-        message = `visina ${recommendedHeight.toFixed(1)}cm i širina ${recommendedWidth.toFixed(1)}cm.`;
-    } else {
-        // Ako je širina veća od 150cm, podelite na dvoje vrata
-        const singleDoorWidth = (width  / 2)- 0.2; // Podelite širinu na dva vrata
-        recommendedWidth = singleDoorWidth;
-        recommendedHeight = height - 0.4; // Smanjite visinu za 4mm
-        message = `Unete dimenzije za širinu su preko 150cm. Potrebno je kreirati dvoje vrata 2 x ${singleDoorWidth.toFixed(1)}cm x ${recommendedHeight.toFixed(1)}cm`;
-    }
+    // Ako je širina manja ili jednaka 150cm
+    recommendedHeight = height - 0.4; // Smanjite visinu za 4mm
+    recommendedWidth = width - 0.4; // Smanjite širinu za 4mm
+    message = `visina ${recommendedHeight.toFixed(1)}cm i širina ${recommendedWidth.toFixed(1)}cm.`;
+} else {
+    // Ako je širina veća od 150cm, podelite na dvoje vrata
+    const singleDoorWidth = (width / 2) - 0.2; // Podelite širinu na dva vrata
+    recommendedWidth = singleDoorWidth;
+    recommendedHeight = height - 0.4; // Smanjite visinu za 4mm
+    message = `Unete dimenzije za širinu su preko 150cm. Potrebno je kreirati dvoje vrata 2 x ${singleDoorWidth.toFixed(1)}cm x ${recommendedHeight.toFixed(1)}cm`;
+
+    // Automatsko označavanje obe strane šarki
+    leftHingesButton.classList.add('selected');
+    rightHingesButton.classList.add('selected');
+}
+
 
     console.log('Preporučene dimenzije fronta:', recommendedHeight, recommendedWidth);
     console.log('Poruka:', message);
