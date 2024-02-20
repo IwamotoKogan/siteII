@@ -371,7 +371,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
     leftHingesButton.classList.add('selected');
     rightHingesButton.classList.add('selected');
 
-    kuhinjaData.hinges = 'Leva i desna str';
+    selectedHinges = 'Leva i desna str';
 }
 
 
