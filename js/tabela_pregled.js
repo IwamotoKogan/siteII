@@ -15,7 +15,7 @@ if (savedItems.length > 0) {
                 <h2 class="h5 text-black">Ime elementa</h2>
             </td>
             
-            <td class="product-name">cena <strong> ${item.price}</strong>  evra</td>
+            <td class="product-name">cena ${item.price}evra</td>
             
         `;
         krava[0].appendChild(itemDetails); // Uzimamo prvi element iz kolekcije, jer getElementsByClassName vraća kolekciju elemenata
