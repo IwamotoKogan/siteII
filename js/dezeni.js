@@ -224,7 +224,12 @@ function calculate() {
 		      </div>` ;
 }
 
-document.getElementById('calculate-btn').addEventListener('click', calculate);
+/*document.getElementById('calculate-btn').addEventListener('click', calculate);*/
+document.getElementById('calculate-btn').addEventListener('click', function() {
+    calculate();
+    calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
+});
+
 
 // Kreiramo objekat za čuvanje podataka o kuhinji
 let kuhinjaData = {
