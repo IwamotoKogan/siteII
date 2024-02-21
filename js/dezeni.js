@@ -339,7 +339,8 @@ function addToCart(dezeni) {
      pitanjaaaaa */
 	    
 /*******************************************************KORPUS*************************************************************************/
-	    whiteButton.addEventListener('click', function () {
+	   whiteButton.addEventListener('click', function () {
+    console.log("Kliknuto na belo dugme");
     whiteButton.classList.add('selected');
     blackButton.classList.remove('selected');
     grayButton.classList.remove('selected');
