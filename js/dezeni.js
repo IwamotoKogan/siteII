@@ -225,6 +225,27 @@ function calculate() {
 }
 
 /*document.getElementById('calculate-btn').addEventListener('click', calculate);*/
+function calculateHingers(height, width, depth) {
+    let message2;
+    const porukaSarkeDiv = document.querySelector('.poruka-sarke');
+
+    if (width <= 149) {
+        // Ako je širina manja ili jednaka 149cm
+        message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
+	    
+    } else {
+        // Ako je širina veća od 149cm
+        leftHingesButton.classList.add('selected');
+        rightHingesButton.classList.add('selected');
+        message2 = 'i leva str i desna str';
+	porukaSarkeDiv.style.display = 'block';
+	porukaSarkeDiv.innerText = "Šarke će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
+    }
+
+    console.log('Poruka za šarke:', message2);
+
+    return message2;
+}
 document.getElementById('calculate-btn').addEventListener('click', function() {
     calculate();
     calculateHinges(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
@@ -313,27 +334,7 @@ function addToCart(dezeni) {
      const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
      /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
      pitanjaaaaa */
-	    function calculateHingers(height, width, depth) {
-    let message2;
-    const porukaSarkeDiv = document.querySelector('.poruka-sarke');
-
-    if (width <= 149) {
-        // Ako je širina manja ili jednaka 149cm
-        message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
 	    
-    } else {
-        // Ako je širina veća od 149cm
-        leftHingesButton.classList.add('selected');
-        rightHingesButton.classList.add('selected');
-        message2 = 'i leva str i desna str';
-	porukaSarkeDiv.style.display = 'block';
-	porukaSarkeDiv.innerText = "Šarke će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
-    }
-
-    console.log('Poruka za šarke:', message2);
-
-    return message2;
-}
 
               const newItem = {
             height: height,
