@@ -348,6 +348,7 @@ function addToCart(dezeni) {
 
 blackButton.addEventListener('click', function () {
     blackButton.classList.add('selected');
+	console.log("radi")
     whiteButton.classList.remove('selected');
     grayButton.classList.remove('selected');
     enableKupiButtonIfKorpus();
