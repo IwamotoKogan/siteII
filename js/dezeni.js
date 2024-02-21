@@ -1,5 +1,8 @@
 /*dodato*/
  // Dodajte event listenere za dugmad "Da" i "Ne"
+const whiteButton = document.getElementById('white-button');
+const blackButton = document.getElementById('black-button');
+const grayButton = document.getElementById('gray-button');
   const yesButton = document.getElementById('yes-button');
   const noButton = document.getElementById('no-button');
   const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -335,7 +338,48 @@ function addToCart(dezeni) {
      /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
      pitanjaaaaa */
 	    
+/*******************************************************KORPUS*************************************************************************/
+	    whiteButton.addEventListener('click', function () {
+    whiteButton.classList.add('selected');
+    blackButton.classList.remove('selected');
+    grayButton.classList.remove('selected');
+    enableKupiButtonIfKorpus();
+});
 
+blackButton.addEventListener('click', function () {
+    blackButton.classList.add('selected');
+    whiteButton.classList.remove('selected');
+    grayButton.classList.remove('selected');
+    enableKupiButtonIfKorpus();
+});
+
+grayButton.addEventListener('click', function () {
+    grayButton.classList.add('selected');
+    whiteButton.classList.remove('selected');
+    blackButton.classList.remove('selected');
+    enableKupiButtonIfKorpus();
+});
+
+// Funkcija za omogućavanje dugmeta "Kupi" ako je odgovoreno na pitanje
+function enableKupiButtonIfKorpus() {
+    const kupiButton = document.getElementById('kupi-btn');
+    if (whiteButton.classList.contains('selected') || blackButton.classList.contains('selected') || grayButton.classList.contains('selected')) {
+        kupiButton.removeAttribute('disabled');
+    } else {
+        kupiButton.setAttribute('disabled', 'disabled');
+    }
+}
+
+// Postavljanje odgovora na osnovu selektovanog dugmeta
+let korpus;
+if (whiteButton.classList.contains('selected')) {
+    korpus = 'Belo';
+} else if (blackButton.classList.contains('selected')) {
+    korpus = 'Crno';
+} else if (grayButton.classList.contains('selected')) {
+    korpus = 'Sivo';
+}
+/*******************************************************KORPUS*************************************************************************/
               const newItem = {
             height: height,
             width: width,
@@ -344,7 +388,8 @@ function addToCart(dezeni) {
             dezen: selectedDezen.name, // Dodajte ime dezena
             message: recommendedFrontDimensions.message,
             answer: answer,
-            hinges: /*selectedHinges*/calculateHingers(height, width, depth)
+            hinges: /*selectedHinges*/calculateHingers(height, width, depth),
+	    korpus: korpus
         };
 
         kuhinjaData.height = height;
