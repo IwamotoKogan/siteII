@@ -1,8 +1,6 @@
 /*dodato*/
  // Dodajte event listenere za dugmad "Da" i "Ne"
-const beli = document.getElementById('white-button');
-const crni = document.getElementById('black-button');
-const sivi = document.getElementById('gray-button');
+
   const yesButton = document.getElementById('yes-button');
   const noButton = document.getElementById('no-button');
   const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -340,49 +338,6 @@ function addToCart(dezeni) {
 	    
 /*******************************************************KORPUS*************************************************************************/
 
-
-// Provera da li je korisnik odgovorio
-if (!(beliKorpus || crniKorpus || siviKorpus)) {
-    alert("Niste odgovorili na pitanje.");
-    return;
-}
-
-// Dodavanje event listenera za klik na dugmad
-beli.addEventListener('click', function () {
-    beli.classList.add('selektovan');
-    crni.classList.remove('selektovan');
-    sivi.classList.remove('selektovan');
-    onemoguceno();
-});
-
-crni.addEventListener('click', function () {
-    crni.classList.add('selektovan');
-    beli.classList.remove('selektovan');
-    sivi.classList.remove('selektovan');
-    onemoguceno();
-});
-
-sivi.addEventListener('click', function () {
-    sivi.classList.add('selektovan');
-    beli.classList.remove('selektovan');
-    crni.classList.remove('selektovan');
-    onemoguceno();
-});
-const beliKorpus = beli.classList.contains('selektovan');
-const crniKorpus = crni.classList.contains('selektovan');
-const siviKorpus = sivi.classList.contains('selektovan');
-// Funkcija koja omogućava dugme "Kupi" ako je korisnik odgovorio
-function onemoguceno() {
-    const kupiButton = document.getElementById('kupi-btn');
-    if (crni.classList.contains('selektovan') || beli.classList.contains('selektovan') || sivi.classList.contains('selektovan')) {
-        kupiButton.removeAttribute('disabled');
-    } else {
-        kupiButton.setAttribute('disabled', 'disabled');
-    }
-}
-
-// Provera odgovora korisnika
-const odgovori = crni.classList.contains('selektovan') ? 'Da' : beli.classList.contains('selektovan') ? 'Ne' : sivi.classList.contains('selektovan') ? 'Možda' : '';
 /*******************************************************KORPUS*************************************************************************/
               const newItem = {
             height: height,
