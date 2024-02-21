@@ -33,7 +33,7 @@ if (savedItems.length > 0) {
             <td class="product-name ">
                 <h2 class="h5 text-black">Pozicija šarki? ${item.hinges}</h2>
                 <h2 class="h5 text-black">Potrebne nogice? ${item.answer}</h2>
-                <h2 class="h5 text-black">Potrebne nogice? ${item.odgovori}</h2>
+                <h2 class="h5 text-black">Potrebne nogice? ${item.korpusOdgovor}</h2>
             </td>
             <td class="product-name ">cena vašeg elementa je<strong> ${item.price}</strong>  evra</td>
                
