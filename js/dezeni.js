@@ -371,7 +371,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
     rightHingesButton.classList.add('selected');
 
     // Dodajte informaciju o obe strane šarki u objekat item
-    item.hinges = 'Leva i desna str';
+    newItem.item.hinges = 'Leva i desna str';
     }
 
     console.log('Preporučene dimenzije fronta:', recommendedHeight, recommendedWidth);
