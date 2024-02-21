@@ -348,7 +348,7 @@ function addToCart(dezeni) {
             message: recommendedFrontDimensions.message,
             answer: answer,
             hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-	    odgovori: odgovori
+	   
         };
 
         kuhinjaData.height = height;
