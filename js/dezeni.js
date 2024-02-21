@@ -474,7 +474,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
     }
   }
   function enableKupiButtonIfKorpus() {
-    if (crni.classList.contains('selected') || beli.classList.contains('selected') || sivi.classList.contains('selected')) {
+    if (crni.classList.contains('selektovan') || beli.classList.contains('selektovan') || sivi.classList.contains('selektovan')) {
       kupiButton.removeAttribute('disabled');
     } else {
       kupiButton.setAttribute('disabled', 'disabled');
