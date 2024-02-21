@@ -1,8 +1,8 @@
 /*dodato*/
  // Dodajte event listenere za dugmad "Da" i "Ne"
-const whiteButton = document.getElementById('white-button');
-const blackButton = document.getElementById('black-button');
-const grayButton = document.getElementById('gray-button');
+const beli = document.getElementById('white-button');
+const crni = document.getElementById('black-button');
+const sivi = document.getElementById('gray-button');
   const yesButton = document.getElementById('yes-button');
   const noButton = document.getElementById('no-button');
   const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -339,48 +339,50 @@ function addToCart(dezeni) {
      pitanjaaaaa */
 	    
 /*******************************************************KORPUS*************************************************************************/
-	   whiteButton.addEventListener('click', function () {
-    console.log("Kliknuto na belo dugme");
-    whiteButton.classList.add('selected');
-    blackButton.classList.remove('selected');
-    grayButton.classList.remove('selected');
-    enableKupiButtonIfKorpus();
+const beliKorpus = beli.classList.contains('selected');
+const crniKorpus = crni.classList.contains('selected');
+const siviKorpus = sivi.classList.contains('selected');
+
+// Provera da li je korisnik odgovorio
+if (!(beliKorpus || crniKorpus || siviKorpus)) {
+    alert("Niste odgovorili na pitanje.");
+    return;
+}
+
+// Dodavanje event listenera za klik na dugmad
+beli.addEventListener('click', function () {
+    beli.classList.add('selected');
+    crni.classList.remove('selected');
+    sivi.classList.remove('selected');
+    onemoguceno();
 });
 
-blackButton.addEventListener('click', function () {
-    blackButton.classList.add('selected');
-	console.log("radi")
-    whiteButton.classList.remove('selected');
-    grayButton.classList.remove('selected');
-    enableKupiButtonIfKorpus();
+crni.addEventListener('click', function () {
+    crni.classList.add('selected');
+    beli.classList.remove('selected');
+    sivi.classList.remove('selected');
+    onemoguceno();
 });
 
-grayButton.addEventListener('click', function () {
-    grayButton.classList.add('selected');
-    whiteButton.classList.remove('selected');
-    blackButton.classList.remove('selected');
-    enableKupiButtonIfKorpus();
+sivi.addEventListener('click', function () {
+    sivi.classList.add('selected');
+    beli.classList.remove('selected');
+    crni.classList.remove('selected');
+    onemoguceno();
 });
 
-// Funkcija za omogućavanje dugmeta "Kupi" ako je odgovoreno na pitanje
-function enableKupiButtonIfKorpus() {
+// Funkcija koja omogućava dugme "Kupi" ako je korisnik odgovorio
+function onemoguceno() {
     const kupiButton = document.getElementById('kupi-btn');
-    if (whiteButton.classList.contains('selected') || blackButton.classList.contains('selected') || grayButton.classList.contains('selected')) {
+    if (crni.classList.contains('selected') || beli.classList.contains('selected') || sivi.classList.contains('selected')) {
         kupiButton.removeAttribute('disabled');
     } else {
         kupiButton.setAttribute('disabled', 'disabled');
     }
 }
 
-// Postavljanje odgovora na osnovu selektovanog dugmeta
-let korpus;
-if (whiteButton.classList.contains('selected')) {
-    korpus = 'Belo';
-} else if (blackButton.classList.contains('selected')) {
-    korpus = 'Crno';
-} else if (grayButton.classList.contains('selected')) {
-    korpus = 'Sivo';
-}
+// Provera odgovora korisnika
+const odgovori = crni.classList.contains('selected') ? 'Da' : beli.classList.contains('selected') ? 'Ne' : sivi.classList.contains('selected') ? 'Možda' : '';
 /*******************************************************KORPUS*************************************************************************/
               const newItem = {
             height: height,
@@ -391,7 +393,7 @@ if (whiteButton.classList.contains('selected')) {
             message: recommendedFrontDimensions.message,
             answer: answer,
             hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-	    korpus: korpus
+	    odgovori: odgovori
         };
 
         kuhinjaData.height = height;
