@@ -1,6 +1,8 @@
 /*dodato*/
  // Dodajte event listenere za dugmad "Da" i "Ne"
-
+const beli = document.getElementById('white-korpus');
+  const crni = document.getElementById('black-korpus');
+  const sivi = document.getElementById('gray-korpus');
   const yesButton = document.getElementById('yes-button');
   const noButton = document.getElementById('no-button');
   const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -288,11 +290,22 @@ function addToCart(dezeni) {
     const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
 
  /*ovan*/
-                                                           // Dodatna logika za proveru odabranih opcija
+  
+    
+                                                           
+                                                           
+    const isCrniKorpus = crni.classList.contains('selected');
+    const isBeliKorpus = beli.classList.contains('selected');
+    const isSiviKorpus = sivi.classList.contains('selected');
     const isYesSelected = yesButton.classList.contains('selected');
     const isNoSelected = noButton.classList.contains('selected');
     const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
     const isRightHingeSelected = rightHingesButton.classList.contains('selected');
+
+    if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
+        alert("Odaberite korpus");
+        return;
+    }
 
     if (!(isYesSelected || isNoSelected)) {
         alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
@@ -333,6 +346,9 @@ function addToCart(dezeni) {
 
                 /*pitanjaaaaa */
      const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
+     // Provera odgovora korisnika
+const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';
+
      /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
      pitanjaaaaa */
 	    
@@ -348,7 +364,7 @@ function addToCart(dezeni) {
             message: recommendedFrontDimensions.message,
             answer: answer,
             hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-	   
+            korpusOdgovor: korpusOdgovor
         };
 
         kuhinjaData.height = height;
@@ -423,6 +439,24 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
     noButton.classList.remove('selected');
     enableKupiButtonIfAnswered();
   });
+  beli.addEventListener('click', function () {
+    beli.classList.add('selektovan');
+    crni.classList.remove('selektovan');
+    sivi.classList.remove('selektovan');
+    enableKupiButtonIfKorpus();
+  });
+  crni.addEventListener('click', function () {
+    crni.classList.add('selektovan');
+    beli.classList.remove('selektovan');
+    sivi.classList.remove('selektovan');
+    enableKupiButtonIfKorpus();
+  });
+  sivi.addEventListener('click', function () {
+    sivi.classList.add('selektovan');
+    crni.classList.remove('selektovan');
+    beli.classList.remove('selektovan');
+    enableKupiButtonIfKorpus();
+  });
 
   // Označavanje odgovora kada se klikne na dugme "Ne"
   noButton.addEventListener('click', function () {
@@ -434,6 +468,13 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
   // Funkcija za omogućavanje dugmeta "Kupi" ako je odgovoreno na pitanje
   function enableKupiButtonIfAnswered() {
     if (yesButton.classList.contains('selected') || noButton.classList.contains('selected')) {
+      kupiButton.removeAttribute('disabled');
+    } else {
+      kupiButton.setAttribute('disabled', 'disabled');
+    }
+  }
+  function enableKupiButtonIfKorpus() {
+    if (crni.classList.contains('selected') || beli.classList.contains('selected') || sivi.classList.contains('selected')) {
       kupiButton.removeAttribute('disabled');
     } else {
       kupiButton.setAttribute('disabled', 'disabled');
@@ -455,7 +496,6 @@ rightHingesButton.addEventListener('click', () => {
 
 
 /*nova verzija5*/
-
 
 
 
