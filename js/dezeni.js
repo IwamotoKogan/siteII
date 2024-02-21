@@ -306,8 +306,26 @@ function addToCart(dezeni) {
 
                 /*pitanjaaaaa */
      const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
-     const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
-     /*pitanjaaaaa */
+     /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
+     pitanjaaaaa */
+	    function calculateHingers(height, width, depth) {
+    let message2;
+
+    if (width <= 149) {
+        // Ako je širina manja ili jednaka 149cm
+        message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
+    } else {
+        // Ako je širina veća od 149cm
+        leftHingesButton.classList.add('selected');
+        rightHingesButton.classList.add('selected');
+        message2 = 'i leva str i desna str';
+    }
+
+    console.log('Poruka za šarke:', message2);
+
+    return message2;
+}
+
               const newItem = {
             height: height,
             width: width,
@@ -316,7 +334,7 @@ function addToCart(dezeni) {
             dezen: selectedDezen.name, // Dodajte ime dezena
             message: recommendedFrontDimensions.message,
             answer: answer,
-            hinges: selectedHinges
+            hinges: /*selectedHinges*/calculateHingers(height, width, depth)
         };
 
         kuhinjaData.height = height;
