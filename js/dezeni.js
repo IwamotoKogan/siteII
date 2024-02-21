@@ -366,6 +366,12 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
         recommendedWidth = singleDoorWidth;
         recommendedHeight = height - 0.4; // Smanjite visinu za 4mm
         message = `Unete dimenzije za širinu su preko 150cm. Potrebno je kreirati dvoje vrata 2 x ${singleDoorWidth.toFixed(1)}cm x ${recommendedHeight.toFixed(1)}cm`;
+
+	    leftHingesButton.classList.add('selected');
+    rightHingesButton.classList.add('selected');
+
+    // Dodajte informaciju o obe strane šarki u objekat item
+    item.hinges = 'Leva i desna str';
     }
 
     console.log('Preporučene dimenzije fronta:', recommendedHeight, recommendedWidth);
