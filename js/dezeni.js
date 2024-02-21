@@ -248,7 +248,7 @@ function calculateHingers(height, width, depth) {
 }
 document.getElementById('calculate-btn').addEventListener('click', function() {
     calculate();
-    calculateHinges(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
+    calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
 });
 
 
