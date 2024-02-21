@@ -339,9 +339,7 @@ function addToCart(dezeni) {
      pitanjaaaaa */
 	    
 /*******************************************************KORPUS*************************************************************************/
-const beliKorpus = beli.classList.contains('selected');
-const crniKorpus = crni.classList.contains('selected');
-const siviKorpus = sivi.classList.contains('selected');
+
 
 // Provera da li je korisnik odgovorio
 if (!(beliKorpus || crniKorpus || siviKorpus)) {
@@ -351,30 +349,32 @@ if (!(beliKorpus || crniKorpus || siviKorpus)) {
 
 // Dodavanje event listenera za klik na dugmad
 beli.addEventListener('click', function () {
-    beli.classList.add('selected');
-    crni.classList.remove('selected');
-    sivi.classList.remove('selected');
+    beli.classList.add('selektovan');
+    crni.classList.remove('selektovan');
+    sivi.classList.remove('selektovan');
     onemoguceno();
 });
 
 crni.addEventListener('click', function () {
-    crni.classList.add('selected');
-    beli.classList.remove('selected');
-    sivi.classList.remove('selected');
+    crni.classList.add('selektovan');
+    beli.classList.remove('selektovan');
+    sivi.classList.remove('selektovan');
     onemoguceno();
 });
 
 sivi.addEventListener('click', function () {
-    sivi.classList.add('selected');
-    beli.classList.remove('selected');
-    crni.classList.remove('selected');
+    sivi.classList.add('selektovan');
+    beli.classList.remove('selektovan');
+    crni.classList.remove('selektovan');
     onemoguceno();
 });
-
+const beliKorpus = beli.classList.contains('selektovan');
+const crniKorpus = crni.classList.contains('selektovan');
+const siviKorpus = sivi.classList.contains('selektovan');
 // Funkcija koja omogućava dugme "Kupi" ako je korisnik odgovorio
 function onemoguceno() {
     const kupiButton = document.getElementById('kupi-btn');
-    if (crni.classList.contains('selected') || beli.classList.contains('selected') || sivi.classList.contains('selected')) {
+    if (crni.classList.contains('selektovan') || beli.classList.contains('selektovan') || sivi.classList.contains('selektovan')) {
         kupiButton.removeAttribute('disabled');
     } else {
         kupiButton.setAttribute('disabled', 'disabled');
@@ -382,7 +382,7 @@ function onemoguceno() {
 }
 
 // Provera odgovora korisnika
-const odgovori = crni.classList.contains('selected') ? 'Da' : beli.classList.contains('selected') ? 'Ne' : sivi.classList.contains('selected') ? 'Možda' : '';
+const odgovori = crni.classList.contains('selektovan') ? 'Da' : beli.classList.contains('selektovan') ? 'Ne' : sivi.classList.contains('selektovan') ? 'Možda' : '';
 /*******************************************************KORPUS*************************************************************************/
               const newItem = {
             height: height,
