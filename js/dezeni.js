@@ -310,15 +310,19 @@ function addToCart(dezeni) {
      pitanjaaaaa */
 	    function calculateHingers(height, width, depth) {
     let message2;
+    const porukaSarkeDiv = document.querySelector('.poruka-sarke');
 
     if (width <= 149) {
         // Ako je širina manja ili jednaka 149cm
         message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
+	    porukaSarkeDiv.style.display = 'none';
     } else {
         // Ako je širina veća od 149cm
         leftHingesButton.classList.add('selected');
         rightHingesButton.classList.add('selected');
         message2 = 'i leva str i desna str';
+	porukaSarkeDiv.innerText = "Šarke će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
+        porukaSarkeDiv.style.display = 'block';
     }
 
     console.log('Poruka za šarke:', message2);
