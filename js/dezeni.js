@@ -239,7 +239,7 @@ function calculateHingers(height, width, depth) {
         rightHingesButton.classList.add('selected');
         message2 = 'i leva str i desna str';
 	porukaSarkeDiv.style.display = 'block';
-	porukaSarkeDiv.innerText = "Šarke će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
+	porukaSarkeDiv.innerText = "Šarkeeee će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
     }
 
     console.log('Poruka za šarke:', message2);
