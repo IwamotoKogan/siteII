@@ -315,7 +315,7 @@ function addToCart(dezeni) {
     if (width <= 149) {
         // Ako je širina manja ili jednaka 149cm
         message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
-	    porukaSarkeDiv.style.display = 'none';
+	    
     } else {
         // Ako je širina veća od 149cm
         leftHingesButton.classList.add('selected');
