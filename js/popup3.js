@@ -27,14 +27,15 @@ if (savedItems.length > 0) {
                 <h2 class="h5 text-black">H: ${item.height}cm W: ${item.width}cm D: ${item.depth}cm</h2>
             </td>
             
-           
             <td class="product-name ">cena<strong> ${item.price}</strong>  evra</td>
-
-<button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
-<button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal">
-    Detalji
-</button>
-            </td>   
+            
+            <td class="product-name ">
+                <div class="button-group">
+                    <button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal"><i class="fa-sharp fa-solid fa-magnifying-glass-plus"></i></button>
+                </div>
+            </td>
+   
         `;
         kuhinjaDetailsDiv1.appendChild(itemDetails);
 
