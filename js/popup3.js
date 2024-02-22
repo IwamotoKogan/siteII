@@ -24,18 +24,11 @@ if (savedItems.length > 0) {
                 <h2 class="h5 text-black">Ime elementa</h2>
             </td>
             <td class="product-name ">
-                <h2 class="h5 text-black">Visina: ${item.height}cm širina: ${item.width}cm dubina: ${item.depth}cm</h2>
+                <h2 class="h5 text-black">H: ${item.height}cm W: ${item.width}cm D: ${item.depth}cm</h2>
             </td>
-            <td class=" ">Izabrani dezen:<strong>${item.dezen}</strong></td>
-            <td class=" ">
-               Front: ${item.message}cm
-            </td>
-            <td class="product-name ">
-                <h2 class="h5 text-black">Pozicija šarki? ${item.hinges}</h2>
-                <h2 class="h5 text-black">Potrebne nogice? ${item.answer}</h2>
-                <h2 class="h5 text-black">Potrebne nogice? ${item.korpusOdgovor}</h2>
-            </td>
-            <td class="product-name ">cena vašeg elementa je<strong> ${item.price}</strong>  evra</td>
+            
+           
+            <td class="product-name ">cena<strong> ${item.price}</strong>  evra</td>
 
 <button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
 <button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal">
@@ -173,6 +166,8 @@ detailsButtons.forEach(button => {
                 <p><strong>Šarke:</strong> ${item.hinges}</p>
                 <p><strong>Potrebne nogice:</strong> ${item.answer}</p>
                 <p><strong>Cena:</strong> ${item.price} evra</p>
+                <p><strong>Dezen korpusa:</strong> ${item.korpusOdgovor} evra</p>
+                
             `;
         }
     });
