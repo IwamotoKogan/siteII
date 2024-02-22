@@ -36,9 +36,8 @@ if (savedItems.length > 0) {
                 <h2 class="h5 text-black">Potrebne nogice? ${item.korpusOdgovor}</h2>
             </td>
             <td class="product-name ">cena vašeg elementa je<strong> ${item.price}</strong>  evra</td>
-               
-<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip delete-button" data-index="${index}" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
 
+<button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
 
             </td>   
         `;
