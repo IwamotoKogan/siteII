@@ -38,7 +38,9 @@ if (savedItems.length > 0) {
             <td class="product-name ">cena vašeg elementa je<strong> ${item.price}</strong>  evra</td>
 
 <button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
-
+<button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal">
+    Detalji
+</button>
             </td>   
         `;
         kuhinjaDetailsDiv1.appendChild(itemDetails);
@@ -153,3 +155,27 @@ function deleteItem(index) {
 }
 
 
+/**************************************************vise detalja************************************************************************/
+// Dohvatimo sva dugmad "Detalji"
+const detailsButtons = document.querySelectorAll('.details-button');
+detailsButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const itemIndex = parseInt(button.getAttribute('data-index'));
+        if (!isNaN(itemIndex) && itemIndex >= 0 && itemIndex < savedItems.length) {
+            const item = savedItems[itemIndex];
+            const detailsModalBody = document.getElementById('detailsModalBody');
+            detailsModalBody.innerHTML = `
+                <p><strong>Visina:</strong> ${item.height}cm</p>
+                <p><strong>Širina:</strong> ${item.width}cm</p>
+                <p><strong>Dubina:</strong> ${item.depth}cm</p>
+                <p><strong>Dezen:</strong> ${item.dezen}</p>
+                <p><strong>Front:</strong> ${item.message}cm</p>
+                <p><strong>Šarke:</strong> ${item.hinges}</p>
+                <p><strong>Potrebne nogice:</strong> ${item.answer}</p>
+                <p><strong>Cena:</strong> ${item.price} evra</p>
+            `;
+        }
+    });
+});
+
+/**************************************************vise detalja*************************************************************************/
