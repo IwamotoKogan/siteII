@@ -20,7 +20,8 @@ const languages = {
       "years": "Godine poslovanja | 26 godina sa vama",
       "employers": "Broj zaposlenih | 80",
       "clients": "Zadovoljnih klijenata | preko 10.000",
-      "projects": "Realizovani projekti | 9+"
+      "projects": "Realizovani projekti | 9+",
+      "Image": "Slika"
 
   },
   en: {
@@ -37,7 +38,8 @@ const languages = {
       "years": "Years in business | 26 years with you",
       "employers": "Number of employees | 80 members",
       "clients": "Satisfied clients | 10,000",
-      "projects": "large projects | 9+"
+      "projects": "large projects | 9+",
+      "Image": "Image"
   },
   de: {
       "home": "Startseite",
@@ -53,7 +55,8 @@ const languages = {
       "years": "Geschäftsjahre | 26 Jahre mit Ihnen",
       "employers": "Anzahl der Mitarbeiter | 80 treue Kameraden",
       "clients": "Zufriedene Kunden | über 10.000",
-      "projects": "groß realisiert Projekte | 9+"
+      "projects": "groß realisiert Projekte | 9+",
+      "Image": "Foto"
   }
 };
 
