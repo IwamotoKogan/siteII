@@ -20,8 +20,8 @@ if (savedItems.length > 0) {
  <td class="product-thumbnail ">
                 <img src="images/product-3.png" alt="Image" class="img-fluid">
                 <div class="button-group">
-                    <button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash"></i></button>
-                    <button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal"><i class="fa-sharp fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button type="button" class="btn btn-danger delete-button custom-delete-button" data-index="${index}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-trash fa-lg"></i></button>
+                    <button type="button" class="btn btn-info details-button custom-details-button" data-index="${index}" data-toggle="modal" data-target="#detailsModal"><i class="fa-sharp fa-solid fa-magnifying-glass-plus fa-lg"></i></button>
                 </div>
             </td>
             <td class="product-name ">
