@@ -168,7 +168,7 @@ detailsButtons.forEach(button => {
                 <p><strong>Šarke:</strong> ${item.hinges}</p>
                 <p><strong>Potrebne nogice:</strong> ${item.answer}</p>
                 <p><strong>Cena:</strong> ${item.price} evra</p>
-                <p><strong>Dezen korpusa:</strong> ${item.korpusOdgovor} evra</p>
+                <p><strong>Dezen korpusa:</strong> ${item.korpusOdgovor} </p>
                 
             `;
         }
