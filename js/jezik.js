@@ -48,7 +48,7 @@ const languages = {
       "decor": "Dekor",
       "sanitaryCabins": "Sanitärkabinen",
       "services": "Dienstleistungen",
-      "howToFindUs": "So finden Sie uns",
+      "howToFindUs": "Kontakt",
       "naslov": "Führender Anführer einer europäischen Marke auf dem heimischen Markt",
       "years": "Geschäftsjahre | 26 Jahre mit Ihnen",
       "employers": "Anzahl der Mitarbeiter | 80 treue Kameraden",
