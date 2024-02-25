@@ -389,6 +389,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
         localStorage.setItem('items', JSON.stringify(savedItems));
 
         // Redirektuj na stranicu pregled_kuhinja.html
+	alert("Uspešno ste kreirali element.");
         location.reload();
     }
 }
