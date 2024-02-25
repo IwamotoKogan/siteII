@@ -1,0 +1,495 @@
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Abril Fatface", serif;
+}
+
+#container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.slide {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.slide.last-viewed .content .city-info {
+    transition-delay: 0s;
+}
+
+.slide.last-viewed .content .city-info li:nth-of-type(1) {
+    transition-delay: 0.2s;
+}
+
+.slide.last-viewed .content .city-info li:nth-of-type(2) {
+    transition-delay: 0.4s;
+}
+
+.slide.last-viewed .content .city-info li:nth-of-type(3) {
+    transition-delay: 0.6s;
+}
+
+
+.slide.last-viewed .image,
+.slide.active .image {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    cursor: default;
+}
+
+.slide.active .overlay {
+    width: 50%;
+    background-size: 100% 100%;
+    transition: all 1.25s;
+    transition-delay: 1.75s;
+}
+
+.slide.active .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.slide.active .content .title {
+
+    width: 50%;
+    display: block;
+    opacity: 1;
+    transform: translateY(30px);
+    transition: all 1s;
+    transition-delay: 1.25s;
+}
+
+.slide.active .content .title:after {
+    height: 100%;
+    color: white;
+    overflow: initial;
+}
+
+.slide.active .content .title:before {
+    transform: scaleX(1);
+    transition-delay: 2s;
+}
+
+.slide.active .content .city-info {
+    opacity: 1;
+}
+
+.slide.active .content .city-info li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.slide.anim-in {
+    transition-delay: 0.5s;
+}
+
+.slide.anim-in .image {
+    top: -20%;
+    left: -140%;
+    height: 140%;
+    width: 140%;
+    -webkit-animation: img-anim-in 1.2s forwards;
+    animation: img-anim-in 1.2s forwards;
+}
+
+.slide.anim-out {
+    flex: 0;
+    cursor: default;
+    transition-delay: 0.5s;
+}
+
+.slide.anim-out .image {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-animation: img-anim-out 1.2s forwards;
+    animation: img-anim-out 1.2s forwards;
+}
+
+.slide:nth-of-type(1).anim-in .image {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.slide:nth-of-type(1).anim-out .image {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.slide:nth-of-type(2).anim-in .image {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.slide:nth-of-type(2).anim-out .image {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.slide:nth-of-type(3).anim-in .image {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.slide:nth-of-type(3).anim-out .image {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.slide:nth-of-type(4).anim-in .image {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.slide:nth-of-type(4).anim-out .image {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.slide .image {
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    pointer-events: none;
+    transition: all 1s;
+}
+
+
+
+@keyframes clipPathAnimation {
+    from {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        /* Početni pravougaonik */
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
+        /* Krajnji iskošeni oblik */
+    }
+}
+
+.slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /*background-image: linear-gradient(rgba(20, 20, 20, 0.2), rgba(20, 20, 20, 0.8));*/
+    background-image: linear-gradient(120deg, rgba(20, 20, 20, 0.9) 50%, rgba(20, 20, 20, 0) 100%);
+    background-position: 0 0;
+    background-size: 100% 200%;
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.5s;
+    /*clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%); */
+    animation: clipPathAnimation 1s ease-out forwards;
+}
+
+
+
+.slide .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.slide .content .title {
+    position: absolute;
+    top: -10px;
+    height: 65px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 0 2px 2px #2f2f2f;
+    color: #3f3f3f;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+.slide .content .title:after {
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 100%;
+    display: block;
+    content: attr(data-title);
+    overflow: hidden;
+    color: #e7e6df;
+    transition: all 0.85s;
+}
+
+.slide .content .title:before {
+    position: absolute;
+    bottom: 15px;
+    display: block;
+    content: "";
+    height: 2px;
+    width: 85%;
+
+    box-shadow: 0 2px 6px #2f2f2f;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.25s;
+}
+
+.slide .content .city-info {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    padding: 30px 30px 30px 120px;
+    font-size: 1.25em;
+    color: white;
+    text-shadow: 0 1px 4px #0f0f0f;
+    /*background-image: linear-gradient(90deg, rgba(20, 20, 20, 0), rgba(20, 20, 20, 0.7));*/
+    opacity: 0;
+    transition: all 1s;
+    transition-delay: 2s;
+}
+
+.slide .content .city-info li {
+    position: relative;
+    margin-bottom: 5px;
+    text-align: justify;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.75s;
+}
+
+.slide .content .city-info li:nth-of-type(1) {
+    transition-delay: 2.7s;
+}
+
+.slide .content .city-info li:nth-of-type(2) {
+    transition-delay: 2.9s;
+}
+
+.slide .content .city-info li:nth-of-type(3) {
+    transition-delay: 3.1s;
+}
+
+.slide .content .city-info li:nth-of-type(4) {
+    transition-delay: 3.4s;
+}
+
+
+
+
+
+
+
+@-webkit-keyframes img-anim-in {
+    to {
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@keyframes img-anim-in {
+    to {
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes img-anim-out {
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes img-anim-out {
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes titleSlideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(30px);
+        opacity: 1;
+    }
+}
+
+.slide .content .title {
+    animation: titleSlideIn 1s forwards;
+
+}
+
+.slide .content .city-info {
+    position: absolute;
+    top: 120px;
+    /* Podesite ovu vrednost tako da bude ispod naslova */
+    left: 30px;
+    /* Rastojanje od leve ivice */
+    padding: 20px;
+    /* Podesite po potrebi */
+    font-size: 1.25em;
+    color: white;
+    text-shadow: 0 1px 4px #0f0f0f;
+
+    opacity: 0;
+    transition: all 1s;
+    transition-delay: 1s;
+    /* Prilagodite kašnjenje */
+}
+
+.slide .content .city-info li {
+    margin-bottom: 5px;
+    text-align: left;
+    /* Poravnavanje teksta */
+    opacity: 0;
+    transform: translateY(-20px);
+    /* Pomeranje pre animacije */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: 1.2s;
+    /* Prilagodite kašnjenje */
+}
+
+/* Uklonite transformacije na hover ako nisu potrebne */
+
+/*******************STILIZACIJA TEKSTA**********************/
+.slide .content .city-info {
+    /* Postojeće stilizacije */
+    display: flex;
+    flex-direction: column;
+    /* Stavke će biti prikazane jedna ispod druge */
+    align-items: flex-start;
+    /* Poravnanje na levoj strani */
+}
+
+.slide .content .city-info .info-item {
+    font-size: 1.6em;
+    /* Povećavamo veličinu fonta za bolju čitljivost */
+    margin-bottom: 20px;
+    /* Dodajemo malo prostora između stavki */
+    color: white;
+    /* Bela boja teksta */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    /* Dodajemo senku tekstu za bolji kontrast */
+}
+
+.slide .content .city-info .info-item .info-divider {
+    margin: 0 10px;
+    /* Dodavanje prostora oko dividera */
+    color: #aaa;
+    /* Suptilnija boja za divider */
+}
+
+.slide .content .city-info .info-value {
+    font-weight: bold;
+    /* Podebljani tekst za vrednosti */
+}
+
+/*******************STILIZACIJA LOGO**********************/
+
+
+.slide .content .city-info2 ul li img {}
+
+
+.slide {
+    height: 85vh;
+}
+
+
+
+@media (max-width: 768px) {
+    .slide.active .content .title {
+        width: 100%;
+        /* Postavljanje širine naslova na 50% */
+    }
+
+    .city-info {
+        display: flex;
+        /* Omogućava flexbox */
+        flex-direction: column;
+        /* Postavlja elemente jedan ispod drugog */
+    }
+
+    .city-info .info-item {
+        display: flex;
+        /* Omogućava flexbox unutar svake stavke liste */
+        flex-direction: column;
+        /* Postavlja sadržaj stavki liste jedan ispod drugog */
+    }
+
+    .city-info .info-item .info-value {
+        /* Postavlja vrednost (span) iznad ostatka teksta unutar stavke liste */
+        padding-bottom: 5px;
+        /* Dodaje malo prostora ispod vrednosti */
+    }
+
+    .slide .image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 90%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Providna crna boja za zatamnjenje */
+        clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
+        transition: all 1.25s;
+        transition-delay: 1.75s;
+    }
+}
+
