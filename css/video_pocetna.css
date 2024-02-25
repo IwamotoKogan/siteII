@@ -429,7 +429,7 @@ h4 {
 }
 @media (max-width: 576px) {
   .slide .content .city-info .info-item {
-    font-size: 0.6em;
+    font-size: 1.1em;
     /* Povećavamo veličinu fonta za bolju čitljivost */
     margin-bottom: 20px;
     /* Dodajemo malo prostora između stavki */
