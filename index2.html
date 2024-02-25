@@ -17,6 +17,7 @@
 		<link href="css/style.css" rel="stylesheet">
 		<!--korpus-->
 		<link rel="stylesheet" href="./css/korpus.css">
+		<link rel="stylesheet" href="./css/video_pocetna.css">
 		<!--korpus-->
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 		<style>
@@ -85,20 +86,37 @@
 		<!-- Start Hero Section -->
 			<div class="hero">
 				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1><pre>the art of    </pre><span clsas="d-block">perfection</span></h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="shop.html" class="btn btn-secondary me-2">Kreiranje kuhinja</a><a href="#" class="btn btn-white-outline">Explore</a></p>
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="hero-img-wrap">
-								<img src="images/couch.png" class="img-fluid">
-							</div>
-						</div>
-					</div>
+					<div class="slide anim-in">
+        <div class="image">
+            <video autoplay muted loop class="background-video">
+                <source src="fundermax.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay"></div>
+
+        <div class="content">
+            <style>
+                .title {
+
+                    display: inline;
+                }
+            </style>
+            <h1 class="title " data-title="Vodeći lider evropskog brenda na domaćem tržištu">Slogan firme</h1>
+
+            <ul class="city-info">
+                <li data-lang-key="years" class="info-item">Godine poslovanja | <span class="info-value">26 godina sa
+                        vama</span></li>
+                <li data-lang-key="employers" class="info-item">Broj zaposlenih | <span class="info-value">80</span>
+                </li>
+                <li data-lang-key="clients" class="info-item">Zadovoljnih klijenata | <span class="info-value">preko
+                        10.000</span></li>
+                <li data-lang-key="projects" class="info-item">Realizovani projekti | <span class="info-value">9+</span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
 				</div>
 			</div>
 		<!-- End Hero Section -->
