@@ -427,6 +427,18 @@ h4 {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
     /* Dodajemo senku tekstu za bolji kontrast */
 }
+@media (max-width: 576px) {
+  .slide .content .city-info .info-item {
+    font-size: 0.6em;
+    /* Povećavamo veličinu fonta za bolju čitljivost */
+    margin-bottom: 20px;
+    /* Dodajemo malo prostora između stavki */
+    color: white;
+    /* Bela boja teksta */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    /* Dodajemo senku tekstu za bolji kontrast */
+}
+}
 
 .slide .content .city-info .info-item .info-divider {
     margin: 0 10px;
