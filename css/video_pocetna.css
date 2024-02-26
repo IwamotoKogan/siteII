@@ -518,3 +518,32 @@ h4 {
     }
 }
 
+
+
+
+
+
+
+/************************FUGME******************************/
+/* Stil za novi div koji obuhvata listu i <p> */
+.info-wrapper {
+    display: flex; /* Postavljamo flex direktivu */
+    flex-direction: column; /* Postavljamo kolone za prikazivanje elemenata jedan ispod drugog */
+}
+
+/* Za ekrane manje od 576px */
+@media (max-width: 575.98px) {
+    .info-wrapper {
+        flex-direction: row; /* Postavljamo redove za prikazivanje elemenata jedan pored drugog */
+        justify-content: space-between; /* Poravnava elemente tako da bude prostor između njih */
+    }
+
+    .city-info {
+        margin-bottom: 0; /* Uklanjamo marginu ispod liste */
+    }
+
+    p {
+        margin-top: 0; /* Uklanjamo marginu iznad paragrafa */
+    }
+}
+
