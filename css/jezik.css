@@ -138,17 +138,20 @@ a {
 
 @media (max-width: 575px) {
    .nav1 input:checked~.menu li:nth-child(1) {
+       top: 0;
     left: 75px;
     transition-delay: 0.1s;
 }
 
 .nav1 input:checked~.menu li:nth-child(2) {
+    top: 0;
     left: 50px;
     
     transition-delay: 0.2s;
 }
 
 .nav1 input:checked~.menu li:nth-child(3) {
+    top: 0;
     left: 100px;
     
     transition-delay: 0.3s;
@@ -156,6 +159,7 @@ a {
 
 
 .nav1 input:checked~.menu li:nth-child(4) {
+    top: 0;
     top: 175px;
     transition-delay: 0.4s;
 }
