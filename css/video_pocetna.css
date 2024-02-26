@@ -520,6 +520,7 @@ h4 {
         clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
         transition: all 1.25s;
         transition-delay: 1.75s;
+        pointer-events: none;
     }
 }
 
