@@ -207,7 +207,7 @@ function calculate() {
     <div class="row mb-5">
 		        <div class="col-md-12">
 		          <div class="border p-4 rounded text-black" role="alert">
-		           <span class="display-2">Cena elementa:</span><strong  class="display-2">${totalPrice}</strong>
+		           <span class="h3">Cena elementa:</span><strong  class="h3">${totalPrice}</strong>
 		          </div>
 		        </div>
 		      </div>
