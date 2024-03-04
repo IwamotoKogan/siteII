@@ -302,6 +302,22 @@ function addToCart(dezeni) {
     const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
     const isRightHingeSelected = rightHingesButton.classList.contains('selected');
 
+    function showNotification() {
+    const cartLinks = document.querySelectorAll('.cart-link'); // Selektujemo sve elemente sa klasom cart-link
+
+    cartLinks.forEach(cartLink => {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.innerText = '+1';
+        cartLink.appendChild(notification);
+
+        // Dodamo event listener da se obaveštenje ukloni kada korisnik klikne na ikonu korpe
+        cartLink.addEventListener('click', function() {
+            notification.style.display = 'none';
+        });
+    });
+}
+
     if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
         alert("Odaberite korpus");
         return;
@@ -390,6 +406,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
 
         // Redirektuj na stranicu pregled_kuhinja.html
 	alert("Uspešno ste kreirali element.");
+	    showNotification();
         location.reload();
     }
 }
