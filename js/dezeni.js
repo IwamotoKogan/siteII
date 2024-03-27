@@ -20,6 +20,14 @@ function showNotification() {
   cartButton.appendChild(notification);
 	console.log('radi')
 }
+
+document.querySelector('.nav-link').addEventListener('click', function() {
+  const notification = document.querySelector('.notification');
+  if (notification) {
+    notification.parentNode.removeChild(notification);
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 
 
