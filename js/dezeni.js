@@ -302,7 +302,7 @@ function addToCart(dezeni) {
     const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
     const isRightHingeSelected = rightHingesButton.classList.contains('selected');
 
-    function showNotification() {
+    /*function showNotification() {
     const cartLinks = document.querySelectorAll('.cart-link'); // Selektujemo sve elemente sa klasom cart-link
 
     cartLinks.forEach(cartLink => {
@@ -316,6 +316,13 @@ function addToCart(dezeni) {
             notification.style.display = 'none';
         });
     });
+}*/
+function showNotification() {
+  const cartButton = document.querySelector('.nav-link');
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.innerText = '+1';
+  cartButton.appendChild(notification);
 }
 
     if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
