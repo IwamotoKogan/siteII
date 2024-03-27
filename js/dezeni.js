@@ -12,30 +12,7 @@ const rightHingesButton = document.getElementById('right-hinges');
 let selectedDezenPrice = 0;
 let dezeni = [];
 
-function showNotification() {
-  const cartButton = document.querySelector('.sperma');
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.innerText = '+1';
-  cartButton.appendChild(notification);
-	console.log('radi')
-	localStorage.setItem('isNotificationDisplayed', 'true'); // Postavite ključ u localStorage
-}
-document.addEventListener('DOMContentLoaded', function () {
-    const isNotificationDisplayed = localStorage.getItem('isNotificationDisplayed');
 
-    if (!isNotificationDisplayed) {
-        showNotification(); // Prikazati notifikaciju ako nije već prikazana
-        localStorage.setItem('isNotificationDisplayed', 'true'); // Postaviti ključ u localStorage
-    }
-});
-
-document.querySelector('.nav-link').addEventListener('click', function() {
-  const notification = document.querySelector('.notification');
-  if (notification) {
-    notification.parentNode.removeChild(notification);
-  }
-});
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -327,21 +304,6 @@ function addToCart(dezeni) {
     const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
     const isRightHingeSelected = rightHingesButton.classList.contains('selected');
 
-    /*function showNotification() {
-    const cartLinks = document.querySelectorAll('.cart-link'); // Selektujemo sve elemente sa klasom cart-link
-
-    cartLinks.forEach(cartLink => {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.innerText = '+1';
-        cartLink.appendChild(notification);
-
-        // Dodamo event listener da se obaveštenje ukloni kada korisnik klikne na ikonu korpe
-        cartLink.addEventListener('click', function() {
-            notification.style.display = 'none';
-        });
-    });
-}*/
 
 
     if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
@@ -440,7 +402,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
 const kupiBtn = document.getElementById('kupi-btn');
 kupiBtn.addEventListener('click', () => {
     addToCart(dezeni); // Prosledite dezeni niz funkciji addToCart
-	 showNotification();
+
 });
 
 // Nakon izračunavanja cene, izračunajte preporučene dimenzije fronta
