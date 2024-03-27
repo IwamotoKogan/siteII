@@ -421,6 +421,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
 const kupiBtn = document.getElementById('kupi-btn');
 kupiBtn.addEventListener('click', () => {
     addToCart(dezeni); // Prosledite dezeni niz funkciji addToCart
+	 showNotification();
 });
 
 // Nakon izračunavanja cene, izračunajte preporučene dimenzije fronta
@@ -520,7 +521,7 @@ rightHingesButton.addEventListener('click', () => {
 /*PITANJAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
 
-/*nova verzija6*/
+/*nova verzija7*/
 
 
 
