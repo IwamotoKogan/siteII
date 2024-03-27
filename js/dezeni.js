@@ -16,7 +16,7 @@ function showNotification() {
   const cartButton = document.querySelector('.sperma');
   const notification = document.createElement('div');
   notification.className = 'notification';
-  notification.innerText = '+11111111111111111111111111111';
+  notification.innerText = '+1';
   cartButton.appendChild(notification);
 	console.log('radi')
 }
