@@ -532,7 +532,7 @@ rightHingesButton.addEventListener('click', () => {
 /*PITANJAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
 
-/*nova verzija8*/
+/*nova verzija1*/
 
 
 
