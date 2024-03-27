@@ -318,10 +318,10 @@ function addToCart(dezeni) {
     });
 }*/
 function showNotification() {
-  const cartButton = document.querySelector('.nav-link');
+  const cartButton = document.querySelector('.sperma');
   const notification = document.createElement('div');
   notification.className = 'notification';
-  notification.innerText = '+1';
+  notification.innerText = '+11111111111111111111111111111';
   cartButton.appendChild(notification);
 	console.log('radi')
 }
