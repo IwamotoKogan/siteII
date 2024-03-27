@@ -11,6 +11,15 @@ const rightHingesButton = document.getElementById('right-hinges');
 /*dodato*/
 let selectedDezenPrice = 0;
 let dezeni = [];
+
+function showNotification() {
+  const cartButton = document.querySelector('.sperma');
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.innerText = '+11111111111111111111111111111';
+  cartButton.appendChild(notification);
+	console.log('radi')
+}
 document.addEventListener('DOMContentLoaded', function () {
 
 
@@ -317,14 +326,7 @@ function addToCart(dezeni) {
         });
     });
 }*/
-function showNotification() {
-  const cartButton = document.querySelector('.sperma');
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.innerText = '+11111111111111111111111111111';
-  cartButton.appendChild(notification);
-	console.log('radi')
-}
+
 
     if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
         alert("Odaberite korpus");
