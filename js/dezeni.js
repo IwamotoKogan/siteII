@@ -323,6 +323,7 @@ function showNotification() {
   notification.className = 'notification';
   notification.innerText = '+1';
   cartButton.appendChild(notification);
+	console.log('radi')
 }
 
     if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
