@@ -19,6 +19,7 @@ function showNotification() {
   notification.innerText = '+1';
   cartButton.appendChild(notification);
 	console.log('radi')
+	localStorage.setItem('isNotificationDisplayed', 'true');
 }
 
 document.querySelector('.nav-link').addEventListener('click', function() {
@@ -31,7 +32,13 @@ document.querySelector('.nav-link').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function () {
 
 
+const isNotificationDisplayed = localStorage.getItem('isNotificationDisplayed');
 
+    if (!isNotificationDisplayed) {
+        showNotification(); // Prikazati notifikaciju ako nije već prikazana
+        localStorage.setItem('isNotificationDisplayed', 'true'); // Postaviti ključ u lokalno skladište
+    }
+});
             /*fetch*/
             // Dohvatanje JSON podataka o dezenima
             fetch("dezeni.json")
@@ -532,7 +539,7 @@ rightHingesButton.addEventListener('click', () => {
 /*PITANJAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
 
-/*nova verzija7*/
+/*nova verzija8*/
 
 
 
