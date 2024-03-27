@@ -19,8 +19,16 @@ function showNotification() {
   notification.innerText = '+1';
   cartButton.appendChild(notification);
 	console.log('radi')
-	
+	localStorage.setItem('isNotificationDisplayed', 'true'); // Postavite ključ u localStorage
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const isNotificationDisplayed = localStorage.getItem('isNotificationDisplayed');
+
+    if (!isNotificationDisplayed) {
+        showNotification(); // Prikazati notifikaciju ako nije već prikazana
+        localStorage.setItem('isNotificationDisplayed', 'true'); // Postaviti ključ u localStorage
+    }
+});
 
 document.querySelector('.nav-link').addEventListener('click', function() {
   const notification = document.querySelector('.notification');
