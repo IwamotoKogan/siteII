@@ -25,7 +25,7 @@ if (savedItems.length > 0) {
                 </div>
             </td>
             <td class="product-name ">
-                <h2 class="h5 text-black">Ime elementa</h2>
+                <h2 class="h5 text-black">${item.itemName}</h2>
             </td>
             <td class="product-name ">
                 <h2 class="h5 text-black">H: <span class="highlight">${item.height}cm</span> W: <span class="highlight">${item.width}cm</span> D: <span class="highlight">${item.depth}cm</span></h2>
