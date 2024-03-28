@@ -395,7 +395,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
 
         // Redirektuj na stranicu pregled_kuhinja.html
 	alert("Uspešno ste kreirali element.");
-	    showNotification();
+	    
        location.reload();
     }
 }
