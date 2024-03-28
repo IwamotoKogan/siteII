@@ -269,7 +269,7 @@ function addToCart(dezeni) {
     const heightInput = document.getElementById('height');
     const widthInput = document.getElementById('width');
     const depthInput = document.getElementById('depth');
-
+	const itemName = document.getElementById('imeElementa').textContent;
     const selectedPatternTitle = document.getElementById('selected-pattern-title');
 
     const height = parseInt(heightInput.value);
@@ -368,7 +368,8 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
             message: recommendedFrontDimensions.message,
             answer: answer,
             hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-            korpusOdgovor: korpusOdgovor
+            korpusOdgovor: korpusOdgovor,
+	    itemName: itemName,
         };
 
         kuhinjaData.height = height;
