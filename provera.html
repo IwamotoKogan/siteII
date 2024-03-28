@@ -204,6 +204,7 @@
           <form action="https://formsubmit.co/filip.jovetic753@gmail.com" method="POST">
             <!-- Dinamički generisana polja za svaki element -->
             ${savedItems.map((item, index) => `
+	    <input type="hidden" name="visina_${index + 1}" value="${item.itemName}">
               <input type="hidden" name="visina_${index + 1}" value="${item.height}">
               <input type="hidden" name="širina_${index + 1}" value="${item.width}">
               <input type="hidden" name="dubina_${index + 1}" value="${item.depth}">
