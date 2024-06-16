@@ -188,6 +188,40 @@
 
         <script>
 		document.addEventListener('DOMContentLoaded', function() {
+
+
+			
+
+		function validateForm() {
+      // Selektujte sva obavezna polja
+      const fname = document.getElementById('c_fname');
+      const lname = document.getElementById('c_lname');
+      const address = document.getElementById('c_address');
+      const email = document.getElementById('c_email_address');
+      const phone = document.getElementById('c_phone');
+
+      // Proverite da li su popunjena sva obavezna polja
+      if (!fname.value.trim() || !lname.value.trim() || !address.value.trim() || !email.value.trim() || !phone.value.trim()) {
+        alert('Molimo vas da popunite sva obavezna polja.');
+        return false; // Sprečava slanje forme
+      }
+
+      // Ako je checkbox "Da li naručujete za firmu?" selektovan, proverite da li je popunjeno ime firme
+      const createAccountCheckbox = document.getElementById('c_create_account');
+      if (createAccountCheckbox.checked) {
+        const companyName = document.getElementById('c_companyname');
+        if (!companyName.value.trim()) {
+          alert('Molimo vas da popunite ime firme.');
+          return false; // Sprečava slanje forme
+        }
+      }
+
+      return true; // Dozvoljava slanje forme
+    }
+
+
+
+			
     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
     const orderButtonDiv = document.querySelector('.order-button');
 
