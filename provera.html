@@ -17,7 +17,6 @@
 		<link href="css/style.css" rel="stylesheet">
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 		<style></style>
-
 	</head>
 
 	<body>
@@ -189,7 +188,6 @@
 
         <script>
 		document.addEventListener('DOMContentLoaded', function() {
-		
     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
     const orderButtonDiv = document.querySelector('.order-button');
 
@@ -216,7 +214,7 @@
               <input type="hidden" name="šarke_${index + 1}" value="${item.hinges}">
               <input type="hidden" name="nogice_${index + 1}" value="${item.answer}">
               <input type="hidden" name="korpus_${index + 1}" value="${item.korpusOdgovor}">
-              <input type="hidden" name="/">
+              <input type="hidden" name="korpus_ime${index + 1}" value="${item.itemName}">
 			  <input type="hidden" name="_next" value="https://iwamotokogan.github.io/siteII/thankyou.html">
             `).join('')}
             <!-- Standardna polja forme -->
@@ -260,7 +258,7 @@
 		              </div>
 		            </div>
 	    
-            <button type="submit" id="submitButton" class="btn btn-black">Naruči</button>
+            <button type="submit" class="btn btn-black">Naruči</button>
           </form>
         </div>
       </div>
@@ -276,52 +274,6 @@
     }
 });
 
-
-
-
-
-
-
-
-function validateForm() {
-      const fname = document.getElementById('c_fname').value.trim();
-      const lname = document.getElementById('c_lname').value.trim();
-      const address = document.getElementById('c_address').value.trim();
-      const email = document.getElementById('c_email_address').value.trim();
-      const phone = document.getElementById('c_phone').value.trim();
-      const createAccountCheckbox = document.getElementById('c_create_account').checked;
-      const companyName = document.getElementById('c_companyname').value.trim();
- 
-      // Provera da li sva obavezna polja zadovoljavaju uslove
-      const isFormValid = fname.length >= 1 && lname.length >= 1 && address.length >= 1 &&
-                          email.length >= 6 && phone.length >= 1 &&
-                          (!createAccountCheckbox || companyName.length >= 1);
- 
-      // Omogućava ili onemogućava dugme za slanje forme
-      document.getElementById('submitButton').disabled = !isFormValid;
-    }
- 
-    // Povežite događaje za unos sa funkcijom za validaciju
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('c_fname').addEventListener('input', validateForm);
-      document.getElementById('c_lname').addEventListener('input', validateForm);
-      document.getElementById('c_address').addEventListener('input', validateForm);
-      document.getElementById('c_email_address').addEventListener('input', validateForm);
-      document.getElementById('c_phone').addEventListener('input', validateForm);
-      document.getElementById('c_create_account').addEventListener('change', validateForm);
-      document.getElementById('c_companyname').addEventListener('input', validateForm);
- 
-      // Inicijalno onemogućava dugme za slanje forme
-      validateForm();
-    });
-
-
-
-		
-
-  
-      });
-    
 	</script>
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/tiny-slider.js"></script>
@@ -329,3 +281,4 @@ function validateForm() {
 	</body>
 
 </html>
+
