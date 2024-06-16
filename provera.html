@@ -297,7 +297,7 @@
 
 
 
-			function validateForm(showAlerts = false) {
+function validateForm() {
       const fname = document.getElementById('c_fname').value.trim();
       const lname = document.getElementById('c_lname').value.trim();
       const address = document.getElementById('c_address').value.trim();
@@ -305,59 +305,28 @@
       const phone = document.getElementById('c_phone').value.trim();
       const createAccountCheckbox = document.getElementById('c_create_account').checked;
       const companyName = document.getElementById('c_companyname').value.trim();
-
-      let isFormValid = true;
-
-      if (fname.length < 1) {
-        if (showAlerts) alert('Niste uneli podatak u polje za ime.');
-        isFormValid = false;
-      }
-
-      if (lname.length < 1) {
-        if (showAlerts) alert('Niste uneli podatak u polje za prezime.');
-        isFormValid = false;
-      }
-
-      if (address.length < 1) {
-        if (showAlerts) alert('Niste uneli podatak u polje za adresu.');
-        isFormValid = false;
-      }
-
-      if (email.length < 6) {
-        if (showAlerts) alert('Niste uneli ispravan email.');
-        isFormValid = false;
-      }
-
-      if (phone.length < 1) {
-        if (showAlerts) alert('Niste uneli podatak u polje za broj telefona.');
-        isFormValid = false;
-      }
-
-      if (createAccountCheckbox && companyName.length < 1) {
-        if (showAlerts) alert('Niste uneli podatak u polje za ime firme.');
-        isFormValid = false;
-      }
-
-      return isFormValid;
+ 
+      // Provera da li sva obavezna polja zadovoljavaju uslove
+      const isFormValid = fname.length >= 1 && lname.length >= 1 && address.length >= 1 &&
+                          email.length >= 6 && phone.length >= 1 &&
+                          (!createAccountCheckbox || companyName.length >= 1);
+ 
+      // Omogućava ili onemogućava dugme za slanje forme
+      document.getElementById('submitButton').disabled = !isFormValid;
     }
-
+ 
     // Povežite događaje za unos sa funkcijom za validaciju
-    document.getElementById('c_fname').addEventListener('input', () => validateForm());
-    document.getElementById('c_lname').addEventListener('input', () => validateForm());
-    document.getElementById('c_address').addEventListener('input', () => validateForm());
-    document.getElementById('c_email_address').addEventListener('input', () => validateForm());
-    document.getElementById('c_phone').addEventListener('input', () => validateForm());
-    document.getElementById('c_create_account').addEventListener('change', () => validateForm());
-    document.getElementById('c_companyname').addEventListener('input', () => validateForm());
-
-    // Inicijalno onemogućava dugme za slanje forme
-    validateForm();
-
-    // Onemogućite formu da se pošalje ako dugme nije omogućeno
-    document.getElementById('orderForm').addEventListener('submit', function(event) {
-      if (!validateForm(true)) {
-        event.preventDefault();
-      }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('c_fname').addEventListener('input', validateForm);
+      document.getElementById('c_lname').addEventListener('input', validateForm);
+      document.getElementById('c_address').addEventListener('input', validateForm);
+      document.getElementById('c_email_address').addEventListener('input', validateForm);
+      document.getElementById('c_phone').addEventListener('input', validateForm);
+      document.getElementById('c_create_account').addEventListener('change', validateForm);
+      document.getElementById('c_companyname').addEventListener('input', validateForm);
+ 
+      // Inicijalno onemogućava dugme za slanje forme
+      validateForm();
     });
 });
 
