@@ -512,50 +512,77 @@ rightHingesButton.addEventListener('click', () => {
 
 
 /**dodatoooooooooooooooooooooooooooooooooooooooooooooooo */
+// Funkcija koja ažurira broj artikala u korpi
 function updateCartCount() {
-  const cartCount = document.getElementById('cart-count');
-  const savedItems = JSON.parse(localStorage.getItem('items')) || [];
-  const itemCount = savedItems.length;
+    const cartCount = document.getElementById('cart-count');
+    const savedItems = JSON.parse(localStorage.getItem('items')) || [];
+    const itemCount = savedItems.length;
 
-  if (itemCount > 0) {
-      cartCount.style.display = 'block';
-      cartCount.textContent = itemCount;
-  } else {
-      cartCount.style.display = 'none';
-  }
+    if (itemCount > 0) {
+        cartCount.style.display = 'block';
+        cartCount.textContent = itemCount;
+    } else {
+        cartCount.style.display = 'none';
+    }
 }
 
+// Funkcija koja dodaje novi element u korpu
 function addToCart(dezeni) {
-  // ... postojeć kod za dodavanje elemenata u korpu ...
+    // ... postojeć kod za dodavanje elemenata u korpu ...
 
-  if (selectedDezen) {
-      const newItem = {
-          // ... ostala svojstva ...
-      };
+    if (selectedDezen) {
+        const newItem = {
+            // ... ostala svojstva ...
+        };
 
-      // Uzmi postojeće elemente iz localStorage ili inicijalizuj prazno ako ih nema
-      const savedItems = JSON.parse(localStorage.getItem('items')) || [];
+        // Uzmi postojeće elemente iz localStorage ili inicijalizuj prazno ako ih nema
+        const savedItems = JSON.parse(localStorage.getItem('items')) || [];
 
-      // Dodaj novi element u listu sačuvanih elemenata
-      savedItems.push(newItem);
+        // Dodaj novi element u listu sačuvanih elemenata
+        savedItems.push(newItem);
 
-      // Sačuvaj ažuriranu listu elemenata u localStorage
-      localStorage.setItem('items', JSON.stringify(savedItems));
+        // Sačuvaj ažuriranu listu elemenata u localStorage
+        localStorage.setItem('items', JSON.stringify(savedItems));
 
-      // Ažuriraj broj elemenata u korpi
-      updateCartCount();
+        // Ažuriraj broj elemenata u korpi
+        updateCartCount();
 
-      alert("Uspešno ste kreirali element.");
-      location.reload();
-  }
+        alert("Uspešno ste kreirali element.");
+        location.reload();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  updateCartCount();
-  // ... ostatak vašeg postojećeg koda ...
+    updateCartCount();
+
+    // Proveri da li je trenutna stranica pregledk.html
+    if (window.location.pathname === '/siteII/pregledk.html') {
+        localStorage.removeItem('items');
+        updateCartCount();
+    }
+
+    // Funkcija za prikazivanje notifikacije
+    function showCartNotification() {
+        const notification = document.getElementById('cart-notification');
+        notification.style.display = 'block';
+    }
+
+    // Funkcija za skrivanje notifikacije
+    function hideCartNotification() {
+        const notification = document.getElementById('cart-notification');
+        notification.style.display = 'none';
+    }
+
+    // Dodavanje event listenera za klik na dugme korpe
+    document.getElementById('cart-button').addEventListener('click', function() {
+        // Pretpostavimo da se stranica pregleda korpe zove pregledk.html
+        window.location.href = 'https://iwamotokogan.github.io/siteII/pregledk.html';
+        hideCartNotification();
+    });
+
+    const kupiBtn = document.getElementById('kupi-btn');
+    kupiBtn.addEventListener('click', () => {
+        addToCart(dezeni); // Prosledite dezeni niz funkciji addToCart
+    });
 });
 
-if (window.location.pathname === '/siteII/pregledk.html') {
-  localStorage.removeItem('items');
-  updateCartCount();
-}
