@@ -1,9 +1,4 @@
-/*
-* Template Name: UntreeStore
-* Template Author: Untree.co
-* Author URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 body {
   overflow-x: hidden;
@@ -96,7 +91,7 @@ a {
         margin-right: 20px; }
 
 .hero {
-  background: #ece9e9;
+  background: #202221;
   padding: 0 0rem 0; }
   @media (min-width: 768px) {
     .hero {
