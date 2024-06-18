@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ... ostatak vašeg postojećeg koda ...
 });
 
-if (window.location.pathname === 'https://iwamotokogan.github.io/siteII/pregledk.html') {
+if (window.location.pathname === '/siteII/pregledk.html') {
   localStorage.removeItem('items');
   updateCartCount();
 }
