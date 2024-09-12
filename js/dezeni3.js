@@ -147,7 +147,7 @@ const dezen1Price = 0;   // Osnovni dezen
 const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
-function calculatePrice(height, width, depth, shelves) {
+/*function calculatePrice(height, width, depth, shelves) {
     const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
 
     // Površine stranica
@@ -175,6 +175,22 @@ function calculatePrice(height, width, depth, shelves) {
     // Cena materijala
     const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
 
+    return totalPrice;
+}*/
+function calculatePrice(height, width, depth) {
+    const basePrice = 1000;
+    const increment = 20;
+    const limit = 5;
+
+    const heightDifference = height - 90;
+    const widthDifference = width - 100;
+    const depthDifference = depth - 30;
+
+    const heightPrice = heightDifference >= 0 ? Math.floor(heightDifference / limit) * increment : 0;
+    const widthPrice = widthDifference >= 0 ? Math.floor(widthDifference / limit) * increment : 0;
+    const depthPrice = depthDifference >= 0 ? Math.floor(depthDifference / limit) * increment : 0;
+
+    const totalPrice = basePrice + heightPrice + widthPrice + depthPrice;
     return totalPrice;
 }
 
