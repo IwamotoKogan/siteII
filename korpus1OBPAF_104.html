@@ -81,37 +81,6 @@
             /* Da bi se eliminisao "prostor" ispod slike */
 
         }
-
-
-
-
-
-
-
-
-        
-        .cart-container {
-    position: relative;
-    display: inline-block;
-}
-
-#cart-button {
-    position: relative;
-    border: none;
-    background: none;
-}
-
-#cart-count {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 12px;
-    display: none;
-}
     </style>
 </head>
 
@@ -124,7 +93,7 @@
             <div class="obaveza">
                 <a class="navbar-brand" href="index.html">DIPO<span>.</span></a>
 
-                <a class="navbar-brand" href="index2.html"><img class="nes" src="./images/funderlogo.svg" alt=""></a>
+                <a class="navbar-brand" href="index.html"><img class="nes" src="./images/funderlogo.svg" alt=""></a>
             </div>
 
 
@@ -150,10 +119,6 @@
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                     <li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-                    <button id="cart-button">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-count" class="badge">0</span>
-                    </button>
                     <li><a class="nav-link" href="pregledk.html"><img src="images/cart.svg"></a></li>
                 </ul>
             </div>
@@ -162,14 +127,14 @@
     </nav>
     <!-- End Header/Navigation -->
 
-    <!-- Start Hero Section -->
+    <!-- Start Hero Section <h1 class="text-white">Kreiranje elementa</h1>-->
     <div class="hero">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt text-center">
-                        <h1 class="text-black">Kreiranje elementa</h1>
-                        <p class="text-black">unesite željene vrednosti kako bi ste izračunali cenu vašeg elementa</p>
+                        
+                        <p class="text-white fs-4">Unesite željene vrednosti kako bi ste izračunali cenu vašeg elementa</p>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -185,7 +150,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt text-center">
-                        <h2 id="imeElementa" class="text-black">Naziv elementa: 1OBPAF 101</h2>
+                        <h2 id="imeElementa" class="ttext-white">Naziv elementa: 1OBPAF 101</h2>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -223,21 +188,9 @@
                                 <label for="c_fname" class="text-muted">(od 30 do 60)</label>
                                 <input type="number" class="form-control" id="depth" name="c_lname">
                             </div>
-                            <div class="col-md-4">
-                                <label for="shelves" class="text-black">Broj policaA:</label>
-                                <select id="shelves">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select><br>
-                            </div>
-                            <p id="result"></p>
-                            <p id="resultWithWaste"></p>
-                            
                         </div>
                         <hr>
-                        <!--KORPUSSS<p id="price"></p>-->
+                        <!--KORPUSSS-->
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="c_companyname" class="text-black">Odaberite dezen korpusa</label>
@@ -346,7 +299,7 @@
                         <!--IZRAČUNAJ CENU-->
                         <div class="form-group row mb-5">
                             <button id="calculate-btn" class="btn btn-black btn-lg py-3 btn-block">Izračunaj
-                                cenuU</button>
+                                cenu</button>
                             <p id="price" class="result"></p>
                         </div>
                         <!--IZRAČUNAJ CENU-->
@@ -459,8 +412,7 @@
 
                     <div class="row mb-5">
                         <div class="col-md-12">
-                            <h2 class="h3 mb-3 text-black">Slika korpusa</h2>
-                            <div class="h-125  border  d-flex justify-content-center">
+                            <div class="h-125  border mt-3 d-flex justify-content-center">
 
 
                                 
@@ -625,7 +577,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
     <script src="js/custom.js"></script>
-    <script src="./js/dezeni3.js"></script>
+    <script src="./js/dezeni.js"></script>
     <script src="./js/tabela_pregled.js"></script>
 </body>
 
