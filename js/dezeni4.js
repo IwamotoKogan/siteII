@@ -234,7 +234,8 @@ function calculate() {
     }
 
    const totalPrice = calculatePrice(height, width, depth) + selectedDezenPrice;
-
+console.log("Total Price:", totalPrice);
+    console.log("Selected Dezen Price:", selectedDezenPrice);
     document.getElementById('price').innerHTML = `
     <div class="row mb-5">
 		        <div class="col-md-12">
