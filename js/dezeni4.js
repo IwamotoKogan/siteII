@@ -233,7 +233,7 @@ function calculate() {
         return;
     }
 
-   const totalPrice = calculatePrice(height, width, depth) + selectedDezenPrice;
+   const totalPrice = calculatePrice(height, width, depth, shelves) + selectedDezenPrice;
 console.log("Total Price:", totalPrice);
     console.log("Selected Dezen Price:", selectedDezenPrice);
     document.getElementById('price').innerHTML = `
