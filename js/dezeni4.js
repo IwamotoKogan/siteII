@@ -148,7 +148,7 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 function calculatePrice(height, width, depth, shelves) {
-    const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
+   const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
 
     // Površine stranica
     const bottomSurface = width * depth; // Donja strana
@@ -157,7 +157,15 @@ function calculatePrice(height, width, depth, shelves) {
     const backSurface = width * height; // Zadnja strana
     const frontSurface = width * height; // Prednja strana
 
+    // Korekcija širine i dubine
+    const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
+    const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
+
+    // Površina gornje strane (dve daske od po 10 cm)
+    const topSurface = 2 * (adjustedWidth * 10);
+
     // Ukupna površina bez polica
+
     let totalSurface = bottomSurface + leftSurface + rightSurface + backSurface + frontSurface;
 
     // Ako element ima police, dodajemo njihove površine
