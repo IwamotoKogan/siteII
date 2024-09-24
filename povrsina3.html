@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Površine Kuhinjskog Elementa</title>
+</head>
+<body>
+    <h1>Kalkulator Površine Kuhinjskog Elementa</h1>
+    <form id="calculator-form">
+        <p>Visina: 76 cm (fiksirano)</p>
+        <p>Dubina: 56 cm (fiksirano)</p>
+
+        <label for="width">Širina (cm):</label>
+        <input type="number" id="width" required><br>
+
+        <label for="shelves">Broj polica:</label>
+        <select id="shelves">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br>
+
+        <button type="button" onclick="calculateSurfaceArea()">Izračunaj</button>
+    </form>
+
+    <h2>Ukupna Površina:</h2>
+    <p id="result"></p>
+    <p id="resultWithWaste"></p>
+
+    <h2>Cena Materijala:</h2>
+    <p id="price"></p>
+
+    <script>
+        function calculateSurfaceArea() {
+    const height = 76; // Fiksirana visina u cm
+    const depth = 56; // Fiksirana dubina u cm
+    const width = parseFloat(document.getElementById('width').value);
+    const shelves = parseInt(document.getElementById('shelves').value, 10);
+    const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
+
+    // Površine stranica
+    const bottomSurface = width * depth; // Donja strana
+    const leftSurface = height * depth; // Leva strana
+    const rightSurface = height * depth; // Desna strana
+
+    // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
+    const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
+    const topSurface = 2 * (adjustedWidth * 10);
+
+    // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
+    const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
+    const shelfSurface = shelves * (width * adjustedDepth);
+
+    // Ukupna površina u cm²
+    const totalSurfaceAreaCm2 = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
+
+    // Ukupna površina u m²
+    const totalSurfaceAreaM2 = totalSurfaceAreaCm2 / 10000;
+
+    // Dodavanje 10% za otpad
+    const totalSurfaceAreaWithWasteM2 = totalSurfaceAreaM2 * 1.10;
+
+    // Cena materijala
+    const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
+
+    // Prikaz rezultata
+    document.getElementById('result').textContent = `Ukupna površina bez otpada: ${totalSurfaceAreaCm2.toFixed(2)} cm² (${totalSurfaceAreaM2.toFixed(4)} m²)`;
+    document.getElementById('resultWithWaste').textContent = `Ukupna površina sa otpadom: ${(totalSurfaceAreaCm2 * 1.10).toFixed(2)} cm² (${totalSurfaceAreaWithWasteM2.toFixed(4)} m²)`;
+    document.getElementById('price').textContent = `Cena materijala: ${totalPrice.toFixed(2)} dinara`;
+}
+
+    </script>
+</body>
+</html>
