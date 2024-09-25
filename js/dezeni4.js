@@ -286,6 +286,7 @@ function addToCart(dezeni) {
    const heightInput = document.getElementById('height');
    const widthInput = document.getElementById('width');
    const depthInput = document.getElementById('depth');
+   const shelvesInput = document.getElementById('shelves');
    const itemName = document.getElementById('imeElementa').textContent;
    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
    const selectedPatternTitle = document.getElementById('selected-pattern-title');
@@ -293,6 +294,7 @@ function addToCart(dezeni) {
    const height = parseInt(heightInput.value);
    const width = parseInt(widthInput.value);
    const depth = parseInt(depthInput.value);
+   const shelves = parseInt(shelvesInput.value);
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
