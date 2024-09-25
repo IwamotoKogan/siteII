@@ -347,7 +347,7 @@ function addToCart(dezeni) {
 
    if (selectedDezen) {
        // Ako postoji odabrani dezen, ažurirajte cenu sa dezenom
-       const totalPrice = basePrice + selectedDezen.price;
+       const totalPrice = basePrice;
        document.getElementById('price').innerText = `Cena: ${totalPrice} evra`;
 
        // Dodajte dezen u objekat newItem koji se dodaje u korpu
