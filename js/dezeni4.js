@@ -304,7 +304,7 @@ function addToCart(dezeni) {
        return;
    }
 
-   const basePrice = calculatePrice(height, width, depth); // Osnovna cena bez dezena
+   const basePrice = calculatePrice(height, width, depth, shelves); // Osnovna cena bez dezena
 
    const selectedPatternName = selectedPatternTitle.textContent;
    const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
