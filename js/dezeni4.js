@@ -230,18 +230,23 @@ function calculate() {
  // Poziv funkcije calculatePrice
    const priceData = calculatePrice(height, width, depth, shelves);
  
-  // Pristup pojedinačnim vrednostima
-   const totalPrice = priceData.totalPrice; // Ukupna cena
+  // Proveri da li je totalPrice broj
+   if (typeof priceData.totalPrice === 'number') {
+       const totalPrice = priceData.totalPrice;
 
-   document.getElementById('price').innerHTML = `
-   <div class="row mb-5">
-               <div class="col-md-12">
-                 <div class="border p-4 rounded text-black" role="alert">
-                  <span class="h3">Cena elementa:</span><strong  class="h3">${totalPrice.toFixed(2)}</strong>
-                 </div>
-               </div>
+       document.getElementById('price').innerHTML = `
+       <div class="row mb-5">
+           <div class="col-md-12">
+             <div class="border p-4 rounded text-black" role="alert">
+               <span class="h3">Cena elementa:</span><strong class="h3">${totalPrice.toFixed(2)} evra</strong>
              </div>
-   `;
+           </div>
+       </div>
+       `;
+   } else {
+       console.error("totalPrice nije broj:", priceData.totalPrice);
+       document.getElementById('price').innerText = "Greška u izračunavanju cene";
+   }
 
    // Izračunajte preporučene dimenzije fronta
    const recommendedFrontDimensions = calculateRecommendedFrontDimensions(height, width, depth);
