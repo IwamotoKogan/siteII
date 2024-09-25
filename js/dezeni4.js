@@ -132,9 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
                selectText.style.display = 'block'; // Ponovo prikažite tekst "Odaberite dezen fronta"
            });
 
-           
-
-
 
            /*dodato*/
    
