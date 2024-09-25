@@ -170,11 +170,14 @@ function calculatePrice(height, width, depth, shelves) {
         totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
     }
 
-    // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
-    const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
+    // Ukupna površina u m²
+    const totalSurfaceAreaM2 = totalSurfaceAreaCm2 / 10000;
+
+    // Dodavanje 10% za otpad
+    const totalSurfaceAreaWithWasteM2 = totalSurfaceAreaM2 * 1.10;
 
     // Računanje ukupne cene
-    const totalPrice = totalSurfaceInSquareMeters * pricePerSquareMeter;
+    const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
 
     return totalPrice.toFixed(2); // Vraćamo cenu sa dve decimale
 }
