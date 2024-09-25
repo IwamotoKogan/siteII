@@ -178,7 +178,11 @@ function calculatePrice(height, width, depth, shelves) {
       // Računanje ukupne cene
       const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
   
-      return totalPrice.toFixed(2); // Vraćamo cenu sa dve decimale
+      return {
+        totalPrice: totalPrice.toFixed(2), // Cena
+        totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(4), // Površina bez otpada
+        totalSurfaceAreaWithWasteM2: totalSurfaceAreaWithWasteM2.toFixed(4) // Površina sa otpadom
+    };
 }
 
 
@@ -352,7 +356,10 @@ function addToCart(dezeni) {
 
    if (selectedDezen) {
        // Ako postoji odabrani dezen, ažurirajte cenu sa dezenom
-       const totalPrice = basePrice;
+       const priceData = calculatePrice(height, width, depth, shelves);
+       const totalPrice = priceData.totalPrice;
+       const totalSurfaceWithoutWaste = priceData.totalSurfaceInSquareMeters;
+       const totalSurfaceWithWaste = priceData.totalSurfaceAreaWithWasteM2;
        document.getElementById('price').innerText = `Cena: ${totalPrice} din.`;
 
        // Dodajte dezen u objekat newItem koji se dodaje u korpu
@@ -388,6 +395,8 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            width: width,
            depth: depth,
            price: totalPrice,//
+           totalSurfaceWithoutWaste: totalSurfaceWithoutWaste, // Površina bez otpada
+           totalSurfaceWithWaste: totalSurfaceWithWaste, // Površina sa otpadom
            dezen: selectedDezen.name, // Dodajte ime dezena
            message: recommendedFrontDimensions.message,
            answer: answer,
@@ -401,6 +410,8 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
        kuhinjaData.width = width;
        kuhinjaData.depth = depth;
        kuhinjaData.price = totalPrice;
+    kuhinjaData.totalSurfaceWithoutWaste = totalSurfaceWithoutWaste;
+kuhinjaData.totalSurfaceWithWaste = totalSurfaceWithWaste;
 /*promena*/
 
        // Dodajte preporučene dimenzije fronta u objekat kuhinjaData
