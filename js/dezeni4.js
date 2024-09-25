@@ -146,36 +146,39 @@ const dezen3Price = 70;  // Beli mermer
 
 function calculatePrice(height, width, depth, shelves) {
   const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
-
-    // Površine stranica
-    const bottomSurface = width * depth; // Donja strana
-    const leftSurface = height * depth; // Leva strana
-    const rightSurface = height * depth; // Desna strana
-   
- // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
-    const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
-    const topSurface = 2 * (adjustedWidth * 10);
-
-    // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
-    const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
-    const shelfSurface = shelves * (width * adjustedDepth);
-
-    // Ukupna površina bez polica
-
-    let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
-    // Ako element ima police, dodajemo njihove površine
-    if (shelves > 0) {
-        const shelfSurface = width * depth; // Površina jedne police
-        totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
-    }
-
-    // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
-    const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
-
-    // Računanje ukupne cene
-    const totalPrice = totalSurfaceInSquareMeters * pricePerSquareMeter;
-
-    return totalPrice.toFixed(2); // Vraćamo cenu sa dve decimale
+  
+      // Površine stranica
+      const bottomSurface = width * depth; // Donja strana
+      const leftSurface = height * depth; // Leva strana
+      const rightSurface = height * depth; // Desna strana
+     
+   // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
+      const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
+      const topSurface = 2 * (adjustedWidth * 10);
+  
+      // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
+      const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
+      const shelfSurface = shelves * (width * adjustedDepth);
+  
+      // Ukupna površina bez polica
+  
+      let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
+      
+      // Ako element ima police, dodajemo njihove površine
+      if (shelves > 0) {
+          const shelfSurface = width * depth; // Površina jedne police
+          totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
+      }
+  
+      // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
+      const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
+  
+       // Dodavanje 10% za otpad
+       const totalSurfaceAreaWithWasteM2 = totalSurfaceInSquareMeters * 1.10;
+      // Računanje ukupne cene
+      const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
+  
+      return totalPrice.toFixed(2); // Vraćamo cenu sa dve decimale
 }
 
 
