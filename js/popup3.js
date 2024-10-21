@@ -130,7 +130,7 @@ savedItems.forEach(item => {
     totalCost += parseFloat(item.price); // Konvertujemo cenu u broj pre sabiranja
 });
 const totalCostElement = document.getElementById('total-cost');
-totalCostElement.textContent = `Ukupna cena: ${totalCost.toFixed(2)} evra`; // Formatiramo na 2 decimale
+totalCostElement.textContent = `Ukupna cena: ${totalCost.toFixed(2)} dinara`; // Formatiramo na 2 decimale
 
 
 /*sumiranje cena svih elemenata */
