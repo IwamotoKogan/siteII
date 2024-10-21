@@ -40,9 +40,10 @@ if (savedItems.length > 0) {
 }
 
 
+
 let totalCost = 0;
 savedItems.forEach(item => {
-    totalCost += item.price;
+    totalCost += parseFloat(item.price); // Konvertujemo cenu u broj pre sabiranja
 });
-const totalCostElement = document.getElementById('ukupna-cena');
-totalCostElement.textContent = `Ukupna cena: ${totalCost} evra`;
+const totalCostElement = document.getElementById('total-cost');
+totalCostElement.textContent = `Ukupna cena: ${totalCost.toFixed(2)} dinara`; // Formatiramo na 2 decimale
