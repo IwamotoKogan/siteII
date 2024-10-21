@@ -117,12 +117,21 @@ deleteButtons.forEach(button => {
 
 
 /*sumiranje cena svih elemenata */
-let totalCost = 0;
+/*let totalCost = 0;
 savedItems.forEach(item => {
     totalCost += item.price;
 });
 const totalCostElement = document.getElementById('total-cost');
-totalCostElement.textContent = `Ukupna cena: ${totalCost} evra`;
+totalCostElement.textContent = `Ukupna cena: ${totalCost} evra`;*/
+
+
+let totalCost = 0;
+savedItems.forEach(item => {
+    totalCost += parseFloat(item.price); // Konvertujemo cenu u broj pre sabiranja
+});
+const totalCostElement = document.getElementById('total-cost');
+totalCostElement.textContent = `Ukupna cena: ${totalCost.toFixed(2)} evra`; // Formatiramo na 2 decimale
+
 
 /*sumiranje cena svih elemenata */
 
