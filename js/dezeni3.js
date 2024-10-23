@@ -132,9 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
                selectText.style.display = 'block'; // Ponovo prikažite tekst "Odaberite dezen fronta"
            });
 
-           
-
-
 
            /*dodato*/
    
@@ -147,52 +144,47 @@ const dezen1Price = 0;   // Osnovni dezen
 const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
-/*function calculatePrice(height, width, depth, shelves) {
-    const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
-
-    // Površine stranica
-    const bottomSurface = width * depth; // Donja strana
-    const leftSurface = height * depth; // Leva strana
-    const rightSurface = height * depth; // Desna strana
-
-    // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
-    const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
-    const topSurface = 2 * (adjustedWidth * 10);
-
-    // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
-    const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
-    const shelfSurface = shelves * (width * adjustedDepth);
-
-    // Ukupna površina u cm²
-    const totalSurfaceAreaCm2 = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
-
-    // Ukupna površina u m²
-    const totalSurfaceAreaM2 = totalSurfaceAreaCm2 / 10000;
-
-    // Dodavanje 10% za otpad
-    const totalSurfaceAreaWithWasteM2 = totalSurfaceAreaM2 * 1.10;
-
-    // Cena materijala
-    const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
-
-    return totalPrice;
-}*/
-function calculatePrice(height, width, depth) {
-    const basePrice = 1000;
-    const increment = 20;
-    const limit = 5;
-
-    const heightDifference = height - 90;
-    const widthDifference = width - 100;
-    const depthDifference = depth - 30;
-
-    const heightPrice = heightDifference >= 0 ? Math.floor(heightDifference / limit) * increment : 0;
-    const widthPrice = widthDifference >= 0 ? Math.floor(widthDifference / limit) * increment : 0;
-    const depthPrice = depthDifference >= 0 ? Math.floor(depthDifference / limit) * increment : 0;
-
-    const totalPrice = basePrice + heightPrice + widthPrice + depthPrice;
-    return totalPrice;
+function calculatePrice(height, width, depth, shelves) {
+  const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
+  
+      // Površine stranica
+      const bottomSurface = width * depth; // Donja strana
+      const leftSurface = height * depth; // Leva strana
+      const rightSurface = height * depth; // Desna strana
+     
+   // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
+      const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
+      const topSurface = 2 * (adjustedWidth * 10);
+  
+      // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
+      const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
+      const shelfSurface = shelves * (width * adjustedDepth);
+  
+      // Ukupna površina bez polica
+  
+      let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
+      
+      // Ako element ima police, dodajemo njihove površine
+      /*if (shelves > 0) {
+          const shelfSurface = width * depth; // Površina jedne police
+          totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
+      }*/
+  
+      // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
+      const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
+  
+       // Dodavanje 10% za otpad
+       const totalSurfaceAreaWithWasteM2 = totalSurfaceInSquareMeters * 1.10;
+      // Računanje ukupne cene
+      const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
+  
+      return {
+    totalPrice: totalPrice.toFixed(2),
+    totalSurface: totalSurface.toFixed(2),
+    totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2)
+};
 }
+
 
 // Funkcija koja proverava da li su unete vrednosti numeričkog tipa
 function isValidNumber(value) {
@@ -215,10 +207,15 @@ function isValidDimensions(height, width, depth) {
 
 // Funkcija koja se poziva prilikom klika na dugme za izračunavanje cene
 function calculate() {
-    const height = parseFloat(document.getElementById('height').value);
-    const width = parseFloat(document.getElementById('width').value);
-    const depth = parseFloat(document.getElementById('depth').value);
-    const shelves = parseInt(document.getElementById('shelves').value, 10);
+   const heightInput = document.getElementById('height');
+   const widthInput = document.getElementById('width');
+   const depthInput = document.getElementById('depth');
+   const shelvesInput = document.getElementById('shelves');
+
+   const height = parseInt(heightInput.value);
+   const width = parseInt(widthInput.value);
+   const depth = parseInt(depthInput.value);
+   const shelves = parseInt(shelvesInput.value);
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
@@ -230,7 +227,7 @@ function calculate() {
        return;
    }
 
-  const totalPrice = calculatePrice(height, width, depth, shelves) + selectedDezenPrice;
+  const totalPrice = calculatePrice(height, width, depth, shelves)/* + selectedDezenPrice*/;
 
    document.getElementById('price').innerHTML = `
    <div class="row mb-5">
@@ -296,6 +293,7 @@ function addToCart(dezeni) {
    const heightInput = document.getElementById('height');
    const widthInput = document.getElementById('width');
    const depthInput = document.getElementById('depth');
+   const shelvesInput = document.getElementById('shelves');
    const itemName = document.getElementById('imeElementa').textContent;
    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
    const selectedPatternTitle = document.getElementById('selected-pattern-title');
@@ -303,6 +301,7 @@ function addToCart(dezeni) {
    const height = parseInt(heightInput.value);
    const width = parseInt(widthInput.value);
    const depth = parseInt(depthInput.value);
+   const shelves = parseInt(shelvesInput.value);
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
@@ -314,7 +313,7 @@ function addToCart(dezeni) {
        return;
    }
 
-   const basePrice = calculatePrice(height, width, depth); // Osnovna cena bez dezena
+   const basePrice = calculatePrice(height, width, depth, shelves); // Osnovna cena bez dezena
 
    const selectedPatternName = selectedPatternTitle.textContent;
    const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
@@ -356,10 +355,9 @@ function addToCart(dezeni) {
 /*ovan*/
 
    if (selectedDezen) {
-       // Ako postoji odabrani dezen, ažurirajte cenu sa dezenom
+    // Ako postoji odabrani dezen, ažurirajte cenu sa dezenom
        const totalPrice = basePrice + selectedDezen.price;
-       document.getElementById('price').innerText = `Cena: ${totalPrice} evra`;
-
+       document.getElementById('price').innerText = `Cena: ${totalPrice} din.`;
        // Dodajte dezen u objekat newItem koji se dodaje u korpu
     
 
@@ -387,11 +385,14 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
 /*******************************************************KORPUS*************************************************************************/
 
 /*******************************************************KORPUS*************************************************************************/
+
              const newItem = {
            height: height,
            width: width,
            depth: depth,
            price: totalPrice,//
+           totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
+            totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
            message: recommendedFrontDimensions.message,
            answer: answer,
@@ -405,6 +406,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
        kuhinjaData.width = width;
        kuhinjaData.depth = depth;
        kuhinjaData.price = totalPrice;
+    
 /*promena*/
 
        // Dodajte preporučene dimenzije fronta u objekat kuhinjaData
@@ -534,55 +536,3 @@ rightHingesButton.addEventListener('click', () => {
 
 /*nova verzija1*/
 
-
-
-
-
-/**dodatoooooooooooooooooooooooooooooooooooooooooooooooo */
-function updateCartCount() {
- const cartCount = document.getElementById('cart-count');
- const savedItems = JSON.parse(localStorage.getItem('items')) || [];
- const itemCount = savedItems.length;
-
- if (itemCount > 0) {
-     cartCount.style.display = 'block';
-     cartCount.textContent = itemCount;
- } else {
-     cartCount.style.display = 'none';
- }
-}
-
-function addToCart(dezeni) {
- // ... postojeć kod za dodavanje elemenata u korpu ...
-
- if (selectedDezen) {
-     const newItem = {
-         // ... ostala svojstva ...
-     };
-
-     // Uzmi postojeće elemente iz localStorage ili inicijalizuj prazno ako ih nema
-     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
-
-     // Dodaj novi element u listu sačuvanih elemenata
-     savedItems.push(newItem);
-
-     // Sačuvaj ažuriranu listu elemenata u localStorage
-     localStorage.setItem('items', JSON.stringify(savedItems));
-
-     // Ažuriraj broj elemenata u korpi
-     updateCartCount();
-
-     alert("Uspešno ste kreirali element.");
-     location.reload();
- }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
- updateCartCount();
- // ... ostatak vašeg postojećeg koda ...
-});
-
-if (window.location.pathname === 'https://iwamotokogan.github.io/siteII/pregledk.html') {
- localStorage.removeItem('items');
- updateCartCount();
-}
