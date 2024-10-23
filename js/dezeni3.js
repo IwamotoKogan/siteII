@@ -227,13 +227,13 @@ function calculate() {
        return;
    }
 
-  const totalPrice = calculatePrice(height, width, depth, shelves)/* + selectedDezenPrice*/;
+  const priceData = calculatePrice(height, width, depth, shelves);
 
    document.getElementById('price').innerHTML = `
    <div class="row mb-5">
                <div class="col-md-12">
                  <div class="border p-4 rounded text-black" role="alert">
-                  <span class="h3">Cena elementa:</span><strong  class="h3">${totalPrice}</strong>
+                  <span class="h3">Cena elementa:</span><strong  class="h3">${priceData.totalPrice}</strong>
                  </div>
                </div>
              </div>
