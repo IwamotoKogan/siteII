@@ -165,10 +165,10 @@ function calculatePrice(height, width, depth, shelves) {
       let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
       
       // Ako element ima police, dodajemo njihove površine
-      if (shelves > 0) {
+      /*if (shelves > 0) {
           const shelfSurface = width * depth; // Površina jedne police
           totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
-      }
+      }*/
   
       // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
       const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
