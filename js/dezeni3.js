@@ -313,6 +313,8 @@ function addToCart(dezeni) {
        return;
    }
 
+ const priceData = calculatePrice(height, width, depth, shelves); 
+
    const basePrice = calculatePrice(height, width, depth, shelves); // Osnovna cena bez dezena
 
    const selectedPatternName = selectedPatternTitle.textContent;
@@ -390,7 +392,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            height: height,
            width: width,
            depth: depth,
-           price: totalPrice,//
+           price: priceData.totalPrice,//
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
