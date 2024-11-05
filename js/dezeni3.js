@@ -188,17 +188,27 @@ function calculatePrice(height, width, depth, shelves) {
     // Ukupna cena svih površina bez otpada
     let totalPriceWithoutWaste = basePrice + backSurfacePrice + frontSurfacePrice;
 
-    // Dodavanje 10% za otpad na ukupnu cenu
-    const totalPrice = totalPriceWithoutWaste * 1.10;
+    // Računanje kant traka
+    const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
+    const kantTrakaPrice = kantTrakaLength * 175;
+
+    // Dodavanje kant trake na ukupnu cenu
+    const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
+
+    // Dodavanje 10% za otpad na finalnu cenu
+    const finalPrice = totalPriceWithKantTraka * 1.10;
 
     return {
-        totalPrice: totalPrice.toFixed(2),
+        totalPrice: finalPrice.toFixed(2),
         totalSurface: totalSurface.toFixed(2),
         totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
         backSurfacePrice: backSurfacePrice.toFixed(2),
         frontSurfacePrice: frontSurfacePrice.toFixed(2),
+        kantTrakaLength: kantTrakaLength.toFixed(2),
+        kantTrakaPrice: kantTrakaPrice.toFixed(2),
     };
 }
+
 
 
 
