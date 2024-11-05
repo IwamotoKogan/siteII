@@ -205,9 +205,9 @@ function isValidNumber(value) {
 
 // Funkcija koja proverava da li su unete dimenzije unutar dozvoljenog opsega
 function isValidDimensions(height, width, depth) {
-   const minHeight = 90;
-   const maxHeight = 200;
-   const minWidth = 100;
+   const minHeight = 72;
+   const maxHeight = 76;
+   const minWidth = 60;
    const maxWidth = 250;
    const minDepth = 30;
    const maxDepth = 60;
