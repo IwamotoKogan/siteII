@@ -10,6 +10,7 @@
 const rightHingesButton = document.getElementById('right-hinges');
 /*dodato*/
 let selectedDezenPrice = 0;
+let selectedDezenKant = 0;
 let dezeni = [];
 
 
@@ -94,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                    // Pronađite dezen sa datim nazivom u JSON-u
                    selectedDezen = dezeni.find(dezen => dezen.name === patternName);
                    selectedDezenPrice = selectedDezen.price;
+                   selectedDezenKant = selectedDezen.kant;
                });
            });
 
@@ -190,7 +192,7 @@ function calculatePrice(height, width, depth, shelves) {
 
     // Računanje kant traka
     const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
-    const kantTrakaPrice = kantTrakaLength * 175;
+    const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
     // Dodavanje kant trake na ukupnu cenu
     const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
