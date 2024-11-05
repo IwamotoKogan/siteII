@@ -3,15 +3,15 @@
         "id": 1,
         "name": "0026 Prado Alu Gray",
         "image": "dezeni/0026 Prado Alu Gray.jpg",
-        "price" : 3500",
-        "kant" : 175"
+        "price": 3500,
+        "kant": 175
     },
     {
         "id": 2,
         "name": "0027 Prado",
         "image": "dezeni/0027 Prado.jpg",
-         "price" : 3500",
-        "kant" : 160"
+        "price": 3500,
+        "kant": 160
     },
     {
         "id": 3,
