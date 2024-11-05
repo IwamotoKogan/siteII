@@ -189,12 +189,25 @@ function calculatePrice(height, width, depth, shelves) {
        const totalSurfaceAreaWithWasteM2 = totalSurfaceInSquareMeters * 1.10;
       // Računanje ukupne cene
       const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
-  
-      return {
+
+     const backSurface = width * height;
+    const backSurfaceInSquareMeters = backSurface / 10000;
+    const backSurfacePrice = backSurfaceInSquareMeters * 1550;
+
+    // Ukupna cena uključujući zadnju stranu
+    const finalTotalPrice = totalPrice + backSurfacePrice;
+
+    return {
+        totalPrice: finalTotalPrice.toFixed(2),
+        totalSurface: totalSurface.toFixed(2),
+        totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
+        backSurfacePrice: backSurfacePrice.toFixed(2) // Cena za zadnju stranu, ako je potrebna za prikaz
+    };
+     /* return {
     totalPrice: totalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
     totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2)
-};
+};*/
 }
 
 
