@@ -145,7 +145,6 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 function calculatePrice(height, width, depth, shelves) {
-  /*const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima*/
     let pricePerSquareMeter;
 
     // Određivanje cene po kvadratnom metru na osnovu izabranog korpusa
@@ -156,59 +155,51 @@ function calculatePrice(height, width, depth, shelves) {
     } else if (sivi.classList.contains('selektovan')) {
         pricePerSquareMeter = 2545;
     } else {
-        // Ako nije izabran nijedan korpus, vrati grešku ili podesi podrazumevanu vrednost
-        pricePerSquareMeter = 1990; // ili baci grešku ako nije dozvoljeno da bude bez izbora
+        pricePerSquareMeter = 1990;
     }
-      // Površine stranica
-      const bottomSurface = width * depth; // Donja strana
-      const leftSurface = height * depth; // Leva strana
-      const rightSurface = height * depth; // Desna strana
-     
-   // Površina dve daske na gornjoj strani (svaka daska ima širinu x dubinu 10 cm minus 36 mm)
-      const adjustedWidth = width - 3.6; // Oduzimanje 36 mm (3.6 cm)
-      const topSurface = 2 * (adjustedWidth * 10);
-  
-      // Površina polica (svaka polica ima širinu x (dubina - 18 mm))
-      const adjustedDepth = depth - 1.8; // Oduzimanje 18 mm (1.8 cm)
-      const shelfSurface = shelves * (width * adjustedDepth);
-  
-      // Ukupna površina bez polica
-  
-      let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
-      
-      // Ako element ima police, dodajemo njihove površine
-      /*if (shelves > 0) {
-          const shelfSurface = width * depth; // Površina jedne police
-          totalSurface += shelfSurface * shelves; // Dodajemo ukupnu površinu svih polica
-      }*/
-  
-      // Pretvaranje u kvadratne metre (prethodna formula daje vrednost u cm²)
-      const totalSurfaceInSquareMeters = totalSurface / 10000; // 1m² = 10,000 cm²
-  
-       // Dodavanje 10% za otpad
-       const totalSurfaceAreaWithWasteM2 = totalSurfaceInSquareMeters * 1.10;
-      // Računanje ukupne cene
-      const totalPrice = totalSurfaceAreaWithWasteM2 * pricePerSquareMeter;
 
-     const backSurface = width * height;
+    // Površine stranica
+    const bottomSurface = width * depth;
+    const leftSurface = height * depth;
+    const rightSurface = height * depth;
+    const adjustedWidth = width - 3.6;
+    const topSurface = 2 * (adjustedWidth * 10);
+    const adjustedDepth = depth - 1.8;
+    const shelfSurface = shelves * (width * adjustedDepth);
+
+    let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
+
+    // Zadnja strana
+    const backSurface = width * height;
     const backSurfaceInSquareMeters = backSurface / 10000;
     const backSurfacePrice = backSurfaceInSquareMeters * 1550;
 
-    // Ukupna cena uključujući zadnju stranu
-    const finalTotalPrice = totalPrice + backSurfacePrice;
+    // Prednja strana
+    const frontSurface = width * height;
+    const frontSurfaceInSquareMeters = frontSurface / 10000;
+    const frontSurfacePrice = frontSurfaceInSquareMeters * selectedDezenPrice;
+
+    // Pretvaranje ukupne površine u m²
+    const totalSurfaceInSquareMeters = totalSurface / 10000;
+
+    // Računanje cene za osnovne strane bez otpada
+    const basePrice = totalSurfaceInSquareMeters * pricePerSquareMeter;
+
+    // Ukupna cena svih površina bez otpada
+    let totalPriceWithoutWaste = basePrice + backSurfacePrice + frontSurfacePrice;
+
+    // Dodavanje 10% za otpad na ukupnu cenu
+    const totalPrice = totalPriceWithoutWaste * 1.10;
 
     return {
-        totalPrice: finalTotalPrice.toFixed(2),
+        totalPrice: totalPrice.toFixed(2),
         totalSurface: totalSurface.toFixed(2),
         totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
-        backSurfacePrice: backSurfacePrice.toFixed(2) // Cena za zadnju stranu, ako je potrebna za prikaz
+        backSurfacePrice: backSurfacePrice.toFixed(2),
+        frontSurfacePrice: frontSurfacePrice.toFixed(2),
     };
-     /* return {
-    totalPrice: totalPrice.toFixed(2),
-    totalSurface: totalSurface.toFixed(2),
-    totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2)
-};*/
 }
+
 
 
 // Funkcija koja proverava da li su unete vrednosti numeričkog tipa
