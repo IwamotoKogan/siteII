@@ -198,7 +198,7 @@ function calculatePrice(height, width, depth, shelves) {
     const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
     // Dodavanje 10% za otpad na finalnu cenu
-    const finalPrice = totalPriceWithKantTraka * 1.10;
+    const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
 
     return {
         totalPrice: finalPrice.toFixed(2),
