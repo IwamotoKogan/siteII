@@ -145,8 +145,20 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 function calculatePrice(height, width, depth, shelves) {
-  const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima
-  
+  /*const pricePerSquareMeter = 1990; // Cena po kvadratnom metru u dinarima*/
+    let pricePerSquareMeter;
+
+    // Određivanje cene po kvadratnom metru na osnovu izabranog korpusa
+    if (crni.classList.contains('selektovan')) {
+        pricePerSquareMeter = 2250;
+    } else if (beli.classList.contains('selektovan')) {
+        pricePerSquareMeter = 2545;
+    } else if (sivi.classList.contains('selektovan')) {
+        pricePerSquareMeter = 2545;
+    } else {
+        // Ako nije izabran nijedan korpus, vrati grešku ili podesi podrazumevanu vrednost
+        pricePerSquareMeter = 1990; // ili baci grešku ako nije dozvoljeno da bude bez izbora
+    }
       // Površine stranica
       const bottomSurface = width * depth; // Donja strana
       const leftSurface = height * depth; // Leva strana
