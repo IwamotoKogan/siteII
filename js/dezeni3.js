@@ -421,6 +421,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            width: width,
            depth: depth,
            price: priceData.totalPrice,//
+              shelves: shelves,
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
