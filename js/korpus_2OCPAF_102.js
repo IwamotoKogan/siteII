@@ -369,6 +369,7 @@ function addToCart(dezeni) {
    const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
    const isRightHingeSelected = rightHingesButton.classList.contains('selected');
    const ispolice = police.classList.contains('selected');
+   const issarke = sarke.classList.contains('selected');
 
 
 
@@ -394,6 +395,10 @@ function addToCart(dezeni) {
    if (!ispolice) {
     alert("Niste odabrali broj polica.");
     return;
+}
+if (!issarke) {
+  alert("Niste odabrali vrstu sarki.");
+  return;
 }
 /*ovan*/
 
@@ -577,6 +582,9 @@ rightHingesButton.addEventListener('click', () => {
 
 police.addEventListener('click', () => {
   police.classList.add('selected');
+ });
+sarke.addEventListener('click', () => {
+  sarke.classList.add('selected');
  });
 
 
