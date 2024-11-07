@@ -327,6 +327,7 @@ function addToCart(dezeni) {
    const widthInput = document.getElementById('width');
    const depthInput = document.getElementById('depth');
    const shelvesInput = document.getElementById('shelves');
+ const hingeInput = document.getElementById('hinge-type');
    const itemName = document.getElementById('imeElementa').textContent;
    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
    const selectedPatternTitle = document.getElementById('selected-pattern-title');
@@ -335,6 +336,7 @@ function addToCart(dezeni) {
    const width = parseInt(widthInput.value);
    const depth = parseInt(depthInput.value);
    const shelves = parseInt(shelvesInput.value);
+ const hinge = parseInt(hingeInput.value);
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
@@ -427,6 +429,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            depth: depth,
            price: priceData.totalPrice,//
               shelves: shelves,
+              hinge: hinge,
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
