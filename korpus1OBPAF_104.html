@@ -188,14 +188,24 @@
                                 <label for="c_fname" class="text-muted">(od 30 do 60)</label>
                                 <input type="number" class="form-control" id="depth" name="c_lname">
                             </div>
-                            <div class="col-md-4">
-                                <label for="shelves">Broj polica:</label>
-                                <select id="shelves">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select><br>
+                             <div class="col-md-4">
+                                <div class="mb-3">
+                                        <label for="shelves" class="form-label text-dark fw-bold">Broj polica:</label>
+                                        <select id="shelves" class="form-select bg-dark text-white border-light">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+
+                              <div class="mb-3">
+                                    <label for="hinge-type" class="form-label text-dark fw-bold">Izaberite vrstu šarki:</label>
+                                    <select id="hinge-type" class="form-select bg-dark text-white border-light">
+                                        <option value="200">Osnovne šarke (200 din po komadu)</option>
+                                        <option value="500">Šarke sa usporivačima (500 din po komadu)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <hr>
