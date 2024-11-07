@@ -8,6 +8,8 @@
  const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
  const leftHingesButton = document.getElementById('left-hinges');
 const rightHingesButton = document.getElementById('right-hinges');
+const police = document.getElementById('shelves');
+const sarke = document.getElementById('hinge-type')
 /*dodato*/
 let selectedDezenPrice = 0;
 let selectedDezenKant = 0;
@@ -366,6 +368,7 @@ function addToCart(dezeni) {
    const isNoSelected = noButton.classList.contains('selected');
    const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
    const isRightHingeSelected = rightHingesButton.classList.contains('selected');
+   const ispolice = police.classList.contains('selected');
 
 
 
@@ -388,6 +391,10 @@ function addToCart(dezeni) {
        alert("Niste odabrali dezen elementa.");
        return;
    }
+   if (!ispolice) {
+    alert("Niste odabrali broj polica.");
+    return;
+}
 /*ovan*/
 
    if (selectedDezen) {
@@ -567,6 +574,10 @@ rightHingesButton.addEventListener('click', () => {
  rightHingesButton.classList.add('selected');
  leftHingesButton.classList.remove('selected');
 });
+
+police.addEventListener('click', () => {
+  police.classList.add('selected');
+ });
 
 
 /*PITANJAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
