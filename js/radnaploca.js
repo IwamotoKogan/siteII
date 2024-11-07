@@ -228,11 +228,7 @@ function addToCart(dezeni) {
 }
 
 
-const kupiBtn = document.getElementById('kupi-btn');
-kupiBtn.addEventListener('click', () => {
-   addToCart(dezeni); // Prosledite dezeni niz funkciji addToCart
 
-});
 
 // Nakon izračunavanja cene, izračunajte preporučene dimenzije fronta
 let message;
