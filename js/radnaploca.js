@@ -91,7 +91,7 @@ function calculate() {
         <div class="row mb-5">
             <div class="col-md-12">
                 <div class="border p-4 rounded text-black" role="alert">
-                    <span class="h3">Cena elementa:</span><strong class="h3">${finalPrice}</strong> din
+                    <span class="h3">Cena elementa:</span><strong class="h3">${finalPrice.finalPrice}</strong> din
                 </div>
             </div>
         </div>
