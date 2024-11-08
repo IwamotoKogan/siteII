@@ -165,13 +165,67 @@
         <div class="container">
             
             <div class="row">
-                <label for="worktop-length">Dužina radne ploče (u metrima):</label>
-<input type="number" id="worktop-length" name="worktop-length" min="0" step="0.1">
+                <div class="col-md-6 mb-5 mb-md-0 zuto">
+                    <h2 class="h3 mb-3 text-black"></h2>
+                    <div class="p-3 p-lg-5 border bg-white">
 
-<button onclick="updatePrice()">Izračunaj cenu</button>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label for="c_fname" class="text-black"><strong>visina</strong><span
+                                        class="text-danger">*</span></label>
+                                <label for="c_fname" class="text-muted">(od 90 do 200)</label>
+                                <input type="number" class="form-control" id="height" name="c_fname">
+                            </div>
+                            
+                        </div>
+                        <hr>
+               
 
-<p id="total-price"></p>
+                        <!--DEZENI-->
+                        <div class="form-group mb-5">
+                            <button id="choose-pattern" class="btn btn-black btn-lg py-3 btn-block">Odaberi
+                                dezen</button>
+                            <!--POPUP ZA DEZENE-->
+                            <div id="pattern-popup">
 
+                                <div class="pattern-grid">
+                                    <div class="search-dezena">
+                                        <p>pretrazite dezene</p>
+                                        <input type="text" id="search-pattern" placeholder="Pretraga dezena...">
+                                    </div>
+                                </div>
+                                <button id="close-popup">
+                                    <span class="line"></span>
+                                    <span class="line"></span>
+                                </button>
+                            </div>
+                            <!--KRAJ POPUP ZA DEZENE-->
+
+                            <!--IZABRANI DEZEN-->
+                            <div id="selected-pattern">
+                                <img src="" alt="Odabrani dezen" id="selected-image">
+                                <p id="selected-pattern-title"></p>
+                            </div>
+                            <!--IZABRANI DEZEN-->
+
+                        </div>
+                        <!--KRAJ DEZENI-->
+
+                        <!--IZRAČUNAJ CENU-->
+                        <div class="form-group row mb-5">
+                            <button id="calculate-btn" class="btn btn-black btn-lg py-3 btn-block">Izračunaj
+                                cenu</button>
+                            <p id="price" class="result"></p>
+                        </div>
+                        <!--IZRAČUNAJ CENU-->
+
+                        <!--KUPI DUGME-->
+                        <div class="form-group row mb-5">
+                            <button id="kupi-btn" class="btn btn-black btn-lg py-3 btn-block">Kupi</button>
+                        </div>
+                       
+
+                    </div>
                 </div>
                 <div class="col-md-6">
 
@@ -342,8 +396,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
     <script src="js/custom.js"></script>
-    <script src="./js/radnaploca.js"></script>
-   
+    <script src="./js/korpus_2OCPAF_102.js"></script>
+    <script src="./js/tabela_pregled.js"></script>
 </body>
 
 </html>
