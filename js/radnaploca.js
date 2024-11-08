@@ -104,32 +104,21 @@ function addToCart(dezeni, finalPrice, worktopSurface, squareMeters) {
     const selectedPatternTitle = document.getElementById('selected-pattern-title');
     const selectedPatternName = selectedPatternTitle.textContent;
     const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
-       const itemName = document.getElementById('imeElementa').textContent;
-   const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
+    const itemName = document.getElementById('imeElementa').textContent;
+    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
 
     if (!selectedDezen) {
         alert("Niste odabrali dezen elementa.");
         return;
     }
 
-    const squareMetersInput = document.getElementById('square-meters');
-    
-    const totalPrice = calculatePrice(squareMeters);
-
-    if (isNaN(totalPrice)) {
-        alert("Niste uneli validne podatke za cenu.");
-        return;
-    }
-
     const newItem = {
-        // Atributi kao height, width, itd. i konačna cena
         price: finalPrice,
         dezen: selectedDezen.name,
-               itemName: itemName,
-       itemImageSrc: itemImageSrc, 
-         surface: worktopSurface,  // Površina radne ploče
-        orderedSquareMeters: squareMeters, // Kvadratura koju je korisnik uneo
-        
+        itemName: itemName,
+        itemImageSrc: itemImageSrc, 
+        surface: worktopSurface,       // Površina radne ploče
+        orderedSquareMeters: squareMeters // Kvadratura koju je korisnik uneo
     };
 
     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
@@ -139,6 +128,7 @@ function addToCart(dezeni, finalPrice, worktopSurface, squareMeters) {
     alert("Uspešno ste kreirali element.");
     location.reload();
 }
+
 
 kupiButton.addEventListener('click', function() {
     addToCart(dezeni);
