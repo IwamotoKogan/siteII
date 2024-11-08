@@ -100,7 +100,7 @@ function calculate() {
 
 document.getElementById('calculate-btn').addEventListener('click', calculate);
 
-function addToCart(dezeni) {
+function addToCart(dezeni, finalPrice, worktopSurface, squareMeters) {
     const selectedPatternTitle = document.getElementById('selected-pattern-title');
     const selectedPatternName = selectedPatternTitle.textContent;
     const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
@@ -123,11 +123,13 @@ function addToCart(dezeni) {
 
     const newItem = {
         // Atributi kao height, width, itd. i konačna cena
-        price: totalPrice,
+        price: finalPrice,
         dezen: selectedDezen.name,
                itemName: itemName,
-       itemImageSrc: itemImageSrc 
-        // ... ostali atributi
+       itemImageSrc: itemImageSrc, 
+         surface: worktopSurface,  // Površina radne ploče
+        orderedSquareMeters: squareMeters, // Kvadratura koju je korisnik uneo
+        
     };
 
     const savedItems = JSON.parse(localStorage.getItem('items')) || [];
