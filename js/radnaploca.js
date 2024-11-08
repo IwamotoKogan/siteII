@@ -71,7 +71,7 @@ function calculatePrice(squareMeters) {
 function calculate() {
     
 
-    const finalPrice = calculatePrice(squareMeters);
+    const finalPrice = calculatePrice();
 
     document.getElementById('price').innerHTML = `
         <div class="row mb-5">
