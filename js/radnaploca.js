@@ -69,13 +69,7 @@ function calculatePrice(squareMeters) {
 }
 
 function calculate() {
-    const squareMetersInput = document.getElementById('square-meters'); // Unos za kvadrate
-    const squareMeters = parseFloat(squareMetersInput.value);
-
-    if (isNaN(squareMeters) || squareMeters <= 0) {
-        document.getElementById('price').innerText = "Unesite validan broj kvadratnih metara";
-        return;
-    }
+    
 
     const finalPrice = calculatePrice(squareMeters);
 
