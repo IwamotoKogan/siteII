@@ -1,6 +1,6 @@
 const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
 
-/*ness*/
+/*neess*/
 let selectedDezenPrice = 0;
 let dezeni = [];
 
