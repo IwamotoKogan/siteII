@@ -181,6 +181,9 @@ detailsButtons.forEach(button => {
                 <p><strong>Cena:</strong> ${item.price} dinara</p>
                 <p><strong>Dezen korpusa:</strong> ${item.korpusOdgovor} </p>
                 
+                <p><strong>Radna ploča površina:</strong> ${item.surface} </p>
+                <p><strong>Metraža radne ploče:</strong> ${item.orderedSquareMeters} </p>
+                
             `;
         }
     });
