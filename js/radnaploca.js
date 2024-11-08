@@ -113,7 +113,7 @@ function addToCart(dezeni, finalPrice, worktopSurface, squareMeters) {
     }
 
     const squareMetersInput = document.getElementById('square-meters');
-    const squareMeters = parseFloat(squareMetersInput.value);
+    
     const totalPrice = calculatePrice(squareMeters);
 
     if (isNaN(totalPrice)) {
