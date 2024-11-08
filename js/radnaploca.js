@@ -131,5 +131,23 @@ function addToCart(dezeni, finalPrice, worktopSurface, squareMeters) {
 
 
 kupiButton.addEventListener('click', function() {
-    addToCart(dezeni);
+    const squareMetersInput = document.getElementById('square-meters');
+    const squareMeters = parseFloat(squareMetersInput.value);
+
+    if (isNaN(squareMeters) || squareMeters <= 0) {
+        alert("Unesite validan broj kvadratnih metara");
+        return;
+    }
+
+    if (!selectedDezenPrice || selectedDezenPrice <= 0) {
+        alert("Molimo vas odaberite dezen.");
+        return;
+    }
+
+    // Izračunavamo cenu i površinu
+    const { finalPrice, worktopSurface } = calculatePrice(squareMeters);
+
+    // Pozivamo addToCart sa svim potrebnim parametrima
+    addToCart(dezeni, finalPrice, worktopSurface, squareMeters);
 });
+
