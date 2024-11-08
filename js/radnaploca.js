@@ -61,7 +61,11 @@ function calculatePrice(squareMeters) {
     // Cena radne ploče na osnovu izabranog dezena
     const finalPrice = worktopSurface * selectedDezenPrice;
 
-    return finalPrice.toFixed(2);
+    return {
+        finalPrice: finalPrice.toFixed(2),
+        worktopSurface: worktopSurface.toFixed(2),
+        squareMeters: squareMeters // Dodajemo i kvadraturu
+    };
 }
 
 function calculate() {
