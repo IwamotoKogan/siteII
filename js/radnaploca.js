@@ -100,6 +100,8 @@ function addToCart(dezeni) {
     const selectedPatternTitle = document.getElementById('selected-pattern-title');
     const selectedPatternName = selectedPatternTitle.textContent;
     const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
+       const itemName = document.getElementById('imeElementa').textContent;
+   const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
 
     if (!selectedDezen) {
         alert("Niste odabrali dezen elementa.");
@@ -119,6 +121,8 @@ function addToCart(dezeni) {
         // Atributi kao height, width, itd. i konačna cena
         price: totalPrice,
         dezen: selectedDezen.name,
+               itemName: itemName,
+       itemImageSrc: itemImageSrc 
         // ... ostali atributi
     };
 
