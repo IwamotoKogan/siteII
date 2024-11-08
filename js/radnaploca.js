@@ -97,6 +97,7 @@ function calculate() {
 document.getElementById('calculate-btn').addEventListener('click', calculate);
 
 function addToCart(dezeni) {
+    const selectedPatternTitle = document.getElementById('selected-pattern-title');
     const selectedPatternName = selectedPatternTitle.textContent;
     const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
 
