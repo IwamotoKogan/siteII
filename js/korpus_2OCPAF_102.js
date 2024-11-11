@@ -172,7 +172,7 @@ function calculatePrice(height, width, depth, shelves) {
 
     let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
 
-    // Zadnja strana
+    // Zadnja strana LESONIT
     const backSurface = width * height;
     const backSurfaceInSquareMeters = backSurface / 10000;
     const backSurfacePrice = backSurfaceInSquareMeters * 1550;
@@ -185,7 +185,7 @@ function calculatePrice(height, width, depth, shelves) {
     // Pretvaranje ukupne površine u m²
     const totalSurfaceInSquareMeters = totalSurface / 10000;
 
-    // Računanje cene za osnovne strane bez otpada
+    // Računanje cene za osnovne strane bez otpada KORPUS
     const basePrice = totalSurfaceInSquareMeters * pricePerSquareMeter;
 
     // Ukupna cena svih površina bez otpada
@@ -203,7 +203,7 @@ function calculatePrice(height, width, depth, shelves) {
     // Dodavanje kant trake na ukupnu cenu
     const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice + hingePrice;
 
-    // Dodavanje 10% za otpad na finalnu cenu
+    // Dodavanje 10% za otpad na finalnu cenu 2160 JE CENA SPOJNICA I BUŠENJA 
     const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
 
     return {
