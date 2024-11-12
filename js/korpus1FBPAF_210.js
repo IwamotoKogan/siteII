@@ -237,7 +237,7 @@ function calculatePrice(height, width, depth) {
       totalSurface: totalSurface.toFixed(2),
       totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
       backSurfacePrice: backSurfacePrice.toFixed(2),
-      frontSurfacePrice: frontSurfacePrice.toFixed(2),
+
       kantTrakaLength: kantTrakaLength.toFixed(2),
       kantTrakaPrice: kantTrakaPrice.toFixed(2),
       drawerKantLength: drawerKantLength.toFixed(2),
