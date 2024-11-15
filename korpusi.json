@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Crni",
+    "price": 2250
+  },
+  {
+    "id": 2,
+    "name": "Beli",
+    "price": 2545
+  },
+  {
+    "id": 3,
+    "name": "Sivi",
+    "price": 2545
+  },
+  {
+    "id": 4,
+    "name": "Drvo",
+    "price": 1990
+  }
+]
