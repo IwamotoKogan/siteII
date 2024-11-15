@@ -201,12 +201,12 @@ function calculatePrice(height, width, depth) {
   // Površina zadnje stranice fioke
   const drawerBackSurface = drawerWidth * drawerHeight;
   const drawerBackSurfaceInSquareMeters = drawerBackSurface / 10000;
-  const drawerBackPrice = drawerBackSurfaceInSquareMeters * pricePerSquareMeter;
+  const drawerBackPrice = drawerBackSurfaceInSquareMeters * selectedDezenKorpusPrice;
 
   // Površina leve i desne stranice fioke (2 strane)
   const drawerSideSurface = 2 * (drawerHeight * drawerDepth);
   const drawerSideSurfaceInSquareMeters = drawerSideSurface / 10000;
-  const drawerSidePrice = drawerSideSurfaceInSquareMeters * pricePerSquareMeter;
+  const drawerSidePrice = drawerSideSurfaceInSquareMeters * selectedDezenKorpusPrice;
 
   // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
