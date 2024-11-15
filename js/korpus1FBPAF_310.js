@@ -173,7 +173,7 @@ fetch("korpusi.json")
 
 
 function calculatePrice(height, width, depth) {
-  
+
   // Površine osnovnih stranica
   const bottomSurface = width * depth;
   const leftSurface = height * depth;
@@ -401,9 +401,9 @@ function addToCart(dezeni) {
    
                                                           
                                                           
-   const isCrniKorpus = crni.classList.contains('selektovan');
+   /*const isCrniKorpus = crni.classList.contains('selektovan');
    const isBeliKorpus = beli.classList.contains('selektovan');
-   const isSiviKorpus = sivi.classList.contains('selektovan');
+   const isSiviKorpus = sivi.classList.contains('selektovan');*/
    const isYesSelected = yesButton.classList.contains('selected');
    const isNoSelected = noButton.classList.contains('selected');
    const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
@@ -411,10 +411,10 @@ function addToCart(dezeni) {
 
 
 
-   if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
+   /*if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
        alert("Odaberite korpus");
        return;
-   }
+   }*/
 
    if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
@@ -557,7 +557,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    noButton.classList.remove('selected');
    enableKupiButtonIfAnswered();
  });
- beli.addEventListener('click', function () {
+ /*beli.addEventListener('click', function () {
    beli.classList.add('selektovan');
    crni.classList.remove('selektovan');
    sivi.classList.remove('selektovan');
@@ -574,7 +574,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    crni.classList.remove('selektovan');
    beli.classList.remove('selektovan');
    enableKupiButtonIfKorpus();
- });
+ });*/
 
  // Označavanje odgovora kada se klikne na dugme "Ne"
  noButton.addEventListener('click', function () {
@@ -591,13 +591,13 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
      kupiButton.setAttribute('disabled', 'disabled');
    }
  }
- function enableKupiButtonIfKorpus() {
+ /*function enableKupiButtonIfKorpus() {
    if (crni.classList.contains('selektovan') || beli.classList.contains('selektovan') || sivi.classList.contains('selektovan')) {
      kupiButton.removeAttribute('disabled');
    } else {
      kupiButton.setAttribute('disabled', 'disabled');
    }
- }
+ }*/
 
  leftHingesButton.addEventListener('click', () => {
  leftHingesButton.classList.add('selected');
