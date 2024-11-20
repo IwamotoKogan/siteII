@@ -439,7 +439,7 @@ if (!issarke) {
                /*pitanjaaaaa */
     const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
     // Provera odgovora korisnika
-const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';
+/*const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';*/
 
     /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
     pitanjaaaaa */
