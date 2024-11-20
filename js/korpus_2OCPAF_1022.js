@@ -375,9 +375,9 @@ function addToCart(dezeni) {
    
                                                           
                                                           
-   const isCrniKorpus = crni.classList.contains('selektovan');
+   /*const isCrniKorpus = crni.classList.contains('selektovan');
    const isBeliKorpus = beli.classList.contains('selektovan');
-   const isSiviKorpus = sivi.classList.contains('selektovan');
+   const isSiviKorpus = sivi.classList.contains('selektovan');*/
    const isYesSelected = yesButton.classList.contains('selected');
    const isNoSelected = noButton.classList.contains('selected');
    const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
