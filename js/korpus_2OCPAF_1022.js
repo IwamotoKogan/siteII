@@ -387,10 +387,10 @@ function addToCart(dezeni) {
 
 
 
-   if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
+   /*if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
        alert("Odaberite korpus");
        return;
-   }
+   }*/
 
    if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
