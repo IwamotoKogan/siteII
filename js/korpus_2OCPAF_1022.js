@@ -537,12 +537,12 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
  
 
  // Označavanje odgovora kada se klikne na dugme "Da"
- /*yesButton.addEventListener('click', function () {
+ yesButton.addEventListener('click', function () {
    yesButton.classList.add('selected');
    noButton.classList.remove('selected');
    enableKupiButtonIfAnswered();
  });
- beli.addEventListener('click', function () {
+ /*beli.addEventListener('click', function () {
    beli.classList.add('selektovan');
    crni.classList.remove('selektovan');
    sivi.classList.remove('selektovan');
