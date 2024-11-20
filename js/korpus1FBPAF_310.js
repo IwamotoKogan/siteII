@@ -227,7 +227,7 @@ function calculatePrice(height, width, depth) {
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 1220;
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2200; //2200 je dodata cena za 8 busenja x 210 + 8 spojnica x 40 + 2 nosaca x 100
 
   // Ukupna cena svih površina bez otpada
   let totalPriceWithoutWaste = basePrice + backSurfacePrice + totalDrawerPrice;
