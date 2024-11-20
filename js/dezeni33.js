@@ -2,7 +2,7 @@
  // Dodajte event listenere za dugmad "Da" i "Ne"
  /*const beli = document.getElementById('white-korpus');
  const crni = document.getElementById('black-korpus');
- const sivi = document.getElementById('gray-korpus');*//
+ const sivi = document.getElementById('gray-korpus');*/
  const yesButton = document.getElementById('yes-button');
  const noButton = document.getElementById('no-button');
  const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
