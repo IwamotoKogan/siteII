@@ -455,7 +455,7 @@ function addToCart(dezeni) {
                /*pitanjaaaaa */
     const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
     // Provera odgovora korisnika
-const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';
+/*const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';*/
 
     /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
     pitanjaaaaa */
@@ -476,7 +476,7 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            message: recommendedFrontDimensions.message,
            answer: answer,
            hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-           korpusOdgovor: korpusOdgovor,
+           /*korpusOdgovor: korpusOdgovor,*/
        itemName: itemName,
        itemImageSrc: itemImageSrc 
        };
