@@ -236,12 +236,8 @@ function calculatePrice(height, width, depth) {
   const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
   const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
-  // Cena šarki na osnovu izbora
-  const hingeType = document.getElementById('hinge-type').value;
-  const hingePrice = 2 * parseInt(hingeType);
-
   // Dodavanje kant trake na ukupnu cenu
-  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice + hingePrice;
+  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice ;
 
   // Dodavanje 10% za otpad na finalnu cenu
   const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
