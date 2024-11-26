@@ -364,7 +364,7 @@ function addToCart(dezeni) {
    const widthInput = document.getElementById('width');
    const depthInput = document.getElementById('depth');
 
- const hingeInput = document.getElementById('hinge-type');
+ /*const hingeInput = document.getElementById('hinge-type');*/
    const itemName = document.getElementById('imeElementa').textContent;
    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
    const selectedPatternTitle = document.getElementById('selected-pattern-title');
@@ -373,7 +373,7 @@ function addToCart(dezeni) {
    const width = parseInt(widthInput.value);
    const depth = parseInt(depthInput.value);
 
- const hinge = parseInt(hingeInput.value);
+ /*const hinge = parseInt(hingeInput.value);*/
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
@@ -412,15 +412,15 @@ function addToCart(dezeni) {
        return;
    }*/
 
-   if (!(isYesSelected || isNoSelected)) {
+   /*if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
        return;
-   }
+   }*/
 
-   if (!(isLeftHingeSelected || isRightHingeSelected)) {
+   /*if (!(isLeftHingeSelected || isRightHingeSelected)) {
        alert("Niste odabrali stranu šarki.");
        return;
-   }
+   }*/
 
    if (!selectedDezen) {
        alert("Niste odabrali dezen elementa.");
@@ -465,7 +465,7 @@ function addToCart(dezeni) {
            width: width,
            depth: depth,
            price: priceData.totalPrice,//
-              hinge: hinge,
+             /* hinge: hinge,*/
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
