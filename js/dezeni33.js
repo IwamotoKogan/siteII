@@ -464,7 +464,7 @@ if (!issarke) {
            message: recommendedFrontDimensions.message,
            answer: answer,
            hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-           korpusOdgovor: korpusOdgovor,
+          /* korpusOdgovor: korpusOdgovor,*/
        itemName: itemName,
        itemImageSrc: itemImageSrc 
        };
