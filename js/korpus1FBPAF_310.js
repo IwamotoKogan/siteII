@@ -149,7 +149,7 @@ const dezen3Price = 70;  // Beli mermer
 let selectedDezenKorpusPrice = 0;
 
 // Učitavanje dezena korpusa iz JSON fajla
-fetch("korpusi.json")
+fetch("dezeni.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
