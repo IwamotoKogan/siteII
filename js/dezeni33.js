@@ -210,7 +210,7 @@ function calculatePrice(height, width, depth, shelves) {
     let totalPriceWithoutWaste = basePrice + backSurfacePrice + frontSurfacePrice;
 
     // Računanje kant traka
-    const kantTrakaLength = (height * 4 + depth * 4 + width * 4) / 100; // Pretvaranje u metre
+    const kantTrakaLength = (height * 6 + depth * 4 + width * 6) / 100; // Pretvaranje u metre
     const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
     // Cena šarki na osnovu izbora
