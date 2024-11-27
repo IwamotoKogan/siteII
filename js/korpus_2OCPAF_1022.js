@@ -155,22 +155,18 @@ fetch("dezeni.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
-    selectedDezenKorpusPrice = data[0].price;
+    let selectedDezenKorpusPrice = data[0].price; // Podrazumevana cena
+    let selectedDezenKorpusName = data[0].name; // Podrazumevano ime dezena korpusa
 
-    // Kreiraj opcije za selekciju dezena u interfejsu (ako je potrebno)
+    // Kreiraj opcije za selekciju dezena u interfejsu
     const korpusSelect = document.getElementById("korpus-select");
     data.forEach(dezen => {
       const option = document.createElement("option");
-      option.value = dezen.price;
-      option.textContent = dezen.name;
+      option.value = dezen.price; // Cena
+      option.textContent = dezen.name; // Ime
+      option.setAttribute("data-name", dezen.name); // Dodaj ime kao atribut
       korpusSelect.appendChild(option);
     });
-
-    // Dodaj event listener za promenu selekcije
-    korpusSelect.addEventListener("change", (event) => {
-      selectedDezenKorpusPrice = parseFloat(event.target.value);
-    });
-  })
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
 
 function calculatePrice(height, width, depth, shelves) {
@@ -458,6 +454,7 @@ if (!issarke) {
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
+               korpusDezen: selectedDezenKorpusName,
            message: recommendedFrontDimensions.message,
            answer: answer,
            hinges: /*selectedHinges*/calculateHingers(height, width, depth),
