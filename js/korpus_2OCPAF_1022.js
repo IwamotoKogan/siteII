@@ -167,6 +167,7 @@ fetch("dezeni.json")
       option.setAttribute("data-name", dezen.name); // Dodaj ime kao atribut
       korpusSelect.appendChild(option);
     });
+  }) // Zatvaranje bloka `then`
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
 
 function calculatePrice(height, width, depth, shelves) {
