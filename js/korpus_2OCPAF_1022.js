@@ -149,25 +149,32 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 let selectedDezenKorpusPrice = 0;
+let selectedDezenKorpusName;  
 
 // Učitavanje dezena korpusa iz JSON fajla
 fetch("dezeni.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
-    let selectedDezenKorpusPrice = data[0].price; // Podrazumevana cena
-    let selectedDezenKorpusName = data[0].name; // Podrazumevano ime dezena korpusa
+    selectedDezenKorpusPrice = data[0].price; // Cena
+    selectedDezenKorpusName = data[0].name; // Ime dezena
 
     // Kreiraj opcije za selekciju dezena u interfejsu
     const korpusSelect = document.getElementById("korpus-select");
     data.forEach(dezen => {
       const option = document.createElement("option");
-      option.value = dezen.price; // Cena
-      option.textContent = dezen.name; // Ime
-      option.setAttribute("data-name", dezen.name); // Dodaj ime kao atribut
+      option.value = JSON.stringify({ price: dezen.price, name: dezen.name }); // Čuvamo ime i cenu kao objekat
+      option.textContent = dezen.name;
       korpusSelect.appendChild(option);
     });
-  }) // Zatvaranje bloka `then`
+
+    // Dodaj event listener za promenu selekcije
+    korpusSelect.addEventListener("change", (event) => {
+      const selectedValue = JSON.parse(event.target.value);
+      selectedDezenKorpusPrice = selectedValue.price;
+      selectedDezenKorpusName = selectedValue.name;
+    });
+  })
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
 
 function calculatePrice(height, width, depth, shelves) {
