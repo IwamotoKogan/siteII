@@ -179,7 +179,7 @@ detailsButtons.forEach(button => {
                 <p><strong>Broj polica:</strong> ${item.shelves}</p>
                 <p><strong>Vrsta sarki:</strong> ${item.hinge}</p>
                 <p><strong>Cena:</strong> ${item.price} dinara</p>
-                <p><strong>Dezen korpusa:</strong> ${item.korpusOdgovor} </p>
+                <p><strong>Dezen korpusa:</strong> ${item.korpusDezen} </p>
                 
                 <p><strong>Radna ploča površina:</strong> ${item.surface} </p>
                 <p><strong>Metraža radne ploče:</strong> ${item.orderedSquareMeters} </p>
