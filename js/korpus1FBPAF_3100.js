@@ -178,7 +178,6 @@ fetch("dezeni.json")
 
 
 function calculatePrice(height, width, depth) {
-
   // Površine osnovnih stranica
   const bottomSurface = width * depth;
   const leftSurface = height * depth;
@@ -198,8 +197,12 @@ function calculatePrice(height, width, depth) {
   // Računanje cene za osnovne strane bez otpada
   const basePrice = totalSurfaceInSquareMeters * selectedDezenKorpusPrice;
 
-  // Računanje površine fioka
-  const drawerWidth = width - 19.6; // width - 196 mm
+  // --- Klizači za fioke ---
+  const drawerSlider = document.getElementById('drawer-slider').value.split('|');
+  const drawerWidthAdjustment = parseFloat(drawerSlider[0]); // Širina klizača
+  const drawerSliderPrice = parseInt(drawerSlider[1]); // Cena klizača
+
+  const drawerWidth = width - drawerWidthAdjustment; // Promena širine fioke na osnovu izbora klizača
   const drawerHeight = (height / 2) - 5; // Visina fioke
   const drawerDepth = depth - 5; // Dubina fioke
 
@@ -225,7 +228,6 @@ function calculatePrice(height, width, depth) {
 
   // Dodavanje svih površina fioke ukupnoj površini i ceni
   totalSurface += drawerBackSurface + drawerSideSurface + drawerBottomSurface + drawerFrontSurface;
-  
 
   // Računanje kant traka za fioku
   const drawerKantLength = (drawerDepth * 4 + drawerHeight * 2 + drawerWidth * 2 + width * 2 + ((height / 2) * 2)) / 100; // Pretvaranje u metre
@@ -234,8 +236,9 @@ function calculatePrice(height, width, depth) {
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
   let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2200; //2200 je dodata cena za 8 busenja x 210 + 8 spojnica x 40 + 2 nosaca x 100
 
-  //cena za dve fioke
-  let dveFioke = totalDrawerPrice *2
+  // Cena za dve fioke, uključujući cenu klizača
+  let dveFioke = (totalDrawerPrice * 2) + drawerSliderPrice; // Dodaj cenu klizača za dve fioke
+
   // Ukupna cena svih površina bez otpada
   let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke;
 
@@ -243,25 +246,24 @@ function calculatePrice(height, width, depth) {
   const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
   const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
-
   // Dodavanje kant trake na ukupnu cenu
-  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice ;
+  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
   const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
 
   return {
-      totalPrice: finalPrice.toFixed(2),
-      totalSurface: totalSurface.toFixed(2),
-      totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
-      backSurfacePrice: backSurfacePrice.toFixed(2),
-
-      kantTrakaLength: kantTrakaLength.toFixed(2),
-      kantTrakaPrice: kantTrakaPrice.toFixed(2),
-      drawerKantLength: drawerKantLength.toFixed(2),
-      drawerKantPrice: drawerKantPrice.toFixed(2),
+    totalPrice: finalPrice.toFixed(2),
+    totalSurface: totalSurface.toFixed(2),
+    totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
+    backSurfacePrice: backSurfacePrice.toFixed(2),
+    kantTrakaLength: kantTrakaLength.toFixed(2),
+    kantTrakaPrice: kantTrakaPrice.toFixed(2),
+    drawerKantLength: drawerKantLength.toFixed(2),
+    drawerKantPrice: drawerKantPrice.toFixed(2),
   };
 }
+
 
 
 
