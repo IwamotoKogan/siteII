@@ -334,7 +334,7 @@ function calculate() {
 
 document.getElementById('calculate-btn').addEventListener('click', function() {
    calculate();
-   calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
+   /*calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));*/
 });
 
 
