@@ -147,26 +147,31 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 let selectedDezenKorpusPrice = 0;
+let selectedDezenKorpusName;  
+
 
 // Učitavanje dezena korpusa iz JSON fajla
-fetch("korpusi.json")
+fetch("dezeni.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
-    selectedDezenKorpusPrice = data[0].price;
+    selectedDezenKorpusPrice = data[0].price; // Cena
+    selectedDezenKorpusName = data[0].name; // Ime dezena
 
-    // Kreiraj opcije za selekciju dezena u interfejsu (ako je potrebno)
+    // Kreiraj opcije za selekciju dezena u interfejsu
     const korpusSelect = document.getElementById("korpus-select");
     data.forEach(dezen => {
       const option = document.createElement("option");
-      option.value = dezen.price;
+      option.value = JSON.stringify({ price: dezen.price, name: dezen.name }); // Čuvamo ime i cenu kao objekat
       option.textContent = dezen.name;
       korpusSelect.appendChild(option);
     });
 
     // Dodaj event listener za promenu selekcije
     korpusSelect.addEventListener("change", (event) => {
-      selectedDezenKorpusPrice = parseFloat(event.target.value);
+      const selectedValue = JSON.parse(event.target.value);
+      selectedDezenKorpusPrice = selectedValue.price;
+      selectedDezenKorpusName = selectedValue.name;
     });
   })
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
@@ -441,6 +446,7 @@ function addToCart(dezeni)
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
+              korpusDezen: selectedDezenKorpusName,
            message: recommendedFrontDimensions.message,
            /*answer: answer,*/
            
