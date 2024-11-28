@@ -147,7 +147,7 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 let selectedDezenKorpusPrice = 0;
-let selectedDezenKorpusName;  
+let selectedDezenKorpusName = 0; 
 
 
 // Učitavanje dezena korpusa iz JSON fajla
