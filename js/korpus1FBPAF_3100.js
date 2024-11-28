@@ -361,7 +361,7 @@ function addToCart(dezeni)
    const width = parseInt(widthInput.value);
    const depth = parseInt(depthInput.value);
 
- const hinge = parseInt(hingeInput.value);
+ /*const hinge = parseInt(hingeInput.value);*/
 
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
