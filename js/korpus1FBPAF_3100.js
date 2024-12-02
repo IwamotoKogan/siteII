@@ -202,7 +202,7 @@ function calculatePrice(height, width, depth) {
   const drawerWidthAdjustment = parseFloat(drawerSlider[0]); // Širina klizača
   const drawerSliderPrice = parseInt(drawerSlider[1]); // Cena klizača
 
-  const drawerWidth = width - drawerWidthAdjustment; // Promena širine fioke na osnovu izbora klizača
+  const drawerWidth = width - drawerWidthAdjustment - 72; // Promena širine fioke na osnovu izbora klizača
   const drawerHeight = (height / 2) - 5; // Visina fioke
   const drawerDepth = depth - 5; // Dubina fioke
 
