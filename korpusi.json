@@ -1,22 +1,37 @@
 [
   {
     "id": 1,
-    "name": "Crni",
-    "price": 2250
+    "name": "01 00000 18 - 0 DONET H1715",
+    "price": 3990
   },
   {
     "id": 2,
-    "name": "Beli",
-    "price": 2545
+    "name": "01 00000 18 - COCONUT FLAM. IMPERIJAL",
+    "price": 1499
   },
   {
     "id": 3,
-    "name": "Sivi",
-    "price": 2545
+    "name": "01 0011FH 18 - MANDARIN ",
+    "price": 2985
   },
   {
     "id": 4,
-    "name": "Drvooooooo",
-    "price": 1990
+    "name": "01 0013FH 18 - MINOLA ZALIHE",
+    "price": 2985
+  },
+  {
+    "id": 4,
+    "name": "01 0013FH 18 - MINOLA ZALIHE",
+    "price": 2985
+  },
+  {
+    "id": 5,
+    "name": "01 0019FH 18 - ROSALIE  ZALIHE",
+    "price": 2985
+  },
+  {
+    "id": 6,
+    "name": "01 0026GA 18 - PRADO ALU GRAY",
+    "price": 3005
   }
 ]
