@@ -1,190 +1,30 @@
 [
      {
         "id": 1,
-        "name": "0026 Prado Alu Gray",
+        "name": "01 00000 18 - 0 UNIVER ZA PROBU SIFRA",
         "image": "dezeni/0026 Prado Alu Gray.jpg",
-        "price": 3500,
+        "price": 2120,
         "kant": 175
     },
     {
         "id": 2,
-        "name": "0027 Prado",
+        "name": "01 00000 18 - COCONUT FLAM. IMPERIJAL",
         "image": "dezeni/0027 Prado.jpg",
-        "price": 3500,
+        "price": 1499,
         "kant": 160
     },
     {
         "id": 3,
-        "name": "0328 Brushed Aluminium",
+        "name": "01 0011FH 18 - MANDARIN ",
         "image": "dezeni/0328 Brushed Aluminium.jpg",
-         "price" : 300
+         "price" : 2985,
+         "kant": 160
     },
     {
         "id": 4,
-        "name": "0426 Loft",
+        "name": "01 0013FH 18 - MINOLA ZALIHE",
         "image": "dezeni/0426 Loft.jpg",
-        "price" : 120
-    },
-    {
-        "id": 5,
-        "name": "0427 Skyline",
-        "image": "dezeni/0427 Skyline.jpg",
-        "price" : 130
-    },
-    {
-        "id": 6,
-        "name": "0428 Cave",
-        "image": "dezeni/0428 Cave.jpg",
-        "price" : 140
-    },
-    {
-        "id": 7,
-        "name": "0498 Nexus",
-        "image": "dezeni/0498 Nexus.jpg",
-        "price" : 150
-    },
-    {
-        "id": 8,
-        "name": "0502 Samba",
-        "image": "dezeni/0502 Samba.jpg",
-        "price" : 160
-    },
-    {
-        "id": 9,
-        "name": "0503 Eos",
-        "image": "dezeni/0503 Eos.jpg",
-        "price" : 170
-    },
-    {
-        "id": 10,
-        "name": "0528 Saloon",
-        "image": "dezeni/0528 Saloon.jpg",
-        "price" : 180
-    },
-    {
-        "id": 11,
-        "name": "0540 Aristo",
-        "image": "dezeni/0540 Aristo.jpg",
-        "price" : 190
-    },
-    {
-        "id": 12,
-        "name": "0564 Kolibri",
-        "image": "dezeni/0564 Kolibri.jpg",
-        "price" : 200
-    },
-    {
-        "id": 13,
-        "name": "0565 Polaris",
-        "image": "dezeni/0565 Polaris.jpg",
-        "price" : 200
-    },
-    {
-        "id": 14,
-        "name": "0566 Kara",
-        "image": "dezeni/0566 Kara.jpg",
-        "price" : 110
-    },
-    {
-        "id": 15,
-        "name": "0569 Domus",
-        "image": "dezeni/0569 Domus.jpg",
-        "price" : 110
-    },
-    {
-        "id": 16,
-        "name": "0576 Levi",
-        "image": "dezeni/0576 Levi.jpg",
-        "price" : 120
-    },
-    {
-        "id": 17,
-        "name": "0581 Lentos",
-        "image": "dezeni/0581 Lentos.jpg",
-        "price" : 130
-    },
-    {
-        "id": 18,
-        "name": "0670 Olivin",
-        "image": "dezeni/0670 Olivin.jpg",
-        "price" : 140
-    },
-    {
-        "id": 19,
-        "name": "0670 Olivin2",
-        "image": "dezeni/0670 Olivin2.jpg",
-        "price" : 150
-    },
-    {
-        "id": 20,
-        "name": "0794 Patina Bronze",
-        "image": "dezeni/0794 Patina Bronze.jpg",
-        "price" : 160
-    },
-    {
-        "id": 21,
-        "name": "0800 Crossroad",
-        "image": "dezeni/0800 Crossroad.jpg",
-        "price" : 170
-    },
-    {
-        "id": 22,
-        "name": "0833 Rezzato",
-        "image": "dezeni/0833 Rezzato.jpg",
-        "price" : 180
-    },
-    {
-        "id": 23,
-        "name": "0834 Paros",
-        "image": "dezeni/0834 Paros.jpg",
-        "price" : 190
-    },
-    {
-        "id": 24,
-        "name": "0836 Lagos",
-        "image": "dezeni/0836 Lagos.jpg",
-        "price" : 220
-    },
-    {
-        "id": 25,
-        "name": "1300 Aluminium",
-        "image": "dezeni/1300 Aluminium.jpg",
-        "price" : 210
-    },
-    {
-        "id": 26,
-        "name": "2325 Gypsum Bianco",
-        "image": "dezeni/2325 Gypsum Bianco.jpg",
-        "price" : 150
-    },
-    {
-        "id": 27,
-        "name": "3396 Sorano",
-        "image": "dezeni/3396 Sorano.jpg",
-        "price" : 100
-    },
-    {
-        "id": 28,
-        "name": "4049 Rolling Stones",
-        "image": "dezeni/4049 Rolling Stones.jpg",
-        "price" : 190
-    },
-    {
-        "id": 29,
-        "name": "M001 Natural Alu",
-        "image": "dezeni/M001 Natural Alu.jpg",
-        "price" : 120
-    },
-    {
-        "id": 30,
-        "name": "M002 Alu Topmatt",
-        "image": "dezeni/M002 Alu Topmatt.jpg",
-        "price" : 100
-    },
-    {
-        "id": 31,
-        "name": "M003 Alu Stainless Steel Nuance",
-        "image": "dezeni/M003 Alu Stainless Steel Nuance.jpg",
-        "price" : 150
+        "price" : 2985,
+         "kant": 175
     }
 ]
