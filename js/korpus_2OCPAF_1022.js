@@ -152,7 +152,7 @@ let selectedDezenKorpusPrice = 0;
 let selectedDezenKorpusName;  
 
 // Učitavanje dezena korpusa iz JSON fajla
-fetch("dezeni.json")
+fetch("korpusi.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
@@ -193,7 +193,7 @@ function calculatePrice(height, width, depth, shelves) {
     // Zadnja strana LESONIT
     const backSurface = width * height;
     const backSurfaceInSquareMeters = backSurface / 10000;
-    const backSurfacePrice = backSurfaceInSquareMeters * 1550;
+    const backSurfacePrice = backSurfaceInSquareMeters * 1350;
 
     // Prednja strana
     const frontSurface = width * height;
