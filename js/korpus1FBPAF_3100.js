@@ -189,7 +189,7 @@ function calculatePrice(height, width, depth) {
   // Zadnja strana
   const backSurface = width * height;
   const backSurfaceInSquareMeters = backSurface / 10000;
-  const backSurfacePrice = backSurfaceInSquareMeters * 1550;
+  const backSurfacePrice = backSurfaceInSquareMeters * 1350;
 
   // Pretvaranje ukupne površine u m²
   const totalSurfaceInSquareMeters = totalSurface / 10000;
@@ -219,7 +219,7 @@ function calculatePrice(height, width, depth) {
   // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
   const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
-  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1550;
+  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1350;
 
   // Površina prednje stranice (front) fioke
   const drawerFrontSurface = width * (height / 2);
