@@ -189,7 +189,7 @@ function calculatePrice(height, width, depth) {
   // Zadnja strana
   const backSurface = width * height;
   const backSurfaceInSquareMeters = backSurface / 10000;
-  const backSurfacePrice = backSurfaceInSquareMeters * 1350;
+  const backSurfacePrice = backSurfaceInSquareMeters * 1150;
 
   // Pretvaranje ukupne površine u m²
   const totalSurfaceInSquareMeters = totalSurface / 10000;
@@ -219,7 +219,7 @@ function calculatePrice(height, width, depth) {
   // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
   const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
-  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1350;
+  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1150;
 
   // Površina prednje stranice (front) fioke
   const drawerFrontSurface = width * (height / 2);
@@ -234,7 +234,7 @@ function calculatePrice(height, width, depth) {
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2160; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 1080; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
 
   // Cena za dve fioke, uključujući cenu klizača
   let dveFioke = (totalDrawerPrice * 2) + drawerSliderPrice; // Dodaj cenu klizača za dve fioke
