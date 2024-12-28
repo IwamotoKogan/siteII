@@ -1,28 +1,28 @@
 [
      {
         "id": 1,
-        "name": "01 00000 18 - 0 UNIVER ZA PROBU SIFRA",
+        "name": "01 00000 18 - 0 UNIVER ZA PROBU SIFRA (2120)",
         "image": "dezeni/0026 Prado Alu Gray.jpg",
         "price": 2120,
         "kant": 175
     },
     {
         "id": 2,
-        "name": "01 00000 18 - COCONUT FLAM. IMPERIJAL",
+        "name": "01 00000 18 - COCONUT FLAM. IMPERIJAL (1499)",
         "image": "dezeni/0027 Prado.jpg",
         "price": 1499,
         "kant": 160
     },
     {
         "id": 3,
-        "name": "01 0011FH 18 - MANDARIN ",
+        "name": "01 0011FH 18 - MANDARIN (2985)",
         "image": "dezeni/0328 Brushed Aluminium.jpg",
          "price" : 2985,
          "kant": 160
     },
     {
         "id": 4,
-        "name": "01 0013FH 18 - MINOLA ZALIHE",
+        "name": "01 0013FH 18 - MINOLA ZALIHE (2985)",
         "image": "dezeni/0426 Loft.jpg",
         "price" : 2985,
          "kant": 175
