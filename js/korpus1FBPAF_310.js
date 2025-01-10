@@ -147,7 +147,8 @@ const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
 let selectedDezenKorpusPrice = 0;
-let selectedDezenKorpusName;  
+let selectedDezenKorpusName = 0; 
+
 
 // Učitavanje dezena korpusa iz JSON fajla
 fetch("dezeni.json")
@@ -177,7 +178,6 @@ fetch("dezeni.json")
 
 
 function calculatePrice(height, width, depth) {
-
   // Površine osnovnih stranica
   const bottomSurface = width * depth;
   const leftSurface = height * depth;
@@ -189,7 +189,7 @@ function calculatePrice(height, width, depth) {
   // Zadnja strana
   const backSurface = width * height;
   const backSurfaceInSquareMeters = backSurface / 10000;
-  const backSurfacePrice = backSurfaceInSquareMeters * 1550;
+  const backSurfacePrice = backSurfaceInSquareMeters * 1150;
 
   // Pretvaranje ukupne površine u m²
   const totalSurfaceInSquareMeters = totalSurface / 10000;
@@ -197,8 +197,12 @@ function calculatePrice(height, width, depth) {
   // Računanje cene za osnovne strane bez otpada
   const basePrice = totalSurfaceInSquareMeters * selectedDezenKorpusPrice;
 
-  // Računanje površine fioka
-  const drawerWidth = width - 19.6; // width - 196 mm
+  // --- Klizači za fioke ---
+  const drawerSlider = document.getElementById('drawer-slider').value.split('|');
+  const drawerWidthAdjustment = parseFloat(drawerSlider[0]); // Širina klizača
+  const drawerSliderPrice = parseInt(drawerSlider[1]); // Cena klizača
+
+  const drawerWidth = width - drawerWidthAdjustment - 7.2; // Promena širine fioke na osnovu izbora klizača
   const drawerHeight = (height / 2) - 5; // Visina fioke
   const drawerDepth = depth - 5; // Dubina fioke
 
@@ -215,7 +219,7 @@ function calculatePrice(height, width, depth) {
   // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
   const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
-  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1550;
+  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1150;
 
   // Površina prednje stranice (front) fioke
   const drawerFrontSurface = width * (height / 2);
@@ -224,40 +228,42 @@ function calculatePrice(height, width, depth) {
 
   // Dodavanje svih površina fioke ukupnoj površini i ceni
   totalSurface += drawerBackSurface + drawerSideSurface + drawerBottomSurface + drawerFrontSurface;
-  
 
   // Računanje kant traka za fioku
-  const drawerKantLength = (drawerDepth * 4 + drawerHeight * 2 + drawerWidth * 2 + width * (height / 2)) / 100; // Pretvaranje u metre
+  const drawerKantLength = (drawerDepth * 4 + drawerHeight * 2 + drawerWidth * 2 + width * 2 + ((height / 2) * 2)) / 100; // Pretvaranje u metre
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2200; //2200 je dodata cena za 8 busenja x 210 + 8 spojnica x 40 + 2 nosaca x 100
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2160; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
+
+  // Cena za dve fioke, uključujući cenu klizača
+  let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
 
   // Ukupna cena svih površina bez otpada
-  let totalPriceWithoutWaste = basePrice + backSurfacePrice + totalDrawerPrice;
+  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke;
 
   // Računanje kant traka za ceo element
-  const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
+  const kantTrakaLength = (height * 2 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
   const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
   // Dodavanje kant trake na ukupnu cenu
-  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice ;
+  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
-  const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
+  const finalPrice = totalPriceWithKantTraka * 1.15 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
 
   return {
-      totalPrice: finalPrice.toFixed(2),
-      totalSurface: totalSurface.toFixed(2),
-      totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
-      backSurfacePrice: backSurfacePrice.toFixed(2),
-
-      kantTrakaLength: kantTrakaLength.toFixed(2),
-      kantTrakaPrice: kantTrakaPrice.toFixed(2),
-      drawerKantLength: drawerKantLength.toFixed(2),
-      drawerKantPrice: drawerKantPrice.toFixed(2),
+    totalPrice: finalPrice.toFixed(2),
+    totalSurface: totalSurface.toFixed(2),
+    totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
+    backSurfacePrice: backSurfacePrice.toFixed(2),
+    kantTrakaLength: kantTrakaLength.toFixed(2),
+    kantTrakaPrice: kantTrakaPrice.toFixed(2),
+    drawerKantLength: drawerKantLength.toFixed(2),
+    drawerKantPrice: drawerKantPrice.toFixed(2),
   };
 }
+
 
 
 
@@ -327,31 +333,10 @@ function calculate() {
              </div>` ;
 }
 
-/*document.getElementById('calculate-btn').addEventListener('click', calculate);*/
-function calculateHingers(height, width, depth) {
-   let message2;
-   const porukaSarkeDiv = document.querySelector('.poruka-sarke');
 
-   if (width <= 149) {
-       // Ako je širina manja ili jednaka 149cm
-       message2 = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
-       
-   } else {
-       // Ako je širina veća od 149cm
-       leftHingesButton.classList.add('selected');
-       rightHingesButton.classList.add('selected');
-       message2 = 'i leva str i desna str';
-   porukaSarkeDiv.style.display = 'block';
-   porukaSarkeDiv.innerText = "Šarkeeee će biti kreirane i sa leve i sa desne strane zato što širina elementa prelazi 150cm.";
-   }
-
-   console.log('Poruka za šarke:', message2);
-
-   return message2;
-}
 document.getElementById('calculate-btn').addEventListener('click', function() {
    calculate();
-   calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));
+   /*calculateHingers(parseInt(document.getElementById('height').value), parseInt(document.getElementById('width').value), parseInt(document.getElementById('depth').value));*/
 });
 
 
@@ -363,12 +348,13 @@ let kuhinjaData = {
    price: 0
 };
 
-function addToCart(dezeni) {
+function addToCart(dezeni) 
+{
    const heightInput = document.getElementById('height');
    const widthInput = document.getElementById('width');
    const depthInput = document.getElementById('depth');
 
- /*const hingeInput = document.getElementById('hinge-type');*/
+ const hingeInput = document.getElementById('hinge-type');
    const itemName = document.getElementById('imeElementa').textContent;
    const itemImageSrc = document.getElementById('slikaKorpusa').getAttribute('src');
    const selectedPatternTitle = document.getElementById('selected-pattern-title');
@@ -404,10 +390,7 @@ function addToCart(dezeni) {
    /*const isCrniKorpus = crni.classList.contains('selektovan');
    const isBeliKorpus = beli.classList.contains('selektovan');
    const isSiviKorpus = sivi.classList.contains('selektovan');*/
-   const isYesSelected = yesButton.classList.contains('selected');
-   const isNoSelected = noButton.classList.contains('selected');
-   const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
-   const isRightHingeSelected = rightHingesButton.classList.contains('selected');
+   
 
 
 
@@ -416,15 +399,7 @@ function addToCart(dezeni) {
        return;
    }*/
 
-   /*if (!(isYesSelected || isNoSelected)) {
-       alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
-       return;
-   }*/
-
-   /*if (!(isLeftHingeSelected || isRightHingeSelected)) {
-       alert("Niste odabrali stranu šarki.");
-       return;
-   }*/
+   
 
    if (!selectedDezen) {
        alert("Niste odabrali dezen elementa.");
@@ -453,7 +428,7 @@ function addToCart(dezeni) {
                recommendedFrontDimensions.message = message;
 
                /*pitanjaaaaa */
-    const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
+  
     // Provera odgovora korisnika
 /*const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';*/
 
@@ -469,14 +444,14 @@ function addToCart(dezeni) {
            width: width,
            depth: depth,
            price: priceData.totalPrice,//
-             /* hinge: hinge,*/
+             
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
               korpusDezen: selectedDezenKorpusName,
            message: recommendedFrontDimensions.message,
-           answer: answer,
-           hinges: /*selectedHinges*/calculateHingers(height, width, depth),
+           /*answer: answer,*/
+           
            /*korpusOdgovor: korpusOdgovor,*/
        itemName: itemName,
        itemImageSrc: itemImageSrc 
@@ -553,11 +528,11 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
  
 
  // Označavanje odgovora kada se klikne na dugme "Da"
- yesButton.addEventListener('click', function () {
+ /*yesButton.addEventListener('click', function () {
    yesButton.classList.add('selected');
    noButton.classList.remove('selected');
    enableKupiButtonIfAnswered();
- });
+ });*/
  /*beli.addEventListener('click', function () {
    beli.classList.add('selektovan');
    crni.classList.remove('selektovan');
@@ -578,12 +553,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
  });*/
 
  // Označavanje odgovora kada se klikne na dugme "Ne"
- noButton.addEventListener('click', function () {
-   noButton.classList.add('selected');
-   yesButton.classList.remove('selected');
-   enableKupiButtonIfAnswered();
- });
-
+ 
  // Funkcija za omogućavanje dugmeta "Kupi" ako je odgovoreno na pitanje
  function enableKupiButtonIfAnswered() {
    if (yesButton.classList.contains('selected') || noButton.classList.contains('selected')) {
@@ -600,15 +570,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    }
  }*/
 
- leftHingesButton.addEventListener('click', () => {
- leftHingesButton.classList.add('selected');
- rightHingesButton.classList.remove('selected');
-});
-
-rightHingesButton.addEventListener('click', () => {
- rightHingesButton.classList.add('selected');
- leftHingesButton.classList.remove('selected');
-});
+ 
 
 
 /*PITANJAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
