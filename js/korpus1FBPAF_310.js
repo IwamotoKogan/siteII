@@ -250,7 +250,7 @@ function calculatePrice(height, width, depth) {
   const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
-  const finalPrice = totalPriceWithKantTraka * 1.15 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
+  const finalPrice = totalPriceWithKantTraka * 1.13 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
 
   return {
     totalPrice: finalPrice.toFixed(2),
