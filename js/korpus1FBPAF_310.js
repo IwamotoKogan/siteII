@@ -263,6 +263,15 @@ function calculatePrice(height, width, depth) {
 
   // Loguj ukupnu površinu u konzolu
   console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
+ console.log("zadnja str lesonit korpus cena", backSurfacePrice.toFixed(2));
+ console.log("korpus cena", basePrice.toFixed(2));
+ console.log("zadnja str fioka",(drawerBackPrice * 2).toFixed(2));
+ console.log("leva i desna str str fioka",(drawerSidePrice * 2).toFixed(2));
+ console.log("dno fioka",(drawerBottomPrice * 2).toFixed(2));
+ console.log("prednja str fioka",(drawerFrontPrice * 2).toFixed(2));
+ console.log("kant trake fioke ",(drawerKantPrice * 2).toFixed(2));
+ console.log("kant trake korpus", kantTrakaPrice.toFixed(2));
+ 
   return {
     totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
