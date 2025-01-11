@@ -252,6 +252,17 @@ function calculatePrice(height, width, depth) {
   // Dodavanje 10% za otpad na finalnu cenu
   const finalPrice = totalPriceWithKantTraka * 1.10 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
 
+
+ // Saberi ukupnu površinu fioka (po dve svake komponente)
+  const totalDrawerSurfaceInSquareMeters =
+    2 * (drawerBackSurfaceInSquareMeters + drawerSideSurfaceInSquareMeters + drawerFrontSurfaceInSquareMeters);
+
+  // Ukupna površina svih delova (u m²)
+  const ukupnaPovrsinaUMetrima =
+    totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
+
+  // Loguj ukupnu površinu u konzolu
+  console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
   return {
     totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
