@@ -271,7 +271,7 @@ function calculatePrice(height, width, depth) {
  console.log("dno fioka",(drawerBottomPrice * 2).toFixed(2));
  console.log("prednja str fioka",(drawerFrontPrice * 2).toFixed(2));
  console.log("kant trake fioke cene ",(drawerKantPrice * 2).toFixed(2));
- console.log("kant trake korpus", kantTrakaPrice.toFixed(2));
+ console.log("kant trake korpus cena", kantTrakaPrice.toFixed(2));
  console.log("kant trake fioke metraza ",(kantTrakaLength + (drawerKantLength * 2)));
  console.log("povrsina lesonit",(drawerBottomSurfaceInSquareMeters + backSurfaceInSquareMeters));
  
