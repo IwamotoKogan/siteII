@@ -240,7 +240,7 @@ function calculatePrice(height, width, depth) {
   let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
 
   // Ukupna cena svih površina bez otpada
-  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; /
+  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; 
 
   // Računanje kant traka za ceo element
   const kantTrakaLength = (height * 2 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
