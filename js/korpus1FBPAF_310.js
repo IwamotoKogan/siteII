@@ -234,10 +234,10 @@ function calculatePrice(height, width, depth) {
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 2160; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 1080; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
 
   // Cena za dve fioke, uključujući cenu klizača
-  let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
+  let dveFioke = (totalDrawerPrice * 2) + drawerSliderPrice; // Dodaj cenu klizača za dve fioke
 
   // Ukupna cena svih površina bez otpada
   let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke;
@@ -250,7 +250,7 @@ function calculatePrice(height, width, depth) {
   const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
-  const finalPrice = totalPriceWithKantTraka * 1.13 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
+  const finalPrice = totalPriceWithKantTraka * 1.10 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
 
   return {
     totalPrice: finalPrice.toFixed(2),
