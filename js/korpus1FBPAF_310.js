@@ -234,13 +234,13 @@ function calculatePrice(height, width, depth) {
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 1080; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice ; 
 
   // Cena za dve fioke, uključujući cenu klizača
   let dveFioke = (totalDrawerPrice * 2) + drawerSliderPrice; // Dodaj cenu klizača za dve fioke
 
   // Ukupna cena svih površina bez otpada
-  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke;
+  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke  + 2160; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
 
   // Računanje kant traka za ceo element
   const kantTrakaLength = (height * 2 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
