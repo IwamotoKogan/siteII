@@ -238,12 +238,7 @@ function calculatePrice(height, width, depth) {
 
   // Cena za dve fioke, uključujući cenu klizača
   let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
-  let P_fioke = (drawerBackPrice + drawerSidePrice  + drawerFrontPrice) * 2
-  let P_fioke_porez = P_fioke * 1.13
-  let P_lesonit = (backSurfacePrice + drawerBottomPrice) * 1.32
-  let P_korpus = basePrice * 1.13
-  let P_kant = (kantTrakaPrice + drawerKantPrice) * 1.10
-  let P_uni_kant = P_fioke_porez + P_korpus + P_kant
+ 
   // Ukupna cena svih površina bez otpada
   let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; 
 
@@ -265,7 +260,12 @@ function calculatePrice(height, width, depth) {
   // Ukupna površina svih delova (u m²)
   const ukupnaPovrsinaUMetrima =
     totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
-
+ let P_fioke = (drawerBackPrice + drawerSidePrice  + drawerFrontPrice) * 2
+  let P_fioke_porez = P_fioke * 1.13
+  let P_lesonit = (backSurfacePrice + drawerBottomPrice) * 1.32
+  let P_korpus = basePrice * 1.13
+  let P_kant = (kantTrakaPrice + drawerKantPrice) * 1.10
+  let P_uni_kant = P_fioke_porez + P_korpus + P_kant
   // Loguj ukupnu površinu u konzolu
   console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
   console.log("kant trake metraza ",((drawerKantLength * 2) + kantTrakaLength));
