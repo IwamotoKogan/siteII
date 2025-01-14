@@ -283,7 +283,7 @@ let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
  console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
  console.log("ukupna cena  ",(P_uni_kant));
  console.log("ukupna cena lesonit ",(P_lesonit));
-  console.log("ukupna cena lesonit ",(P_klizaci));
+  console.log("klizaci cena ",(P_klizaci));
  
   return {
     totalPrice: finalPrice.toFixed(2),
