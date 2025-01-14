@@ -262,7 +262,7 @@ function calculatePrice(height, width, depth) {
     totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
  let P_fioke = (drawerBackPrice + drawerSidePrice  + drawerFrontPrice) * 2
   let P_fioke_porez = P_fioke * 1.13
-  let P_lesonit = (backSurfacePrice + drawerBottomPrice) * 1.32
+let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
   let P_korpus = basePrice * 1.13
   let P_kant = (kantTrakaPrice + (drawerKantPrice * 2)) * 1.10
   let P_uni_kant = P_fioke_porez + P_korpus + P_kant
