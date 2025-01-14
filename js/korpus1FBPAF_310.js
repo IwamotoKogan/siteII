@@ -274,6 +274,7 @@ function calculatePrice(height, width, depth) {
  console.log("kant trake korpus cena", kantTrakaPrice.toFixed(2));
  console.log("kant trake fioke metraza ",(kantTrakaLength + (drawerKantLength * 2)));
  console.log("povrsina lesonit",((drawerBottomSurfaceInSquareMeters * 2) + backSurfaceInSquareMeters));
+ console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
  
   return {
     totalPrice: finalPrice.toFixed(2),
