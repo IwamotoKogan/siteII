@@ -251,7 +251,7 @@ function calculatePrice(height, width, depth) {
 
   // Dodavanje 10% za otpad na finalnu cenu
   /*const finalPrice = totalPriceWithKantTraka * 1.13 + 1310 + 2160; //1310 4 sponice x 40 + 5 busenja x 230 /2160 je dodata cena za 8 busenja x 230 + 8 spojnica x 40*/
- const finalPrice = P_uni_kant + P_klizaci + P_lesonit + 800 + 2990;
+ 
 
  // Saberi ukupnu površinu fioka (po dve svake komponente)
   const totalDrawerSurfaceInSquareMeters =
@@ -284,7 +284,7 @@ let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
  console.log("ukupna cena  ",(P_uni_kant));
  console.log("ukupna cena lesonit ",(P_lesonit));
   console.log("klizaci cena ",(P_klizaci));
- 
+ const finalPrice = P_uni_kant + P_klizaci + P_lesonit + 800 + 2990;
   return {
     totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
