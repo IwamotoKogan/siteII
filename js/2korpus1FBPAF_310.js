@@ -266,6 +266,7 @@ let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
   let P_korpus = basePrice * 1.13
   let P_kant = (kantTrakaPrice + (drawerKantPrice * 2)) * 1.10
   let P_uni_kant = P_fioke_porez + P_korpus + P_kant
+  let P_klizaci = drawerSliderPrice * 2
   // Loguj ukupnu površinu u konzolu
   console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
   console.log("kant trake metraza ",((drawerKantLength * 2) + kantTrakaLength));
@@ -282,6 +283,7 @@ let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
  console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
  console.log("ukupna cena  ",(P_uni_kant));
  console.log("ukupna cena lesonit ",(P_lesonit));
+  console.log("ukupna cena lesonit ",(P_klizaci));
  
   return {
     totalPrice: finalPrice.toFixed(2),
