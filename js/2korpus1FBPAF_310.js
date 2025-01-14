@@ -264,7 +264,7 @@ function calculatePrice(height, width, depth) {
   let P_fioke_porez = P_fioke * 1.13
   let P_lesonit = (backSurfacePrice + drawerBottomPrice) * 1.32
   let P_korpus = basePrice * 1.13
-  let P_kant = (kantTrakaPrice + drawerKantPrice) * 1.10
+  let P_kant = (kantTrakaPrice + (drawerKantPrice * 2)) * 1.10
   let P_uni_kant = P_fioke_porez + P_korpus + P_kant
   // Loguj ukupnu površinu u konzolu
   console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
