@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
        });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const kantSelect = document.getElementById("drawer-slider");
+    const kantSelect = document.getElementById("odabirKanta");
     const imeKantaEl = document.getElementById("ime-kanta");
     const cenaKantaEl = document.getElementById("cena-kanta");
 
