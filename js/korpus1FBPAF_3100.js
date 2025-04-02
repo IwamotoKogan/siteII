@@ -10,10 +10,9 @@
 const rightHingesButton = document.getElementById('right-hinges');
 /*dodato*/
 let selectedDezenPrice = 0;
-let dezeni = [];
 let selectedDezenKant = 0;
-let imeKanta = "Nijedna";
-let kantTrake = [];
+let dezeni = [];
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                    // Pronađite dezen sa datim nazivom u JSON-u
                    selectedDezen = dezeni.find(dezen => dezen.name === patternName);
                    selectedDezenPrice = selectedDezen.price;
-                   
+                   selectedDezenKant = selectedDezen.kant;
                });
            });
 
@@ -141,47 +140,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
            
        });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const kantSelect = document.getElementById("odabirKanta");
-    const imeKantaEl = document.getElementById("ime-kanta");
-    const cenaKantaEl = document.getElementById("cena-kanta");
-
-    // Dohvatanje JSON podataka o kant trakama
-    fetch("kantTrake.json")
-        .then(response => response.json())
-        .then(loadedKantTrake => {
-            kantTrake = loadedKantTrake;
-
-            // Generisanje HTML opcija za select element
-            kantSelect.innerHTML = kantTrake
-                .map(kant => `<option value="${kant.kant}" data-name="${kant.name}">${kant.name} (${kant.kant} din)</option>`)
-                .join("");
-
-            // Postavljamo podrazumevanu vrednost (prva opcija u listi)
-            if (kantTrake.length > 0) {
-                kantSelect.selectedIndex = 0;
-                selectedDezenKant = kantTrake[0].kant;
-                imeKanta = kantTrake[0].name;
-                imeKantaEl.textContent = imeKanta;
-                cenaKantaEl.textContent = selectedDezenKant;
-            }
-        })
-        .catch(error => {
-            console.error("Greška pri dohvatanju kant traka: " + error);
-        });
-
-    // Event listener za promenu odabira kant trake
-    kantSelect.addEventListener("change", function () {
-        const selectedOption = kantSelect.options[kantSelect.selectedIndex];
-        selectedDezenKant = selectedOption.value;
-        imeKanta = selectedOption.getAttribute("data-name");
-
-        // Ažuriranje prikaza u HTML-u
-        imeKantaEl.textContent = imeKanta;
-        cenaKantaEl.textContent = selectedDezenKant;
-    });
-});
 
 // Funkcija za izračunavanje cene na osnovu dimenzija
 const dezen1Price = 0;   // Osnovni dezen
