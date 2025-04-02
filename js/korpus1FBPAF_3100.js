@@ -10,9 +10,10 @@
 const rightHingesButton = document.getElementById('right-hinges');
 /*dodato*/
 let selectedDezenPrice = 0;
-let selectedDezenKant = 0;
 let dezeni = [];
-
+let selectedDezenKant = 0;
+let imeKanta = "Nijedna";
+let kantTrake = [];
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                    // Pronađite dezen sa datim nazivom u JSON-u
                    selectedDezen = dezeni.find(dezen => dezen.name === patternName);
                    selectedDezenPrice = selectedDezen.price;
-                   selectedDezenKant = selectedDezen.kant;
+                   
                });
            });
 
@@ -140,6 +141,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
            
        });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const kantSelect = document.getElementById("drawer-slider");
+    const imeKantaEl = document.getElementById("ime-kanta");
+    const cenaKantaEl = document.getElementById("cena-kanta");
+
+    // Dohvatanje JSON podataka o kant trakama
+    fetch("kantTrake.json")
+        .then(response => response.json())
+        .then(loadedKantTrake => {
+            kantTrake = loadedKantTrake;
+
+            // Generisanje HTML opcija za select element
+            kantSelect.innerHTML = kantTrake
+                .map(kant => `<option value="${kant.kant}" data-name="${kant.name}">${kant.name} (${kant.kant} din)</option>`)
+                .join("");
+
+            // Postavljamo podrazumevanu vrednost (prva opcija u listi)
+            if (kantTrake.length > 0) {
+                kantSelect.selectedIndex = 0;
+                selectedDezenKant = kantTrake[0].kant;
+                imeKanta = kantTrake[0].name;
+                imeKantaEl.textContent = imeKanta;
+                cenaKantaEl.textContent = selectedDezenKant;
+            }
+        })
+        .catch(error => {
+            console.error("Greška pri dohvatanju kant traka: " + error);
+        });
+
+    // Event listener za promenu odabira kant trake
+    kantSelect.addEventListener("change", function () {
+        const selectedOption = kantSelect.options[kantSelect.selectedIndex];
+        selectedDezenKant = selectedOption.value;
+        imeKanta = selectedOption.getAttribute("data-name");
+
+        // Ažuriranje prikaza u HTML-u
+        imeKantaEl.textContent = imeKanta;
+        cenaKantaEl.textContent = selectedDezenKant;
+    });
+});
 
 // Funkcija za izračunavanje cene na osnovu dimenzija
 const dezen1Price = 0;   // Osnovni dezen
@@ -202,7 +244,7 @@ function calculatePrice(height, width, depth) {
   const drawerWidthAdjustment = parseFloat(drawerSlider[0]); // Širina klizača
   const drawerSliderPrice = parseInt(drawerSlider[1]); // Cena klizača
 
-  const drawerWidth = width - drawerWidthAdjustment - 72; // Promena širine fioke na osnovu izbora klizača
+  const drawerWidth = width - drawerWidthAdjustment - 7.2; // Promena širine fioke na osnovu izbora klizača
   const drawerHeight = (height / 2) - 5; // Visina fioke
   const drawerDepth = depth - 5; // Dubina fioke
 
@@ -234,13 +276,13 @@ function calculatePrice(height, width, depth) {
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
   // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice + 1080; //2000 je dodata cena za 8 busenja x 210 + 8 spojnica x 40
+  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice ; 
 
   // Cena za dve fioke, uključujući cenu klizača
-  let dveFioke = (totalDrawerPrice * 2) + drawerSliderPrice; // Dodaj cenu klizača za dve fioke
+  let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
 
   // Ukupna cena svih površina bez otpada
-  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke;
+  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; 
 
   // Računanje kant traka za ceo element
   const kantTrakaLength = (height * 2 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
@@ -250,8 +292,32 @@ function calculatePrice(height, width, depth) {
   const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
-  const finalPrice = totalPriceWithKantTraka * 1.10 + 1310; //1310 4 sponice x 40 + 5 busenja x 230
+  const finalPrice = totalPriceWithKantTraka * 1.13 + 1310 + 2160; //1310 4 sponice x 40 + 5 busenja x 230 /2160 je dodata cena za 8 busenja x 230 + 8 spojnica x 40
 
+
+ // Saberi ukupnu površinu fioka (po dve svake komponente)
+  const totalDrawerSurfaceInSquareMeters =
+    2 * (drawerBackSurfaceInSquareMeters + drawerSideSurfaceInSquareMeters + drawerFrontSurfaceInSquareMeters);
+
+  // Ukupna površina svih delova (u m²)
+  const ukupnaPovrsinaUMetrima =
+    totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
+
+  // Loguj ukupnu površinu u konzolu
+  console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
+  console.log("kant trake metraza ",((drawerKantLength * 2) + kantTrakaLength));
+ console.log("zadnja str lesonit korpus cena", backSurfacePrice.toFixed(2));
+ console.log("korpus cena", basePrice.toFixed(2));
+ console.log("zadnja str fioka",(drawerBackPrice * 2).toFixed(2));
+ console.log("leva i desna str str fioka",(drawerSidePrice * 2).toFixed(2));
+ console.log("dno fioka",(drawerBottomPrice * 2).toFixed(2));
+ console.log("prednja str fioka",(drawerFrontPrice * 2).toFixed(2));
+ console.log("kant trake fioke cene ",(drawerKantPrice * 2).toFixed(2));
+ console.log("kant trake korpus cena", kantTrakaPrice.toFixed(2));
+ console.log("kant trake fioke metraza ",(kantTrakaLength + (drawerKantLength * 2)));
+ console.log("povrsina lesonit",((drawerBottomSurfaceInSquareMeters * 2) + backSurfaceInSquareMeters));
+ console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
+ 
   return {
     totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
