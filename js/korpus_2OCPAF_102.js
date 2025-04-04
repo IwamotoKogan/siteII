@@ -67,9 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cenaLesonitaEl = document.getElementById("cena-lesonita");
     const lesonitModal = new bootstrap.Modal(document.getElementById('lesonitModal'));
 
-    // Tvoja postojeća promenljiva
-    let izabraniLesonit = 0;
-    let imeLesonita = "";
+   
 
     // Dohvatanje JSON podataka o lesonitu
     fetch("lesonit.json")
