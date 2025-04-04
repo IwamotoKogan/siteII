@@ -16,7 +16,7 @@ let selectedDezenKant = 0;
 let imeKanta = "Nijedna";
 let kantTrake = [];
 
-let izabraniLesonit = 0
+let izabraniLesonit = null
 let imeLesonita = "";
 
 
@@ -578,7 +578,10 @@ function addToCart(dezeni)
        return;
    }*/
 
-   
+   if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    return;
+}
 
    if (!selectedDezen) {
        alert("Niste odabrali dezen elementa.");
