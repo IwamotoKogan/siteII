@@ -540,7 +540,7 @@ function addToCart(dezeni) {
        return;
    }*/
 
-   if (!izabraniLesonit) {
+   if (izabraniLesonit === null) {
     alert("Niste odabrali lesonit.");
     return;
 }
