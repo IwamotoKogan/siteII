@@ -1,5 +1,9 @@
 [
     {
+        "name": "izaberite lesonit",
+        "cena": 0
+    },
+    {
         "name": "Lesonit 1",
         "cena": 1150
     },
