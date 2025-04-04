@@ -247,7 +247,7 @@ function isValidNumber(value) {
 function isValidDimensions(height, width, depth) {
    const minHeight = 72;
    const maxHeight = 76;
-   const minWidth = 60;
+   const minWidth = 56;
    const maxWidth = 250;
    const minDepth = 30;
    const maxDepth = 60;
