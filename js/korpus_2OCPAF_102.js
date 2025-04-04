@@ -1,8 +1,8 @@
 /*dodato*/
  // Dodajte event listenere za dugmad "Da" i "Ne"
- const beli = document.getElementById('white-korpus');
+ /*const beli = document.getElementById('white-korpus');
  const crni = document.getElementById('black-korpus');
- const sivi = document.getElementById('gray-korpus');
+ const sivi = document.getElementById('gray-korpus');*/
  const yesButton = document.getElementById('yes-button');
  const noButton = document.getElementById('no-button');
  const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -15,7 +15,54 @@ let selectedDezenPrice = 0;
 let selectedDezenKant = 0;
 let dezeni = [];
 
+let imeKanta = "Nijedna";
+let kantTrake = [];
+let izabraniLesonit = 0
+let imeLesonita = "";
 
+/*************************************************** POVLACENJA CENE LESONITA***************************************************************** */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const lesonitSelect = document.getElementById("lesonit-select");
+  const imeLesonitaEl = document.getElementById("ime-lesonita");
+  const cenaLesonitaEl = document.getElementById("cena-lesonita");
+
+
+  // Dohvatanje JSON podataka o lesonitu
+  fetch("lesonit.json")
+      .then(response => response.json())
+      .then(loadedLesonit => {
+          // Popuni <select> opcije
+          lesonitSelect.innerHTML = loadedLesonit
+              .map(item => `<option value="${item.cena}" data-name="${item.name}">${item.name} (${item.cena} din)</option>`)
+              .join("");
+
+          // Podrazumevano postavljanje na prvi u listi
+          if (loadedLesonit.length > 0) {
+              lesonitSelect.selectedIndex = 0;
+              izabraniLesonit = loadedLesonit[0].cena;
+              imeLesonita = loadedLesonit[0].name;
+              imeLesonitaEl.textContent = imeLesonita;
+              cenaLesonitaEl.textContent = izabraniLesonit;
+          }
+      })
+      .catch(error => {
+          console.error("Greška pri dohvatanju lesonita: " + error);
+      });
+
+  // Kada korisnik promeni izbor lesonita
+  lesonitSelect.addEventListener("change", function () {
+      const selectedOption = lesonitSelect.options[lesonitSelect.selectedIndex];
+      izabraniLesonit = selectedOption.value;
+      imeLesonita = selectedOption.getAttribute("data-name");
+
+      // Ažuriraj prikaz
+      imeLesonitaEl.textContent = imeLesonita;
+      cenaLesonitaEl.textContent = izabraniLesonit;
+  });
+});
+
+/***************************************************KRAJ POVLACENJA CENE LESONITA***************************************************************** */
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -143,24 +190,87 @@ document.addEventListener('DOMContentLoaded', function () {
            
        });
 
+  /*************************************************** POVLACENJA CENE KANT TRAKA***************************************************************** */
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const kantSelect = document.getElementById("izabraniKant");
+    const imeKantaEl = document.getElementById("ime-kanta");
+    const cenaKantaEl = document.getElementById("cena-kanta");
+
+    // Dohvatanje JSON podataka o kant trakama
+    fetch("kantTrake.json")
+        .then(response => response.json())
+        .then(loadedKantTrake => {
+            kantTrake = loadedKantTrake;
+
+            // Generisanje HTML opcija za select element
+            kantSelect.innerHTML = kantTrake
+                .map(kant => `<option value="${kant.kant}" data-name="${kant.name}">${kant.name} (${kant.kant} din)</option>`)
+                .join("");
+
+            // Postavljamo podrazumevanu vrednost (prva opcija u listi)
+            if (kantTrake.length > 0) {
+                kantSelect.selectedIndex = 0;
+                selectedDezenKant = kantTrake[0].kant;
+                imeKanta = kantTrake[0].name;
+                imeKantaEl.textContent = imeKanta;
+                cenaKantaEl.textContent = selectedDezenKant;
+            }
+        })
+        .catch(error => {
+            console.error("Greška pri dohvatanju kant traka: " + error);
+        });
+
+    // Event listener za promenu odabira kant trake
+    kantSelect.addEventListener("change", function () {
+        const selectedOption = kantSelect.options[kantSelect.selectedIndex];
+        selectedDezenKant = selectedOption.value;
+        imeKanta = selectedOption.getAttribute("data-name");
+
+        // Ažuriranje prikaza u HTML-u
+        imeKantaEl.textContent = imeKanta;
+        cenaKantaEl.textContent = selectedDezenKant;
+    });
+});     
+
+       /***************************************************KRAJ POVLACENJA CENE KANT TRAKA***************************************************************** */
+
 // Funkcija za izračunavanje cene na osnovu dimenzija
 const dezen1Price = 0;   // Osnovni dezen
 const dezen2Price = 50;  // Crni kamen
 const dezen3Price = 70;  // Beli mermer
 
-function calculatePrice(height, width, depth, shelves) {
-    let pricePerSquareMeter;
+let selectedDezenKorpusPrice = 0;
+let selectedDezenKorpusName;  
 
-    // Određivanje cene po kvadratnom metru na osnovu izabranog korpusa
-    if (crni.classList.contains('selektovan')) {
-        pricePerSquareMeter = 2250;
-    } else if (beli.classList.contains('selektovan')) {
-        pricePerSquareMeter = 2545;
-    } else if (sivi.classList.contains('selektovan')) {
-        pricePerSquareMeter = 2545;
-    } else {
-        pricePerSquareMeter = 1990;
-    }
+// Učitavanje dezena korpusa iz JSON fajla
+fetch("korpusi.json")
+  .then(response => response.json())
+  .then(data => {
+    // Inicijalno postavi prvi dezen kao podrazumevani
+    selectedDezenKorpusPrice = data[0].price; // Cena
+    selectedDezenKorpusName = data[0].name; // Ime dezena
+
+    // Kreiraj opcije za selekciju dezena u interfejsu
+    const korpusSelect = document.getElementById("korpus-select");
+    data.forEach(dezen => {
+      const option = document.createElement("option");
+      option.value = JSON.stringify({ price: dezen.price, name: dezen.name }); // Čuvamo ime i cenu kao objekat
+      option.textContent = dezen.name;
+      korpusSelect.appendChild(option);
+    });
+
+    // Dodaj event listener za promenu selekcije
+    korpusSelect.addEventListener("change", (event) => {
+      const selectedValue = JSON.parse(event.target.value);
+      selectedDezenKorpusPrice = selectedValue.price;
+      selectedDezenKorpusName = selectedValue.name;
+    });
+  })
+  .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
+
+function calculatePrice(height, width, depth, shelves) {
+
 
     // Površine stranica
     const bottomSurface = width * depth;
@@ -175,7 +285,7 @@ function calculatePrice(height, width, depth, shelves) {
     // Zadnja strana LESONIT
     const backSurface = width * height;
     const backSurfaceInSquareMeters = backSurface / 10000;
-    const backSurfacePrice = backSurfaceInSquareMeters * 1550;
+    const backSurfacePrice = backSurfaceInSquareMeters * izabraniLesonit;
 
     // Prednja strana
     const frontSurface = width * height;
@@ -186,13 +296,13 @@ function calculatePrice(height, width, depth, shelves) {
     const totalSurfaceInSquareMeters = totalSurface / 10000;
 
     // Računanje cene za osnovne strane bez otpada KORPUS
-    const basePrice = totalSurfaceInSquareMeters * pricePerSquareMeter;
+    const basePrice = totalSurfaceInSquareMeters * selectedDezenKorpusPrice;
 
     // Ukupna cena svih površina bez otpada
     let totalPriceWithoutWaste = basePrice + backSurfacePrice + frontSurfacePrice;
 
     // Računanje kant traka
-    const kantTrakaLength = (height * 2 + depth * 4 + width * 2) / 100; // Pretvaranje u metre
+    const kantTrakaLength = (height * 6 + depth * 4 + width * 6) / 100; // Pretvaranje u metre
     const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
     // Cena šarki na osnovu izbora
@@ -229,7 +339,7 @@ function isValidNumber(value) {
 function isValidDimensions(height, width, depth) {
    const minHeight = 72;
    const maxHeight = 76;
-   const minWidth = 60;
+   const minWidth = 56;
    const maxWidth = 250;
    const minDepth = 30;
    const maxDepth = 60;
@@ -361,9 +471,9 @@ function addToCart(dezeni) {
    
                                                           
                                                           
-   const isCrniKorpus = crni.classList.contains('selektovan');
+   /*const isCrniKorpus = crni.classList.contains('selektovan');
    const isBeliKorpus = beli.classList.contains('selektovan');
-   const isSiviKorpus = sivi.classList.contains('selektovan');
+   const isSiviKorpus = sivi.classList.contains('selektovan');*/
    const isYesSelected = yesButton.classList.contains('selected');
    const isNoSelected = noButton.classList.contains('selected');
    const isLeftHingeSelected = leftHingesButton.classList.contains('selected');
@@ -373,10 +483,10 @@ function addToCart(dezeni) {
 
 
 
-   if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
+   /*if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
        alert("Odaberite korpus");
        return;
-   }
+   }*/
 
    if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
@@ -425,7 +535,7 @@ if (!issarke) {
                /*pitanjaaaaa */
     const answer = yesButton.classList.contains('selected') ? 'Da' : 'Ne';
     // Provera odgovora korisnika
-const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';
+/*const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.classList.contains('selektovan') ? 'beli' : sivi.classList.contains('selektovan') ? 'sivi' : '';*/
 
     /*const selectedHinges = leftHingesButton.classList.contains('selected') ? 'Leva str' : 'Desna str';
     pitanjaaaaa */
@@ -444,10 +554,11 @@ const korpusOdgovor = crni.classList.contains('selektovan') ? 'crni' : beli.clas
            totalSurface: priceData.totalSurface, // Dodaj ukupnu površinu
             totalSurfaceInSquareMeters: priceData.totalSurfaceInSquareMeters, // Dodaj površinu u m²
            dezen: selectedDezen.name, // Dodajte ime dezena
+               korpusDezen: selectedDezenKorpusName,
            message: recommendedFrontDimensions.message,
            answer: answer,
            hinges: /*selectedHinges*/calculateHingers(height, width, depth),
-           korpusOdgovor: korpusOdgovor,
+           /*korpusOdgovor: korpusOdgovor,*/
        itemName: itemName,
        itemImageSrc: itemImageSrc 
        };
@@ -528,7 +639,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    noButton.classList.remove('selected');
    enableKupiButtonIfAnswered();
  });
- beli.addEventListener('click', function () {
+ /*beli.addEventListener('click', function () {
    beli.classList.add('selektovan');
    crni.classList.remove('selektovan');
    sivi.classList.remove('selektovan');
@@ -545,7 +656,7 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
    crni.classList.remove('selektovan');
    beli.classList.remove('selektovan');
    enableKupiButtonIfKorpus();
- });
+ });*/
 
  // Označavanje odgovora kada se klikne na dugme "Ne"
  noButton.addEventListener('click', function () {
@@ -562,13 +673,13 @@ function calculateRecommendedFrontDimensions(height, width, depth) {
      kupiButton.setAttribute('disabled', 'disabled');
    }
  }
- function enableKupiButtonIfKorpus() {
+ /*function enableKupiButtonIfKorpus() {
    if (crni.classList.contains('selektovan') || beli.classList.contains('selektovan') || sivi.classList.contains('selektovan')) {
      kupiButton.removeAttribute('disabled');
    } else {
      kupiButton.setAttribute('disabled', 'disabled');
    }
- }
+ }*/
 
  leftHingesButton.addEventListener('click', () => {
  leftHingesButton.classList.add('selected');
