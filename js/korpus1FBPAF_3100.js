@@ -1,4 +1,8 @@
-
+/*dodato*/
+ // Dodajte event listenere za dugmad "Da" i "Ne"
+ /*const beli = document.getElementById('white-korpus');
+ const crni = document.getElementById('black-korpus');
+ const sivi = document.getElementById('gray-korpus');*/
  const yesButton = document.getElementById('yes-button');
  const noButton = document.getElementById('no-button');
  const kupiButton = document.getElementById('kupi-btn'); // Pretpostavljam da postoji dugme "Kupi"
@@ -94,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                    // Pronađite dezen sa datim nazivom u JSON-u
                    selectedDezen = dezeni.find(dezen => dezen.name === patternName);
                    selectedDezenPrice = selectedDezen.price;
-                   /*selectedDezenKant = selectedDezen.kant;*/
+                   
                });
            });
 
@@ -140,47 +144,46 @@ document.addEventListener('DOMContentLoaded', function () {
            
        });
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    const kantSelect = document.getElementById("izabraniKant");
-    const imeKantaEl = document.getElementById("ime-kanta");
-    const cenaKantaEl = document.getElementById("cena-kanta");
-
-    // Dohvatanje JSON podataka o kant trakama
-    fetch("kantTrake.json")
-        .then(response => response.json())
-        .then(loadedKantTrake => {
-            kantTrake = loadedKantTrake;
-
-            // Generisanje HTML opcija za select element
-            kantSelect.innerHTML = kantTrake
-                .map(kant => `<option value="${kant.kant}" data-name="${kant.name}">${kant.name} (${kant.kant} din)</option>`)
-                .join("");
-
-            // Postavljamo podrazumevanu vrednost (prva opcija u listi)
-            if (kantTrake.length > 0) {
-                kantSelect.selectedIndex = 0;
-                selectedDezenKant = kantTrake[0].kant;
-                imeKanta = kantTrake[0].name;
-                imeKantaEl.textContent = imeKanta;
-                cenaKantaEl.textContent = selectedDezenKant;
-            }
-        })
-        .catch(error => {
-            console.error("Greška pri dohvatanju kant traka: " + error);
+       document.addEventListener("DOMContentLoaded", function () {
+        const kantSelect = document.getElementById("izabraniKant");
+        const imeKantaEl = document.getElementById("ime-kanta");
+        const cenaKantaEl = document.getElementById("cena-kanta");
+    
+        // Dohvatanje JSON podataka o kant trakama
+        fetch("kantTrake.json")
+            .then(response => response.json())
+            .then(loadedKantTrake => {
+                kantTrake = loadedKantTrake;
+    
+                // Generisanje HTML opcija za select element
+                kantSelect.innerHTML = kantTrake
+                    .map(kant => `<option value="${kant.kant}" data-name="${kant.name}">${kant.name} (${kant.kant} din)</option>`)
+                    .join("");
+    
+                // Postavljamo podrazumevanu vrednost (prva opcija u listi)
+                if (kantTrake.length > 0) {
+                    kantSelect.selectedIndex = 0;
+                    selectedDezenKant = kantTrake[0].kant;
+                    imeKanta = kantTrake[0].name;
+                    imeKantaEl.textContent = imeKanta;
+                    cenaKantaEl.textContent = selectedDezenKant;
+                }
+            })
+            .catch(error => {
+                console.error("Greška pri dohvatanju kant traka: " + error);
+            });
+    
+        // Event listener za promenu odabira kant trake
+        kantSelect.addEventListener("change", function () {
+            const selectedOption = kantSelect.options[kantSelect.selectedIndex];
+            selectedDezenKant = selectedOption.value;
+            imeKanta = selectedOption.getAttribute("data-name");
+    
+            // Ažuriranje prikaza u HTML-u
+            imeKantaEl.textContent = imeKanta;
+            cenaKantaEl.textContent = selectedDezenKant;
         });
-
-    // Event listener za promenu odabira kant trake
-    kantSelect.addEventListener("change", function () {
-        const selectedOption = kantSelect.options[kantSelect.selectedIndex];
-        selectedDezenKant = selectedOption.value;
-        imeKanta = selectedOption.getAttribute("data-name");
-
-        // Ažuriranje prikaza u HTML-u
-        imeKantaEl.textContent = imeKanta;
-        cenaKantaEl.textContent = selectedDezenKant;
-    });
-});
+    });     
 
 // Funkcija za izračunavanje cene na osnovu dimenzija
 const dezen1Price = 0;   // Osnovni dezen
@@ -279,7 +282,7 @@ function calculatePrice(height, width, depth) {
 
   // Cena za dve fioke, uključujući cenu klizača
   let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
-
+ 
   // Ukupna cena svih površina bez otpada
   let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; 
 
@@ -291,8 +294,8 @@ function calculatePrice(height, width, depth) {
   const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
 
   // Dodavanje 10% za otpad na finalnu cenu
-  const finalPrice = totalPriceWithKantTraka * 1.13 + 1310 + 2160; //1310 4 sponice x 40 + 5 busenja x 230 /2160 je dodata cena za 8 busenja x 230 + 8 spojnica x 40
-
+  /*const finalPrice = totalPriceWithKantTraka * 1.13 + 1310 + 2160; //1310 4 sponice x 40 + 5 busenja x 230 /2160 je dodata cena za 8 busenja x 230 + 8 spojnica x 40*/
+ 
 
  // Saberi ukupnu površinu fioka (po dve svake komponente)
   const totalDrawerSurfaceInSquareMeters =
@@ -301,7 +304,13 @@ function calculatePrice(height, width, depth) {
   // Ukupna površina svih delova (u m²)
   const ukupnaPovrsinaUMetrima =
     totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
-
+ let P_fioke = (drawerBackPrice + drawerSidePrice  + drawerFrontPrice) * 2
+  let P_fioke_porez = P_fioke * 1.13
+let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
+  let P_korpus = basePrice * 1.13
+  let P_kant = (kantTrakaPrice + (drawerKantPrice * 2)) * 1.10
+  let P_uni_kant = P_fioke_porez + P_korpus + P_kant
+  let P_klizaci = drawerSliderPrice * 2
   // Loguj ukupnu površinu u konzolu
   console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
   console.log("kant trake metraza ",((drawerKantLength * 2) + kantTrakaLength));
@@ -316,7 +325,10 @@ function calculatePrice(height, width, depth) {
  console.log("kant trake fioke metraza ",(kantTrakaLength + (drawerKantLength * 2)));
  console.log("povrsina lesonit",((drawerBottomSurfaceInSquareMeters * 2) + backSurfaceInSquareMeters));
  console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
- 
+ console.log("ukupna cena  ",(P_uni_kant));
+ console.log("ukupna cena lesonit ",(P_lesonit));
+  console.log("klizaci cena ",(P_klizaci));
+ const finalPrice = P_uni_kant + P_klizaci + P_lesonit + 800 + 2990;
   return {
     totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
