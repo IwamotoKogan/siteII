@@ -538,7 +538,7 @@ function addToCart(dezeni) {
 
    /**/
 
-   if (izabraniLesonit === null) {
+  if (izabraniLesonit === 0) {
     alert("Niste odabrali lesonit.");
     return;
 }
