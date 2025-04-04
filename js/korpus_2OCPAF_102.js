@@ -542,7 +542,7 @@ function addToCart(dezeni) {
     alert("Niste odabrali lesonit.");
     return;
 }
-   }
+   
  
    if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
