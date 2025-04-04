@@ -232,12 +232,46 @@
 
 <hr>
 
-<div class="mt-3">
+                        <!--<div class="mt-3">
     <label for="lesonit-select" class="form-label text-dark fw-bold">Izaberite lesonit:</label>
     <select id="lesonit-select" class="form-select bg-dark text-white border-light"></select>
     <p class="text-white mt-2">Izabrani lesonit: <span id="ime-lesonita" class="fw-bold text-info"></span></p>
     <p class="text-white">Cena lesonita: <span id="cena-lesonita" class="fw-bold text-warning"></span> RSD</p>
-</div>
+</div>-->
+
+                  <div class="mt-3">
+    <!-- Dugme za otvaranje modala umesto selecta -->
+    <button id="lesonit-select" class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#lesonitModal">
+      Izaberi lesonit
+    </button>
+  
+    <!-- Prikaz izabranog lesonita -->
+    <p class="text-white mt-3">
+      Izabrani lesonit: <span id="ime-lesonita" class="fw-bold text-info"></span>
+    </p>
+    <p class="text-white">
+      Cena lesonita: <span id="cena-lesonita" class="fw-bold text-warning"></span> RSD
+    </p>
+  </div>
+  
+  <!-- Bootstrap modal za izbor lesonita -->
+  <div class="modal fade" id="lesonitModal" tabindex="-1" aria-labelledby="lesonitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border border-light">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="lesonitModalLabel">Izaberite lesonit</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Lista opcija učitana iz JSON-a -->
+          <div class="list-group" id="lesonit-list">
+            <!-- JavaScript će ovde dinamički ubaciti opcije -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        
                         <!--PITANJE-->
                         <div class="form-group row">
                             <div class="col-md-12">
