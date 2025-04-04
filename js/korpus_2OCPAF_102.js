@@ -17,7 +17,7 @@ let dezeni = [];
 
 let imeKanta = "Nijedna";
 let kantTrake = [];
-let izabraniLesonit = null;
+let izabraniLesonit = 0;
 console.log("Izabrani lesonit:", izabraniLesonit);
 let imeLesonita = "";
 
@@ -536,15 +536,13 @@ function addToCart(dezeni) {
 
 
 
-   /*if (!(isCrniKorpus || isBeliKorpus || isSiviKorpus)) {
-       alert("Odaberite korpus");
-       return;
-   }*/
-
-   if (izabraniLesonit === null) {
+   /*if (izabraniLesonit === null) {
     alert("Niste odabrali lesonit.");
     return;
 }
+   }*/
+
+   
  
    if (!(isYesSelected || isNoSelected)) {
        alert("Niste odgovorili da li želite da element ima ugradjene nogice'.");
