@@ -20,9 +20,7 @@ let izabraniLesonit = 0
 let imeLesonita = "";
 
 
-/*************************************************** POVLACENJA CENE LESONITA***************************************************************** */
-
-document.addEventListener("DOMContentLoaded", function () {
+/*************************************************** POVLACENJA CENE LESONITAdocument.addEventListener("DOMContentLoaded", function () {
   const lesonitSelect = document.getElementById("lesonit-select");
   const imeLesonitaEl = document.getElementById("ime-lesonita");
   const cenaLesonitaEl = document.getElementById("cena-lesonita");
@@ -60,6 +58,58 @@ document.addEventListener("DOMContentLoaded", function () {
       imeLesonitaEl.textContent = imeLesonita;
       cenaLesonitaEl.textContent = izabraniLesonit;
   });
+});
+***************************************************************** */
+document.addEventListener("DOMContentLoaded", function () {
+    const lesonitSelect = document.getElementById("lesonit-select");
+    const imeLesonitaEl = document.getElementById("ime-lesonita");
+    const cenaLesonitaEl = document.getElementById("cena-lesonita");
+    const lesonitModal = new bootstrap.Modal(document.getElementById('lesonitModal'));
+
+   
+
+    // Dohvatanje JSON podataka o lesonitu
+    fetch("lesonit.json")
+        .then(response => response.json())
+        .then(loadedLesonit => {
+            // Popuni listu unutar popupa
+            lesonitSelect.innerHTML = loadedLesonit
+                .map(item => `
+                    <button type="button" class="list-group-item list-group-item-action bg-dark text-white border-light" 
+                        data-cena="${item.cena}" data-name="${item.name}">
+                        ${item.name} (${item.cena} din)
+                    </button>
+                `)
+                .join("");
+
+            // Dodaj event listener za svaki list item
+            const listItems = lesonitSelect.querySelectorAll('.list-group-item');
+            listItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Uzimamo podatke iz atributa
+                    izabraniLesonit = item.getAttribute('data-cena');
+                    imeLesonita = item.getAttribute('data-name');
+
+                    // Postavljamo prikaz
+                    imeLesonitaEl.textContent = imeLesonita;
+                    cenaLesonitaEl.textContent = izabraniLesonit;
+
+                    // Zatvaranje modala
+                    lesonitModal.hide();
+                });
+            });
+
+            // Opcionalno: podrazumevano postavi prvi u listi
+            if (loadedLesonit.length > 0) {
+                izabraniLesonit = loadedLesonit[0].cena;
+                imeLesonita = loadedLesonit[0].name;
+                imeLesonitaEl.textContent = imeLesonita;
+                cenaLesonitaEl.textContent = izabraniLesonit;
+            }
+        })
+        .catch(error => {
+            console.error("Greška pri dohvatanju lesonita: " + error);
+        });
 });
 
 /***************************************************KRAJ POVLACENJA CENE LESONITA***************************************************************** */
