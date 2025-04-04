@@ -18,6 +18,7 @@ let dezeni = [];
 let imeKanta = "Nijedna";
 let kantTrake = [];
 let izabraniLesonit = null;
+console.log("Izabrani lesonit:", izabraniLesonit);
 let imeLesonita = "";
 
 /*************************************************** POVLACENJA CENE LESONITA
