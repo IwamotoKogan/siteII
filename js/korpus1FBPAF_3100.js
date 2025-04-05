@@ -16,6 +16,103 @@ let selectedDezenKant = 0;
 let imeKanta = "Nijedna";
 let kantTrake = [];
 
+let izabraniLesonit = null
+let imeLesonita = "";
+
+
+/*************************************************** POVLACENJA CENE LESONITAdocument.addEventListener("DOMContentLoaded", function () {
+  const lesonitSelect = document.getElementById("lesonit-select");
+  const imeLesonitaEl = document.getElementById("ime-lesonita");
+  const cenaLesonitaEl = document.getElementById("cena-lesonita");
+
+
+  // Dohvatanje JSON podataka o lesonitu
+  fetch("lesonit.json")
+      .then(response => response.json())
+      .then(loadedLesonit => {
+          // Popuni <select> opcije
+          lesonitSelect.innerHTML = loadedLesonit
+              .map(item => `<option value="${item.cena}" data-name="${item.name}">${item.name} (${item.cena} din)</option>`)
+              .join("");
+
+          // Podrazumevano postavljanje na prvi u listi
+          if (loadedLesonit.length > 0) {
+              lesonitSelect.selectedIndex = 0;
+              izabraniLesonit = loadedLesonit[0].cena;
+              imeLesonita = loadedLesonit[0].name;
+              imeLesonitaEl.textContent = imeLesonita;
+              cenaLesonitaEl.textContent = izabraniLesonit;
+          }
+      })
+      .catch(error => {
+          console.error("Greška pri dohvatanju lesonita: " + error);
+      });
+
+  // Kada korisnik promeni izbor lesonita
+  lesonitSelect.addEventListener("change", function () {
+      const selectedOption = lesonitSelect.options[lesonitSelect.selectedIndex];
+      izabraniLesonit = selectedOption.value;
+      imeLesonita = selectedOption.getAttribute("data-name");
+
+      // Ažuriraj prikaz
+      imeLesonitaEl.textContent = imeLesonita;
+      cenaLesonitaEl.textContent = izabraniLesonit;
+  });
+});
+***************************************************************** */
+document.addEventListener("DOMContentLoaded", function () {
+    const lesonitSelect = document.getElementById("lesonit-select");
+    const imeLesonitaEl = document.getElementById("ime-lesonita");
+    const cenaLesonitaEl = document.getElementById("cena-lesonita");
+    const lesonitModal = new bootstrap.Modal(document.getElementById('lesonitModal'));
+
+   
+
+    // Dohvatanje JSON podataka o lesonitu
+    fetch("lesonit.json")
+        .then(response => response.json())
+        .then(loadedLesonit => {
+            // Popuni listu unutar popupa
+            lesonitSelect.innerHTML = loadedLesonit
+                .map(item => `
+                    <button type="button" class="list-group-item list-group-item-action bg-dark text-white border-light" 
+                        data-cena="${item.cena}" data-name="${item.name}">
+                        ${item.name} (${item.cena} din)
+                    </button>
+                `)
+                .join("");
+
+            // Dodaj event listener za svaki list item
+            const listItems = lesonitSelect.querySelectorAll('.list-group-item');
+            listItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Uzimamo podatke iz atributa
+                    izabraniLesonit = item.getAttribute('data-cena');
+                    imeLesonita = item.getAttribute('data-name');
+
+                    // Postavljamo prikaz
+                    imeLesonitaEl.textContent = imeLesonita;
+                    cenaLesonitaEl.textContent = izabraniLesonit;
+
+                    // Zatvaranje modala
+                    lesonitModal.hide();
+                });
+            });
+
+            // Opcionalno: podrazumevano postavi prvi u listi
+            if (loadedLesonit.length > 0) {
+                izabraniLesonit = loadedLesonit[0].cena;
+                imeLesonita = loadedLesonit[0].name;
+                imeLesonitaEl.textContent = imeLesonita;
+                cenaLesonitaEl.textContent = izabraniLesonit;
+            }
+        })
+        .catch(error => {
+            console.error("Greška pri dohvatanju lesonita: " + error);
+        });
+});
+
+/***************************************************KRAJ POVLACENJA CENE LESONITA***************************************************************** */
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -144,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function () {
            
        });
 
+       /*************************************************** POVLACENJA CENE KANT TRAKA***************************************************************** */
+
        document.addEventListener("DOMContentLoaded", function () {
         const kantSelect = document.getElementById("izabraniKant");
         const imeKantaEl = document.getElementById("ime-kanta");
@@ -184,6 +283,9 @@ document.addEventListener('DOMContentLoaded', function () {
             cenaKantaEl.textContent = selectedDezenKant;
         });
     });     
+
+           /***************************************************KRAJ POVLACENJA CENE KANT TRAKA***************************************************************** */
+
 
 // Funkcija za izračunavanje cene na osnovu dimenzija
 const dezen1Price = 0;   // Osnovni dezen
@@ -233,7 +335,7 @@ function calculatePrice(height, width, depth) {
   // Zadnja strana
   const backSurface = width * height;
   const backSurfaceInSquareMeters = backSurface / 10000;
-  const backSurfacePrice = backSurfaceInSquareMeters * 1150;
+  const backSurfacePrice = backSurfaceInSquareMeters * izabraniLesonit;
 
   // Pretvaranje ukupne površine u m²
   const totalSurfaceInSquareMeters = totalSurface / 10000;
@@ -263,7 +365,7 @@ function calculatePrice(height, width, depth) {
   // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
   const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
-  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * 1150;
+  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * izabraniLesonit;
 
   // Površina prednje stranice (front) fioke
   const drawerFrontSurface = width * (height / 2);
@@ -383,7 +485,21 @@ function calculate() {
        document.getElementById('price').innerText = "Dimenzije koje ste uneli su izvan dozvoljenog opsega";
        return;
    }
+   /** */
+   const selectedPatternName = selectedPatternTitle.textContent;
+   const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
 
+
+   if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    return;
+}
+
+   if (!selectedDezen) {
+       alert("Niste odabrali dezen elementa.");
+       return;
+   }
+/** */
   const priceData = calculatePrice(height, width, depth);
 
    document.getElementById('price').innerHTML = `
@@ -476,7 +592,10 @@ function addToCart(dezeni)
        return;
    }*/
 
-   
+   if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    return;
+}
 
    if (!selectedDezen) {
        alert("Niste odabrali dezen elementa.");
