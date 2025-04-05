@@ -486,6 +486,7 @@ function calculate() {
        return;
    }
    /** */
+ const selectedPatternTitle = document.getElementById('selected-pattern-title');
    const selectedPatternName = selectedPatternTitle.textContent;
    const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
 
