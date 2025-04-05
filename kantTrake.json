@@ -1,5 +1,9 @@
 [
     {
+        "name": "Izaberite kant traku",
+        "kant": 0
+    },
+    {
         "name": "Dezen 1",
         "kant": 175
     },
