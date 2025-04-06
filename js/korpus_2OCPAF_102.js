@@ -414,6 +414,42 @@ function calculate() {
    const depth = parseInt(depthInput.value);
    const shelves = parseInt(shelvesInput.value);
 
+
+ /**/
+  const selectedPatternTitle = document.getElementById('selected-pattern-title');
+   const selectedPatternName = selectedPatternTitle.textContent;
+   const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
+ const drawerSlider = document.getElementById('drawer-slider').value.split('|');
+ let hasError = false;
+
+if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    hasError = true;
+}
+
+if (selectedDezenKant === 0) {
+    alert("Niste odabrali kant.");
+    hasError = true;
+}
+
+if (selectedDezenKorpusPrice === 0) {
+    alert("Niste odabrali dezen korpusa.");
+    hasError = true;
+}
+
+if (!selectedDezen) {
+    alert("Niste odabrali dezen elementa.");
+    hasError = true;
+}
+ if (!drawerSlider) {
+    alert("Niste odabrali vrstu klizaca.");
+    hasError = true;
+}
+
+if (hasError) {
+    return; // Prekini funkciju ako postoji neka greška
+}
+ /**/
    if (!isValidNumber(height) || !isValidNumber(width) || !isValidNumber(depth)) {
        document.getElementById('price').innerText = "Niste uneli validne podatke";
        return;
