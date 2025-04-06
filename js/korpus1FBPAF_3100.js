@@ -502,6 +502,10 @@ function calculate() {
    }
 */
  /**/
+ const selectedPatternTitle = document.getElementById('selected-pattern-title');
+   const selectedPatternName = selectedPatternTitle.textContent;
+   const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
+ const drawerSlider = document.getElementById('drawer-slider').value.split('|');
  let hasError = false;
 
 if (izabraniLesonit === 0) {
@@ -521,6 +525,10 @@ if (selectedDezenKorpusPrice === 0) {
 
 if (!selectedDezen) {
     alert("Niste odabrali dezen elementa.");
+    hasError = true;
+}
+ if (!drawerSlider) {
+    alert("Niste odabrali vrstu klizaca.");
     hasError = true;
 }
 
