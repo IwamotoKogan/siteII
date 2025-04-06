@@ -485,7 +485,7 @@ function calculate() {
        document.getElementById('price').innerText = "Dimenzije koje ste uneli su izvan dozvoljenog opsega";
        return;
    }
-   /** */
+   /** 
  const selectedPatternTitle = document.getElementById('selected-pattern-title');
    const selectedPatternName = selectedPatternTitle.textContent;
    const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
@@ -500,7 +500,34 @@ function calculate() {
        alert("Niste odabrali dezen elementa.");
        return;
    }
-/** */
+*/
+ /**/
+ let hasError = false;
+
+if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    hasError = true;
+}
+
+if (selectedDezenKant === 0) {
+    alert("Niste odabrali kant.");
+    hasError = true;
+}
+
+if (selectedDezenKorpusPrice === 0) {
+    alert("Niste odabrali dezen korpusa.");
+    hasError = true;
+}
+
+if (!selectedDezen) {
+    alert("Niste odabrali dezen elementa.");
+    hasError = true;
+}
+
+if (hasError) {
+    return; // Prekini funkciju ako postoji neka greška
+}
+ /**/
   const priceData = calculatePrice(height, width, depth);
 
    document.getElementById('price').innerHTML = `
