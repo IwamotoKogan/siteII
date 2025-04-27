@@ -355,19 +355,19 @@ function calculatePrice(height, width, depth, shelves) {
     let totalPriceWithoutWaste = basePrice + backSurfacePrice + frontSurfacePrice;
 
     // Računanje kant traka
-    const kantTrakaLength = (height * 6 + depth * 4 + width * 6) / 100; // Pretvaranje u metre
+    const kantTrakaLength = (height * 4 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
     const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
     // Cena šarki na osnovu izbora
     const hingeType = document.getElementById('hinge-type').value;
-    const hingePrice = 2 * parseInt(hingeType);
+    const hingePrice = 1 * parseInt(hingeType);
 
 
     // Dodavanje kant trake na ukupnu cenu
     const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice + hingePrice;
 
     // Dodavanje 10% za otpad na finalnu cenu 2160 JE CENA SPOJNICA I BUŠENJA 
-    const finalPrice = totalPriceWithKantTraka * 1.10 + 2160;
+    const finalPrice = totalPriceWithKantTraka * 1.10 + 1470;
 
     return {
         totalPrice: finalPrice.toFixed(2),
