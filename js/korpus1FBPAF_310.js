@@ -323,16 +323,19 @@ fetch("dezeni.json")
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
 
 
-function calculatePrice(height, width, depth) {
+function calculateCombinedPrice(height, width, depth) {
   // Površine osnovnih stranica
   const bottomSurface = width * depth;
   const leftSurface = height * depth;
   const rightSurface = height * depth;
   const adjustedWidth = width - 3.6;
   const topSurface = 2 * (adjustedWidth * 10);
-  let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface;
+  const adjustedDepth = depth - 1.8;
+  const shelfSurface = width * adjustedDepth; // Površina police
 
-  // Zadnja strana
+  let totalSurface = bottomSurface + leftSurface + rightSurface + topSurface + shelfSurface;
+
+  // Zadnja strana (lesonit)
   const backSurface = width * height;
   const backSurfaceInSquareMeters = backSurface / 10000;
   const backSurfacePrice = backSurfaceInSquareMeters * izabraniLesonit;
@@ -342,97 +345,86 @@ function calculatePrice(height, width, depth) {
 
   // Računanje cene za osnovne strane bez otpada
   const basePrice = totalSurfaceInSquareMeters * selectedDezenKorpusPrice;
+  const p_basePrice = basePrice * 1.13 //porez na korpus
 
-  // --- Klizači za fioke ---
+  // --- Fijoka ---
   const drawerSlider = document.getElementById('drawer-slider').value.split('|');
-  const drawerWidthAdjustment = parseFloat(drawerSlider[0]); // Širina klizača
-  const drawerSliderPrice = parseInt(drawerSlider[1]); // Cena klizača
+  const drawerWidthAdjustment = parseFloat(drawerSlider[0]);
+  const drawerSliderPrice = parseInt(drawerSlider[1]);
 
-  const drawerWidth = width - drawerWidthAdjustment - 7.2; // Promena širine fioke na osnovu izbora klizača
-  const drawerHeight = (height / 2) - 5; // Visina fioke
-  const drawerDepth = depth - 5; // Dubina fioke
+  const drawerWidth = width - drawerWidthAdjustment - 7.2;
+  const drawerHeight = 20; // OVDE menjamo visinu fijoke na fiksnih 20 cm
+  const drawerDepth = depth - 5;
 
-  // Površina zadnje stranice fioke
   const drawerBackSurface = drawerWidth * drawerHeight;
-  const drawerBackSurfaceInSquareMeters = drawerBackSurface / 10000;
-  const drawerBackPrice = drawerBackSurfaceInSquareMeters * selectedDezenKorpusPrice;
-
-  // Površina leve i desne stranice fioke (2 strane)
   const drawerSideSurface = 2 * (drawerHeight * drawerDepth);
-  const drawerSideSurfaceInSquareMeters = drawerSideSurface / 10000;
-  const drawerSidePrice = drawerSideSurfaceInSquareMeters * selectedDezenKorpusPrice;
-
-  // Površina dna fioke
   const drawerBottomSurface = drawerWidth * drawerDepth;
-  const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
-  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * izabraniLesonit;
+  const drawerFrontSurface = width * drawerHeight;
 
-  // Površina prednje stranice (front) fioke
-  const drawerFrontSurface = width * (height / 2);
+  const drawerBackSurfaceInSquareMeters = drawerBackSurface / 10000;
+  const drawerSideSurfaceInSquareMeters = drawerSideSurface / 10000;
+  const drawerBottomSurfaceInSquareMeters = drawerBottomSurface / 10000;
   const drawerFrontSurfaceInSquareMeters = drawerFrontSurface / 10000;
+
+  const drawerBackPrice = drawerBackSurfaceInSquareMeters * selectedDezenKorpusPrice;
+  const drawerSidePrice = drawerSideSurfaceInSquareMeters * selectedDezenKorpusPrice;
+  const drawerBottomPrice = drawerBottomSurfaceInSquareMeters * izabraniLesonit;
   const drawerFrontPrice = drawerFrontSurfaceInSquareMeters * selectedDezenPrice;
 
-  // Dodavanje svih površina fioke ukupnoj površini i ceni
+  // Dodavanje svih površina fijoke ukupnoj površini
   totalSurface += drawerBackSurface + drawerSideSurface + drawerBottomSurface + drawerFrontSurface;
 
-  // Računanje kant traka za fioku
-  const drawerKantLength = (drawerDepth * 4 + drawerHeight * 2 + drawerWidth * 2 + width * 2 + ((height / 2) * 2)) / 100; // Pretvaranje u metre
+  // Kant traka za fijoku
+  const drawerKantLength = (drawerDepth * 4 + drawerHeight * 2 + drawerWidth * 2 + width * 2 + (drawerHeight * 2)) / 100;
   const drawerKantPrice = drawerKantLength * selectedDezenKant;
 
-  // Dodavanje cene kant traka za fioku u ukupnu cenu fioke
-  let totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice + drawerKantPrice ; 
+  // Ukupna cena fijoke
+  const totalDrawerPrice = drawerBackPrice + drawerSidePrice + drawerBottomPrice + drawerFrontPrice * 1.13;
 
-  // Cena za dve fioke, uključujući cenu klizača
-  let dveFioke = (totalDrawerPrice * 2) + (drawerSliderPrice * 2); // Dodaj cenu klizača za dve fioke
- 
-  // Ukupna cena svih površina bez otpada
-  let totalPriceWithoutWaste = basePrice + backSurfacePrice + dveFioke ; 
+  // --- Vrata ---
+  const doorHeight = height - drawerHeight - 3; // Oduzimamo visinu fioke + prostor (npr. 3 mm za luft)
+  const doorSurface = width * doorHeight;
+  const doorSurfaceInSquareMeters = doorSurface / 10000;
+  const doorPrice = (doorSurfaceInSquareMeters * selectedDezenPrice) * 1.13 ;
 
-  // Računanje kant traka za ceo element
-  const kantTrakaLength = (height * 2 + depth * 4 + width * 5) / 100; // Pretvaranje u metre
+  // Šarke
+  const hingeType = document.getElementById('hinge-type').value;
+  const hingePrice = 1 * parseInt(hingeType); // Dve šarke
+ // Kant traka za ceo element
+
+  const kantTrakaLength = (doorHeight * 2 + height * 2 + depth * 4 + width * 4) / 100;
   const kantTrakaPrice = kantTrakaLength * selectedDezenKant;
 
-  // Dodavanje kant trake na ukupnu cenu
-  const totalPriceWithKantTraka = totalPriceWithoutWaste + kantTrakaPrice;
+  const p_lesonit =  (backSurfacePrice + drawerBottomPrice) * 1.32
+  const p_kant_trake = (drawerKantPrice + kantTrakaPrice) * 1.10
 
-  // Dodavanje 10% za otpad na finalnu cenu
-  /*const finalPrice = totalPriceWithKantTraka * 1.13 + 1310 + 2160; //1310 4 sponice x 40 + 5 busenja x 230 /2160 je dodata cena za 8 busenja x 230 + 8 spojnica x 40*/
- 
+  
+  // Ukupna cena svih površina bez otpada
+  let totalPriceWithoutWaste = p_basePrice + p_lesonit + totalDrawerPrice + doorPrice + hingePrice + drawerSliderPrice + p_kant_trake;
 
- // Saberi ukupnu površinu fioka (po dve svake komponente)
-  const totalDrawerSurfaceInSquareMeters =
-    2 * (drawerBackSurfaceInSquareMeters + drawerSideSurfaceInSquareMeters + drawerFrontSurfaceInSquareMeters);
+  const finalPrice = totalPriceWithoutWaste + 2980
 
-  // Ukupna površina svih delova (u m²)
-  const ukupnaPovrsinaUMetrima =
-    totalDrawerSurfaceInSquareMeters + totalSurfaceInSquareMeters;
- let P_fioke = (drawerBackPrice + drawerSidePrice  + drawerFrontPrice) * 2
-  let P_fioke_porez = P_fioke * 1.13
-let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
-  let P_korpus = basePrice * 1.13
-  let P_kant = (kantTrakaPrice + (drawerKantPrice * 2)) * 1.10
-  let P_uni_kant = P_fioke_porez + P_korpus + P_kant
-  let P_klizaci = drawerSliderPrice * 2
-  // Loguj ukupnu površinu u konzolu
-  console.log("Ukupna površina svih delova u m²:", ukupnaPovrsinaUMetrima.toFixed(2));
-  console.log("kant trake metraza ",((drawerKantLength * 2) + kantTrakaLength));
- console.log("zadnja str lesonit korpus cena", backSurfacePrice.toFixed(2));
- console.log("korpus cena", basePrice.toFixed(2));
- console.log("zadnja str fioka",(drawerBackPrice * 2).toFixed(2));
- console.log("leva i desna str str fioka",(drawerSidePrice * 2).toFixed(2));
- console.log("dno fioka",(drawerBottomPrice * 2).toFixed(2));
- console.log("prednja str fioka",(drawerFrontPrice * 2).toFixed(2));
- console.log("kant trake fioke cene ",(drawerKantPrice * 2).toFixed(2));
- console.log("kant trake korpus cena", kantTrakaPrice.toFixed(2));
- console.log("kant trake fioke metraza ",(kantTrakaLength + (drawerKantLength * 2)));
- console.log("povrsina lesonit",((drawerBottomSurfaceInSquareMeters * 2) + backSurfaceInSquareMeters));
- console.log("cena korpusa, lesonita i fioka zajedno sa kantovanjem fioka ",(totalPriceWithoutWaste));
- console.log("ukupna cena  ",(P_uni_kant));
- console.log("ukupna cena lesonit ",(P_lesonit));
-  console.log("klizaci cena ",(P_klizaci));
- const finalPrice = P_uni_kant + P_klizaci + P_lesonit + 800 + 2990;
+//provere 
+const metraza_kant = kantTrakaLength + drawerKantLength
+const povrsina_lesonit = drawerBottomSurfaceInSquareMeters + backSurfaceInSquareMeters
+const povrsina_korpus = totalSurfaceInSquareMeters + drawerBackSurfaceInSquareMeters + drawerSideSurfaceInSquareMeters
+const povrsina_front = drawerFrontSurfaceInSquareMeters + doorSurfaceInSquareMeters
+console.log("Metraza kanta", metraza_kant.toFixed(2))
+console.log("Povrsina lesonita", povrsina_lesonit.toFixed(2))
+console.log("Povrsina korpusa", povrsina_korpus.toFixed(2))
+console.log("Povrsina fronta", povrsina_front.toFixed(2))
+const cena_lesonit = drawerBottomPrice + backSurfacePrice
+const cena_kant = kantTrakaPrice + drawerKantPrice
+const cena_korpus = p_basePrice + drawerBackSurface + drawerSideSurface + drawerBottomSurface 
+const cena_front = doorPrice + drawerFrontSurface
+
+console.log("Cena lesonita", cena_lesonit.toFixed(2))
+console.log("Cena kanta", cena_kant.toFixed(2))
+console.log("Cena korpusa", cena_korpus.toFixed(2))
+console.log("Cena fronta", cena_front.toFixed(2))
+  // Povrat vrednosti
   return {
-    totalPrice: finalPrice.toFixed(2),
+   totalPrice: finalPrice.toFixed(2),
     totalSurface: totalSurface.toFixed(2),
     totalSurfaceInSquareMeters: totalSurfaceInSquareMeters.toFixed(2),
     backSurfacePrice: backSurfacePrice.toFixed(2),
@@ -442,6 +434,7 @@ let P_lesonit = (backSurfacePrice + (drawerBottomPrice * 2)) * 1.32
     drawerKantPrice: drawerKantPrice.toFixed(2),
   };
 }
+
 
 
 
@@ -485,7 +478,57 @@ function calculate() {
        document.getElementById('price').innerText = "Dimenzije koje ste uneli su izvan dozvoljenog opsega";
        return;
    }
+   /** 
+ const selectedPatternTitle = document.getElementById('selected-pattern-title');
+   const selectedPatternName = selectedPatternTitle.textContent;
+   const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
 
+
+   if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    return;
+}
+
+   if (!selectedDezen) {
+       alert("Niste odabrali dezen elementa.");
+       return;
+   }
+*/
+ /**/
+ const selectedPatternTitle = document.getElementById('selected-pattern-title');
+   const selectedPatternName = selectedPatternTitle.textContent;
+   const selectedDezen = dezeni.find(dezen => dezen.name === selectedPatternName);
+ const drawerSlider = document.getElementById('drawer-slider').value.split('|');
+ let hasError = false;
+
+if (izabraniLesonit === 0) {
+    alert("Niste odabrali lesonit.");
+    hasError = true;
+}
+
+if (selectedDezenKant === 0) {
+    alert("Niste odabrali kant.");
+    hasError = true;
+}
+
+if (selectedDezenKorpusPrice === 0) {
+    alert("Niste odabrali dezen korpusa.");
+    hasError = true;
+}
+
+if (!selectedDezen) {
+    alert("Niste odabrali dezen elementa.");
+    hasError = true;
+}
+ if (!drawerSlider) {
+    alert("Niste odabrali vrstu klizaca.");
+    hasError = true;
+}
+
+if (hasError) {
+    return; // Prekini funkciju ako postoji neka greška
+}
+ /**/
   const priceData = calculatePrice(height, width, depth);
 
    document.getElementById('price').innerHTML = `
