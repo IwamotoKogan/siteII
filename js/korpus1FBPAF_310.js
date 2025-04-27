@@ -323,7 +323,7 @@ fetch("korpusi.json")
   .catch(error => console.error("Greška prilikom učitavanja korpusa:", error));
 
 
-function calculateCombinedPrice(height, width, depth) {
+function calculatePrice(height, width, depth) {
   // Površine osnovnih stranica
   const bottomSurface = width * depth;
   const leftSurface = height * depth;
