@@ -297,7 +297,7 @@ let selectedDezenKorpusName = 0;
 
 
 // Učitavanje dezena korpusa iz JSON fajla
-fetch("dezeni.json")
+fetch("korpusi.json")
   .then(response => response.json())
   .then(data => {
     // Inicijalno postavi prvi dezen kao podrazumevani
